@@ -1,0 +1,203 @@
+
+        <!-- Comienzo del panel de acceso a meetlanguages, contiene panel de registro y login -->
+        <div class="access">
+            <div class="text-center title">
+                <p class="well col-sm-12" id="title">MEETLANGUAGES</p>
+            </div>
+            <div class="accessForm col-sm-offset-2 col-sm-8">
+                <div class="col-sm-7">
+                    <div class="text-center">
+                        <h2>Register</h2>
+                    </div>
+                    <form class="form-horizontal" action="http://localhost:4000/users" method="POST">
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="name">Name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="native">Native language:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="nat_lang" id="native" placeholder="Enter native language">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="lang_learn">Language I want to learn:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="lang_learn" id="lang_learn" placeholder="Enter language I want to learn">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label class="control-label col-sm-5" for="learn">Language I want to learn:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="lang_learn" id="learn" placeholder="Enter language to learn">
+                            </div>
+                        </div> -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="email">Email:</label>
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="pwd">Password:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="pwd">Confirm password:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="Enter confirmation password">
+                            </div>
+                        </div>
+                        <div class="form-group text-right  ">
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Remember me</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <div class="col-sm-offset-1  col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="text-center">
+                        <h2>Login</h2>
+                    </div>
+                     <form class="form-horizontal" (ngSubmit)="onSubmit()" method="POST">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="email">Email:</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="pwd">Password:</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <div class="col-sm-10 text-right">
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> Remember me</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-left">
+                            <div class="col-sm-10 text-right">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comienzo de las diferentes secciones de la pagina principal-->
+        <div class="secciones">
+            <!-- Seccion Join Search Chat -->
+            <div class="text-center" id="joinSearchChat">
+                <div class="col-sm-1 col-sm-offset-1">
+                    <img src="/public/img/world-view.png" alt="" class=" img-responsive">
+                    <h2>JOIN!</h2>
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <img src="/public/img/right-black-arrow.png" alt="" class=" img-responsive">
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <img src="/public/img/lens.png" alt="" class=" img-responsive">
+                    <h2>SEARCH!</h2>
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <img src="/public/img/right-black-arrow.png" alt="" class=" img-responsive">
+                </div>
+                <div class="col-sm-1 col-sm-offset-1">
+                    <img src="/public/img/envelope.png" alt="" class="img-responsive">
+                    <h2>CHAT!</h2>
+                </div>
+            </div>
+
+            <!-- Seccion TEAM, contiene imagenes de cada uno y descripcion -->
+            <div class="text-center" id="team">
+                <h1>Team</h1>
+                <div class="team col-sm-12">
+                    <div class="col-sm-3">
+                        <img class="img-responsive" src="/public/img/avatar.png">
+                        <h2>Antonio</h2>
+                        <h4>Email: aaaaa@aaaaa.com</h4>
+                        <h4>Phone: +34 231 23 12 23</h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="img-responsive" src="/public/img/avatar.png">
+                        <h2>Javier</h2>
+                        <h4>Email: aaaaa@aaaaa.com</h4>
+                        <h4>Phone: +34 231 23 12 23</h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="img-responsive" src="/public/img/avatar.png">
+                        <h2>Oliver</h2>
+                        <h4>Email: aaaaa@aaaaa.com</h4>
+                        <h4>Phone: +34 231 23 12 23</h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img class="img-responsive" src="/public/img/avatar.png">
+                        <h2>Raúl</h2>
+                        <h4>Email: aaaaa@aaaaa.com</h4>
+                        <h4>Phone: +34 231 23 12 23</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seccion meetings, contiene una imagen y una descripcion de los meetings -->
+            <div class="text-center" id="meetings">
+                <div class="col-sm-12">
+                    <h1>Meetings</h1>
+                </div>
+                <div class="col-sm-6 col-sm-offset-1">
+                    <p> Do you want to put into practice the language you are learning? Access our "meetings" in which we inform you of the next scheduled meetings, find out when and where will take place. These meetings are free and usually organized by our
+                    users or people you trust. Don't wait any longer! Look for the nearest and go!
+                </p>
+                </div>
+                <div class="col-sm-4 col-sm-offset-1">
+                     <img src="/public/img/caf.jpg" class="img-responsive img-circle" alt="cafeteria">
+                </div>
+            </div>
+
+            <!-- Seccion Contact, contiene un formulario de contacto -->
+            <div class="text-center" id="contact">
+                <h1>Contact</h1>
+                <div>
+                    <form class="contact">
+                        <div class="form-group col-sm-offset-1 col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group col-sm-offset-1 col-sm-10">
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="form-group col-sm-offset-1 col-sm-10">
+                            <input type="text" class="form-control" id="subjet" placeholder="Subjet">
+                        </div>
+                        <div class="form-group col-sm-offset-1 col-sm-10">
+                            <textarea class="form-control noresize" rows="6" id="aboutMe" placeholder="Your Message"></textarea>
+                        </div>
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Comiendo del FOOTER -->
+        <footer class="container-fluid text-center">
+            <p>© 2017 M e e t L a n g u a g e s</p>
+        </footer>

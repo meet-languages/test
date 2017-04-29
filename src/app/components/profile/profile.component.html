@@ -1,0 +1,111 @@
+<div *ngIf="user">
+  <div>
+    <div class="text-center">
+      <h3>My profile</h3>
+    </div>
+    <br><div>
+          <div class="media">
+            <div class="media-left">
+              <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{ user.name }}</h4>
+              <p>{{ user.description }}</p>
+            </div>
+          </div>
+        <hr>
+        </div>
+        <div class="text-left">
+            <button type="button" class="btn btn-primary" (click)="gotoEditProfile()">
+              <span class="glyphicon glyphicon glyphicon-edit"></span>
+                Edit profile
+            </button>
+        </div>
+        <div>
+          <div class="media">
+            <div class="media-body">
+              <h2>About me:</h2>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Birthday</td>
+                    <td>{{user.birthday}}</td>
+                  </tr>
+                  <tr>
+                    <td>Sex</td>
+                    <td>{{user.sex}}</td>
+                  </tr>
+                  <tr>
+                    <td>Country</td>
+                    <td>{{user.country}}</td>
+                  </tr>
+                  <tr>
+                    <td>Native Language</td>
+                    <td>{{user.nat_lang}}</td>
+                  </tr>
+                  <tr>
+                    <td>Language I want to learn</td>
+                    <td>{{user.lang_learn}}</td>
+                  </tr>
+                  <tr>
+                    <td>Skype</td>
+                    <td>{{user.skype}}</td>
+                  </tr>
+                  <tr>
+                    <td>Occupation</td>
+                    <td>{{user.occupation}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="media">
+            <div class="media-body">
+              <h2>What I like:</h2>
+              <ul class="nav nav-tabs">
+                <li><a data-toggle="tab" href="#literature">Literature</a></li>
+                <li><a data-toggle="tab" href="#music">Music</a></li>
+                <li><a data-toggle="tab" href="#films">Films</a></li>
+                <li><a data-toggle="tab" href="#series">Series</a></li>
+                <li><a data-toggle="tab" href="#sports">Sports</a></li>
+                <li><a data-toggle="tab" href="#activities">Activities</a></li>
+              </ul>
+              <br>
+              <div class="tab-content">
+                <div id="literature" class="tab-pane fade">
+                  <ul *ngFor="let l of user.literature" >
+                    <li *ngIf="l.isChecked == true">{{l.name}}</li>
+                  </ul>
+                </div>
+                <div id="music" class="tab-pane fade">
+                  <ul  *ngFor="let m of user.music">
+                    <li *ngIf="m.isChecked == true">{{m.name}}</li>
+                  </ul>
+                </div>
+                <div id="films" class="tab-pane fade">
+                  <ul *ngFor="let f of user.films">
+                    <li *ngIf="f.isChecked == true">{{f.name}}</li>
+                  </ul>
+                </div>
+                <div id="series" class="tab-pane fade">
+                  <ul *ngFor="let s of user.series">
+                    <li *ngIf="s.isChecked == true">{{s.name}}</li>
+                  </ul>
+                </div>
+                <div id="sports" class="tab-pane fade">
+                  <ul *ngFor="let s of user.sports">
+                    <li *ngIf="s.isChecked == true">{{s.name}}</li>
+                  </ul>
+                </div>
+                <div id="activities" class="tab-pane fade">
+                  <ul *ngFor="let a of user.activities">
+                    <li *ngIf="a.isChecked == true">{{a.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+</div>
