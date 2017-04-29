@@ -1,0 +1,168 @@
+.noresize {
+  resize: none;
+}
+
+body{
+background-image: url("../img/fondo.png");
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+margin-bottom: 0;
+border-radius: 0;
+padding-bottom: 40px;
+
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+padding-top: 20px;
+margin-bottom: 20px;
+margin-left: 20px;
+background-color: #f1f1f1;
+height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+background-color: #555;
+color: white;
+padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+.sidenav {
+height: auto;
+padding: 15px;
+background-color: rgba(0, 0, 0, 0);
+}
+
+#myNavbar{
+      margin-top: 100px;
+      z-index: 104;
+}
+
+#avatar{
+}
+
+#profilePanel{
+}
+
+#searchPanel{
+  margin-top: 20px !important;
+}
+
+
+.row.content {height:auto;}
+}
+
+/* Form separation */
+form {
+margin-top: auto;
+}
+
+/*Logo*/
+.img-responsive2 {
+display: inline-block;
+max-width: 10%;
+margin-left: 48px;
+margin-bottom:5px;
+}
+
+.img-responsive3 {
+display: inline-block;
+max-width: 100%;
+height: auto;
+margin-bottom: 20px;
+}
+
+.img-responsive4 {
+display: inline-block;
+max-width: 30%;
+height: auto;
+margin: 10px 10px 10px 10px;
+}
+
+footer{
+  margin-top:50px;
+}
+
+
+hr {
+    border-top: 2px solid #e7e7e7 !important;
+}
+
+
+#mySidenav a {
+	position: fixed !important;
+	z-index: 1030;
+    position: absolute;
+    left: -110px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 160px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    
+}
+
+#mySidenav.sidenav{
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#mySidenav a:hover {
+    left: 0;
+}
+
+#facebook {
+    top: 170px;
+    background-color: #4267b2;
+    color: rgba(0, 0, 0, 0);
+}
+
+#twitter {
+    top: 230px;
+    background-color: #1da1f2;
+    color: rgba(0, 0, 0, 0);
+}
+
+#linkedin {
+    top: 290px;
+    background-color: #0077B5;
+    color: rgba(0, 0, 0, 0);
+}
+
+#github {
+    top: 350px;
+    background-color: #555;
+    color: rgba(0, 0, 0, 0);
+}
+
+hr { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 10px;
+}
+
+.imgSocial{
+    opacity: 0.3;
+    filter: alpha(opacity=30); 
+    float:right;
+}
+
+.eliminar_margen {
+	margin-bottom: 0px important!;	
+}
+
+.membersGroup{
+  width: 60px;
+  margin-right: 10px;
+}

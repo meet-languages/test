@@ -1,0 +1,514 @@
+<div *ngIf="user">
+  <div class="text-center">
+          <h3>Edit profile</h3>
+          <hr>
+        </div>
+        <!-- Formulario de edicion del perfil -->
+        <form  method="POST">
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="user.name" #name="ngModel" placeholder="Enter name" value={{user.name}}>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" #email="ngModel"  placeholder="Enter email" value={{user.email}}>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="pwd">New password:</label>
+            <input type="password" class="form-control" name="password" id="pwd" [(ngModel)]="user.password" #password="ngModel"  placeholder="Enter password" value="----------">
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="birthday" >Birthday: </label>
+            <input type="date" class="form-control" id="date" name="date">
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="sex" class="col-sm-3">Sex: </label>
+            <label class="col-sm-2"><input type="radio" name="sex" checked> Man</label>
+            <label class="col-sm-3"><input type="radio" name="sex"> Woman</label>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="country">Country:</label>
+            <select class="form-control" id="country" >
+              <option selected>Spain</option>
+              <option>England</option>
+              <option>Italy</option>
+              <option>France</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="nativeLanguage">Native language:</label>
+            <select class="form-control" id="nativeLanguage" name="nat_lang" [(ngModel)]="user.nat_lang" #nat_lang="ngModel">
+              <option selected>Spanish</option>
+              <option>English</option>
+              <option>Italian</option>
+              <option>French</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="languageLearn">Language I want to learn:</label>
+            <select class="form-control" id="languageLearn">
+              <option>Spanish</option>
+              <option selected>English</option>
+              <option>Italian</option>
+              <option>French</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="skype">Skype: </label>
+            <input type="text" class="form-control" id="skype" name="skype" placeholder="Enter skype" value={{user.skype}}  [(ngModel)]="user.skype" #skype="ngModel">
+          </div>
+
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="occupation">Occupation:</label>
+            <select class="form-control" id="occupation">
+              <option selected>Student</option>
+              <option>Worker</option>
+              <option>Retired</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <label for="description" >About me:</label><br>
+            <textarea class="form-control noresize" rows="6" name="description" id="aboutMe"  [(ngModel)]="user.description" #description="ngModel"></textarea>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <div>
+              <label for="literature">Literature:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Self-help">Self-help</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Tales" checked>Tales</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Legens">Legens</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Religion" checked>Religion</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Science Fiction">Science Fiction</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Philosophy">Philosophy</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Novels">Novels</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Terror" checked>Terror</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Comic" checked>Comic</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Sciences">Sciences</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Poetries">Poetries</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="literature" type="checkbox" value="Memories" checked>Memories</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <div>
+              <label for="literature">Music:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Rock">Rock</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Pop" checked>Pop</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Reggae">Reggae</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Ska" checked>Ska</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Latin">Latin</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Flamenco" checked>Flamenco</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Trap">Trap</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Trance" checked>Trance</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Classical">Classical</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Alternative">Alternative</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Blues">Blues</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Country" checked>Country</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Electronic">Electronic</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Hip Hop / Rap" checked>Hip Hop/Rap</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Cumbia">Cumbia</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Salsa" checked>Salsa</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Dance" checked>Dance</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Drum and Bass">Drum and Bass</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Dubstep">Dubstep</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Techno" checked>Techno</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Instrumental">Instrumental</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Jazz" checked>Jazz</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="R&B/Soul">R&B/Soul</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="music" type="checkbox" value="Heavy" checked>Heavy</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <div>
+              <label for="film" class="">Film:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Action">Action</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Science Fiction" checked>Science Fiction</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Drama" checked>Drama</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Musical">Musical</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Romantic">Romantic</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Animation" checked>Animation</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Fantasy">Fantasy</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Terror" checked>Terror</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Thriller" checked>Thriller</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Adventure">Adventure</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Western">Western</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Mistery" checked>Mistery</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="film" type="checkbox" value="Police">Police</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <div>
+              <label for="series" class="">Series:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Breaking bad">Breaking bad</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Person of interest" checked>Person of interest</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Gotham">Gotham</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Arrow" checked>Arrow</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Shameles">Shameles</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Game of Thrones">Game of Thrones</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="The walking dead">The walking dead</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="House" checked>House</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="How I met your mother">How I met your mother</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Big Bang theory" checked>Big Bang theory</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Flash">Flash</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="series"  type="checkbox" value="Vikings">Vikings</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <div>
+              <label for="activities" class="">Activities:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Learn languages" checked>Learn languages</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Auto / Motorbike" checked>Auto / Motorbike</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Science" checked>Science</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Sports" checked>Sports</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Shopping">Shopping</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Theatre">Theatre</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Astronomy" checked>Astronomy</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Bar / Clubs">Bar / Clubs</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Games">Games</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="TV" checked>TV</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Nature">Nature</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Meet friends">Meet friends</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Cooking" checked>Restaurants</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Museums / Exhibits">Museums / Exhibits</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Music" checked>Music</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Travels" checked>Travels</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Astrology">Astrology</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Dance">Dance</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Movies" checked>Movies</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Internet" checked>Internet</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Crafts">Crafts</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Computers" checked>Computers</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Technology">Technology</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Reading" checked>Reading</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="activities" type="checkbox" value="Cooking">Cooking</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-offset-1 col-sm-10 well">
+            <div>
+              <label for="sports" class="">Sports:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Martial arts">Martial arts</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Athletics">Athletics</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Motoring" checked>Motoring</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Badminton" checked>Badminton</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Golf">Golf</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Handball">Handball</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Hockey">Hockey</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Cycling" checked>Cycling</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Extreme Sports" checked>Extreme Sports</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Riding">Riding</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Skiing">Skiing</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Dance" checked>Dance</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Basket">Basket</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Baseball">Baseball</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Billiards" checked>Billiards</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Swimming">Swimming</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Navigation">Navigation</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Skate" checked>Skate</label>
+              </div>
+               <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Table tennis">Table tennis</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Volleyball">Volleyball</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Yoga" checked>Yoga</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Soccer">Soccer</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Water-skiing">Water-skiing</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Boxing">Boxing</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Diving" checked>Diving</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Hike">Hike</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Hunting" checked>Hunting</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Squash">Squash</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Surf">Surf</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Tennis" checked>Tennis</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Football">Football</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Gymnastics">Gymnastics</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Gym" checked>Gym</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="BMX">BMX</label>
+              </div>
+              <div class="checkbox">
+                <label><input name="sports" type="checkbox" value="Others">Others</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+              <button type="submit" class="btn btn-default" (click)="save()">Actualizar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+ 

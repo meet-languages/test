@@ -1,0 +1,123 @@
+.noresize {
+    resize: none;
+}
+
+body {
+    background-image: url("../img/fondo.png");
+    font-family: helvetica;
+}
+
+h1 {
+    display: inline-block;
+    border-bottom: solid 3px #ffffff;
+}
+
+.indexImg {
+    max-width: 100%;
+}
+
+.secciones {
+    background-image: url("../img/mlg.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#joinSearchChat {
+    min-height: 330px;
+    height: 20%;
+    background-color: white;
+    padding-top: 30px;
+}
+
+#joinSearchChat h2 {
+    font-size: 20px;
+    margin-left: 80px;
+}
+
+#joinSearchChat img {
+    width: 200px;
+    margin-top: 60px;
+    margin-left: 50px;
+}
+
+#meetings {
+    min-height: 500px;
+    color: #ffffff;
+    background-color: #143b7e;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#meetings h1{
+	margin-bottom: 40px;
+}
+
+#meetings p {
+    font-size: 15pt;
+    text-align: justify;
+    margin-top: 50px;
+}
+
+
+#title {
+    padding: 10px;
+    font-size: 5vw;
+    font-family: 'Anton', sans-serif;
+    color: #d66736;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.access {
+    background-image: url("../img/languages.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 15px;
+    min-height: 700px;
+}
+
+.access h2{
+	margin-bottom:30px;
+	padding-bottom:5px;
+}
+
+.accessForm {
+    background-color: rgba(255, 255, 255, 0.85);
+    min-height: 300px;
+}
+
+#team {
+    min-height: 500px;
+    color: #ffffff;
+    background-color: #d66736;
+    padding-top: 30px;
+    margin-top: 450px;
+}
+
+#team img{
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right:auto;
+}
+
+
+#contact {
+    min-height: 500px;
+    color: #ffffff;
+    background-color: #143b7e;
+    padding-top: 30px;
+    margin-top: 450px;
+}
+
+#contact h1 {
+    margin-bottom: 30px;
+}
+
+
+/* Set black background color, white text and some padding */
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
