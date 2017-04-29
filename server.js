@@ -107,7 +107,7 @@ app.post("/users", function(req, res) {
                     // Guardamos la session del usuario con session
                     if (user) {
                         req.session.user_id = user._id;
-                        res.redirect("http://localhost:3000/profile/"+req.session.user_id);
+                        res.redirect("http://localhost:3000/template/profile"+req.session.user_id);
                     } else {
                         res.send("Cuenta invalida");
                     }
@@ -140,7 +140,7 @@ app.post("/sessions", function(req, res) {
             if (user) {
                 req.session.user_id = user._id;
                 // console.log("\n\n\n"+req.session.user_id);
-                res.redirect("http://localhost:3000/profile/"+req.session.user_id);
+                res.redirect("http://localhost:3000/template/profile/"+req.session.user_id);
             } else {
                 res.send("Cuenta invalida");
             }
