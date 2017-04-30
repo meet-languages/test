@@ -12,15 +12,17 @@ var users_component_1 = require("./components/users/users.component");
 var profile_component_1 = require("./components/profile/profile.component");
 var main_component_1 = require("./components/template/main.component");
 var edit_profile_component_1 = require("./components/edit-profile/edit-profile.component");
+var auth_guard_1 = require("./_guards/auth.guard");
 exports.routes = [
-    { path: '', redirectTo: 'registry', pathMatch: 'full' },
+    { path: '', component: main_component_1.TemplateComponent, canActivate: [auth_guard_1.AuthGuard], pathMatch: 'full' },
     { path: 'registry', component: registry_component_1.RegistryComponent },
     { path: 'template', component: main_component_1.TemplateComponent, children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: users_component_1.UsersComponent },
             { path: 'profile/:id', component: profile_component_1.ProfileComponent },
             { path: 'edit-profile/:id', component: edit_profile_component_1.EditProfileComponent },
-        ] }
+        ] },
+    { path: '**', redirectTo: '' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

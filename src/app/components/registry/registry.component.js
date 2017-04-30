@@ -8,27 +8,56 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// components/registry.component.ts
 var core_1 = require("@angular/core");
-var auth_service_1 = require("../../services/auth.service");
-var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
+var alert_service_1 = require("../../_services/alert.service");
+var authentication_service_1 = require("../../_services/authentication.service");
+var user_service_1 = require("../../_services/user.service");
 var RegistryComponent = (function () {
-    function RegistryComponent(http) {
-        this.http = http;
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+    function RegistryComponent(route, userService, router, authenticationService, alertService) {
+        this.route = route;
+        this.userService = userService;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.alertService = alertService;
+        this.model = {};
+        this.loading = false;
     }
-    RegistryComponent.prototype.onSubmit = function (user) {
-        var id = "";
-        var url = "http://localhost:4000/sessions";
-        return this.http
-            .post(url, JSON.stringify(user), { headers: this.headers })
-            .toPromise()
-            .then(function () { return user; })
-            .catch(this.handleError);
+    RegistryComponent.prototype.ngOnInit = function () {
+        // reset login status
+        this.authenticationService.logout();
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     };
-    RegistryComponent.prototype.handleError = function (error) {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
+    RegistryComponent.prototype.login = function () {
+        var _this = this;
+        this.loading = true;
+        this.authenticationService.login(this.model.email, this.model.password)
+            .subscribe(function (data) {
+            _this.router.navigate([_this.returnUrl]);
+        }, function (error) {
+            _this.alertService.error(error._body);
+            _this.loading = false;
+        });
+    };
+    RegistryComponent.prototype.register = function () {
+        var _this = this;
+        this.loading = true;
+        this.userService.create(this.model)
+            .subscribe(function (data) {
+            _this.alertService.success('Registration successful', true);
+        }, function (error) {
+            _this.alertService.error(error._body);
+            _this.loading = false;
+        });
+        this.loading = true;
+        this.authenticationService.login(this.model.email, this.model.password)
+            .subscribe(function (data) {
+            _this.router.navigate([_this.returnUrl]);
+        }, function (error) {
+            _this.alertService.error(error._body);
+            _this.loading = false;
+        });
     };
     return RegistryComponent;
 }());
@@ -36,9 +65,13 @@ RegistryComponent = __decorate([
     core_1.Component({
         selector: 'registry',
         templateUrl: "./registry.component.html",
-        providers: [auth_service_1.AuthService]
     }),
-    __metadata("design:paramtypes", [http_1.Http])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        user_service_1.UserService,
+        router_1.Router,
+        authentication_service_1.AuthenticationService,
+        alert_service_1.AlertService])
 ], RegistryComponent);
 exports.RegistryComponent = RegistryComponent;
 //# sourceMappingURL=registry.component.js.map

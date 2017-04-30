@@ -1,38 +1,71 @@
-// services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
-
-// We want to avoid any 'name not found'
-// warnings from TypeScript
-declare var Auth0Lock: any;
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable }     from 'rxjs';
+import { User } from '../../User';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
 
- // Configure Auth0
-  lock = new Auth0Lock('WE1B9tgLAiYURX5SwMNNZbST3suaY6ue', 'meetlanguages.eu.auth0.com', {});
+  private base_url = 'http://localhost:4000/api';
+  token: string;
+  private userSource = new Subject<User>();
+  user$ = this.userSource.asObservable();
 
+  constructor(public http: Http) { }
 
- login() {
-   this.lock.show((error: string, profile: Object, id_token: string) => {
-     if (error) {
-       console.log(error);
-     }
-     // We get a profile object for the user from Auth0
-     localStorage.setItem('profile', JSON.stringify(profile));
-     // We also get the user's JWT
-     localStorage.setItem('id_token', id_token);
-   });
- }
+  setUser(user: User) {
+    this.userSource.next(user);
+  }
 
- logout() {
-   // To log out, we just need to remove
-   // the user's profile and token
-   localStorage.removeItem('profile');
-   localStorage.removeItem('id_token');
- }
+  registerUser(user: User): Observable<boolean> {
+    let body = JSON.stringify(user);
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(`${this.base_url}/register`, body, options).map( (res) => this.setToken(res) );
+  }
 
- loggedIn(): boolean {
-  return tokenNotExpired();
-}
+  loginUser(user: User): Observable<Object> {
+    let body = JSON.stringify(user);
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(`${this.base_url}/authenticate`, body, options).map( (res) => this.setToken(res) );
+  }
+
+  logout() {
+    this.token = null;
+    localStorage.removeItem('currentUser');
+  }
+
+  verify(): Observable<Object> {
+
+    let currUser = JSON.parse(localStorage.getItem('currentUser')); 
+    let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
+    let headers = new Headers({ 'x-access-token': token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(`${this.base_url}/check-state`, options).map( res => this.parseRes(res) );
+    
+  }
+
+  setToken(res: any){
+    let body = JSON.parse(res['_body']);
+    if( body['success'] == true ){
+      this.token = body['token'];
+      localStorage.setItem('currentUser', JSON.stringify({ 
+        email: body['user']['email'], 
+        token: this.token 
+      }));
+    }
+    return body;
+  }
+
+  parseRes(res: any){
+    let body = JSON.parse(res['_body']);
+    return body;
+  }
+
 }

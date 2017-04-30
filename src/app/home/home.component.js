@@ -9,43 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var user_service_1 = require("../../_services/user.service");
-var router_1 = require("@angular/router");
-var UsersComponent = (function () {
-    function UsersComponent(userService, router) {
+var user_service_1 = require("../_services/user.service");
+var HomeComponent = (function () {
+    function HomeComponent(userService) {
         this.userService = userService;
-        this.router = router;
         this.users = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    UsersComponent.prototype.ngOnInit = function () {
+    HomeComponent.prototype.ngOnInit = function () {
         this.loadAllUsers();
     };
-    UsersComponent.prototype.deleteUser = function (_id) {
+    HomeComponent.prototype.deleteUser = function (_id) {
         var _this = this;
         this.userService.delete(_id).subscribe(function () { _this.loadAllUsers(); });
     };
-    UsersComponent.prototype.loadAllUsers = function () {
+    HomeComponent.prototype.loadAllUsers = function () {
         var _this = this;
         this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
-    UsersComponent.prototype.onSelect = function (user) {
-        this.currentUser = user;
-    };
-    UsersComponent.prototype.gotoProfile = function () {
-        var id = "_id";
-        this.router.navigate(['/template/profile', this.currentUser[id]]);
-    };
-    return UsersComponent;
+    return HomeComponent;
 }());
-UsersComponent = __decorate([
+HomeComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'users',
-        templateUrl: '/app/components/users/users.component.html',
-        styleUrls: ['/style/style.css']
+        templateUrl: 'home.component.html'
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
-], UsersComponent);
-exports.UsersComponent = UsersComponent;
-//# sourceMappingURL=users.component.js.map
+    __metadata("design:paramtypes", [user_service_1.UserService])
+], HomeComponent);
+exports.HomeComponent = HomeComponent;
+//# sourceMappingURL=home.component.js.map

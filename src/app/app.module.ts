@@ -11,10 +11,16 @@ import { EditProfileComponent }          from './components/edit-profile/edit-pr
 import { PanelUserComponent }          from './components/panel-user/panel-user.component';
 import { FriendsOnlineComponent }          from './components/friends/friends-online.component';
 import { RegistryComponent }          from './components/registry/registry.component';
-import { UserService }          from './services/user.service';
-import { AuthService }          from './services/auth.service';
+// import { UserService }          from './services/user.service';
 import { AppRoutingModule }     from './app.routing.module';
-import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt';
+
+import { AlertComponent } from './_directives/alert.component';
+import { AuthGuard } from './_guards/auth.guard';
+import { AlertService } from './_services/alert.service';
+import { AuthenticationService } from './_services/authentication.service';
+import { UserService } from './_services/user.service';
+import { AppConfig } from './app.config';
+
 
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
 @NgModule({
@@ -32,21 +38,17 @@ import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt'
     ProfileComponent,
     PanelUserComponent,
     EditProfileComponent,
-    FriendsOnlineComponent
+    FriendsOnlineComponent,
+
+    AlertComponent
   ],
   providers: [ 
     UserService,
-    AuthService,
-    AuthHttp,
-    AUTH_PROVIDERS,
-    {
-      provide: AuthConfig,
-      
-      useFactory: () => {
-        return new AuthConfig();
-      },
-      deps: [Http]
-    },
+
+    AppConfig,
+    AuthGuard,
+    AuthenticationService,
+    AlertService
      ],
   bootstrap: [ AppComponent ]
 })

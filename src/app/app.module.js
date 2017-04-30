@@ -17,10 +17,14 @@ var edit_profile_component_1 = require("./components/edit-profile/edit-profile.c
 var panel_user_component_1 = require("./components/panel-user/panel-user.component");
 var friends_online_component_1 = require("./components/friends/friends-online.component");
 var registry_component_1 = require("./components/registry/registry.component");
-var user_service_1 = require("./services/user.service");
-var auth_service_1 = require("./services/auth.service");
+// import { UserService }          from './services/user.service';
 var app_routing_module_1 = require("./app.routing.module");
-var angular2_jwt_1 = require("angular2-jwt");
+var alert_component_1 = require("./_directives/alert.component");
+var auth_guard_1 = require("./_guards/auth.guard");
+var alert_service_1 = require("./_services/alert.service");
+var authentication_service_1 = require("./_services/authentication.service");
+var user_service_1 = require("./_services/user.service");
+var app_config_1 = require("./app.config");
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
 var AppModule = (function () {
     function AppModule() {
@@ -43,20 +47,15 @@ AppModule = __decorate([
             profile_component_1.ProfileComponent,
             panel_user_component_1.PanelUserComponent,
             edit_profile_component_1.EditProfileComponent,
-            friends_online_component_1.FriendsOnlineComponent
+            friends_online_component_1.FriendsOnlineComponent,
+            alert_component_1.AlertComponent
         ],
         providers: [
             user_service_1.UserService,
-            auth_service_1.AuthService,
-            angular2_jwt_1.AuthHttp,
-            angular2_jwt_1.AUTH_PROVIDERS,
-            {
-                provide: angular2_jwt_1.AuthConfig,
-                useFactory: function () {
-                    return new angular2_jwt_1.AuthConfig();
-                },
-                deps: [http_1.Http]
-            },
+            app_config_1.AppConfig,
+            auth_guard_1.AuthGuard,
+            authentication_service_1.AuthenticationService,
+            alert_service_1.AlertService
         ],
         bootstrap: [app_component_1.AppComponent]
     })
