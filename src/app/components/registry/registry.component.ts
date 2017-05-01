@@ -16,7 +16,7 @@ export class RegistryComponent implements OnInit {
 
     country: null,
     skype:  null ,
-    occupation: null 
+    occupation: null, 
     birthday: null ,
     description: null ,
     notifications:  0,
