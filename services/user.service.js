@@ -30,6 +30,8 @@ function authenticate(email, password) {
                 _id: user._id,
                 email: user.email,
                 name: user.name,
+                messages: user.messages,
+                notifications: user.notifications,
                 token: jwt.sign({ sub: user._id }, 'daslfjhuq2kherdsajkn27483huedf')
             });
         } else {

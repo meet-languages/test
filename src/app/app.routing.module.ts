@@ -12,7 +12,7 @@ import { AuthGuard } from './_guards/auth.guard';
 export const routes: Routes = [
   { path: '', redirectTo: 'template', canActivate: [AuthGuard], pathMatch: 'full' },
   { path: 'registry',  component: RegistryComponent },
-  { path: 'template', component: TemplateComponent, children: [
+  { path: 'template', component: TemplateComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'users', pathMatch: 'full' },
       { path: 'users', component: UsersComponent },
       { path: 'profile/:id', component: ProfileComponent },
@@ -20,7 +20,7 @@ export const routes: Routes = [
       { path: 'edit-profile/:id', component: EditProfileComponent },
     ]},
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'registry' }
 ];
 
 @NgModule({

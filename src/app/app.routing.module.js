@@ -17,14 +17,14 @@ var auth_guard_1 = require("./_guards/auth.guard");
 exports.routes = [
     { path: '', redirectTo: 'template', canActivate: [auth_guard_1.AuthGuard], pathMatch: 'full' },
     { path: 'registry', component: registry_component_1.RegistryComponent },
-    { path: 'template', component: main_component_1.TemplateComponent, children: [
+    { path: 'template', component: main_component_1.TemplateComponent, canActivate: [auth_guard_1.AuthGuard], children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: users_component_1.UsersComponent },
             { path: 'profile/:id', component: profile_component_1.ProfileComponent },
             { path: 'my-profile/:id', component: my_profile_component_1.MyProfileComponent },
             { path: 'edit-profile/:id', component: edit_profile_component_1.EditProfileComponent },
         ] },
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'registry' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

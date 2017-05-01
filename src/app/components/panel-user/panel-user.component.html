@@ -7,9 +7,9 @@
       <a style="cursor: pointer" (click)="gotoProfile()" class="list-group-item">
         <span class="glyphicon glyphicon-user"></span> My profile</a>
       <a href="messages.html" class="list-group-item">
-        <span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">3</span></a>
+        <span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">{{ currentUser.messages }}</span></a>
       <a href="notifications.html" class="list-group-item">
-        <span class="glyphicon glyphicon-globe"></span> Notifications<span class="badge">2</span></a>
+        <span class="glyphicon glyphicon-globe"></span> Notifications<span class="badge">{{ currentUser.notifications }}</span></a>
       <a href="myfriends.html" class="list-group-item">
         <span class="glyphicon glyphicon-th-list"></span> My Friends</a>
       <a href="mygroups.html" class="list-group-item">
