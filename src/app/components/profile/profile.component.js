@@ -14,14 +14,12 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var user_service_1 = require("../../_services/user.service");
 var ProfileComponent = (function () {
-    function ProfileComponent(userService, router, route, location) {
+    function ProfileComponent(userService, route, location) {
         this.userService = userService;
-        this.router = router;
         this.route = route;
         this.location = location;
         this.users = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
     ;
     ProfileComponent.prototype.ngOnInit = function () {
@@ -37,10 +35,6 @@ var ProfileComponent = (function () {
         var _this = this;
         this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
-    ProfileComponent.prototype.gotoEditProfile = function () {
-        var id = "_id";
-        this.router.navigate(['/template/edit-profile', this.user[id]]);
-    };
     return ProfileComponent;
 }());
 ProfileComponent = __decorate([
@@ -49,7 +43,6 @@ ProfileComponent = __decorate([
         templateUrl: './profile.component.html',
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
-        router_1.Router,
         router_1.ActivatedRoute,
         common_1.Location])
 ], ProfileComponent);

@@ -30,7 +30,7 @@ import { RouterOutlet } from '@angular/router';
           <li class="active"><a routerLink="/template/users" routerLinkActive="active">Members</a></li>
           <li><a href="groups.html">Groups</a></li>
           <li><a href="meetings.html">Meetings</a></li>
-           <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+           <li><a href="#" [routerLink]="['/registry']"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
         </ul>
       </div>
     </div>

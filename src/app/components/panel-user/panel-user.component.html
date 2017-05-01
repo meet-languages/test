@@ -1,10 +1,10 @@
   <div id="profilePanel" class="well">
-    <h3>Hello Raul!</h3>
+    <h3>Hello {{currentUser.name}}</h3>
     <hr>
     <img src="img/avatar.png" alt="avatar_meetlanguages" class="img-responsive3" id="avatar">
     <div class="list-group text-left" >
       <!--<a href="#" class="list-group-item"><span class="glyphicon glyphicon-plus"></span> Change avatar</a>-->
-      <a href="myprofile.html" class="list-group-item">
+      <a style="cursor: pointer" (click)="gotoProfile()" class="list-group-item">
         <span class="glyphicon glyphicon-user"></span> My profile</a>
       <a href="messages.html" class="list-group-item">
         <span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">3</span></a>

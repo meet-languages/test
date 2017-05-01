@@ -13,10 +13,12 @@ var app_component_1 = require("./app.component");
 var main_component_1 = require("./components/template/main.component");
 var users_component_1 = require("./components/users/users.component");
 var profile_component_1 = require("./components/profile/profile.component");
+var my_profile_component_1 = require("./components/my-profile/my-profile.component");
 var edit_profile_component_1 = require("./components/edit-profile/edit-profile.component");
 var panel_user_component_1 = require("./components/panel-user/panel-user.component");
 var friends_online_component_1 = require("./components/friends/friends-online.component");
 var registry_component_1 = require("./components/registry/registry.component");
+var login_component_1 = require("./components/registry/login.component");
 // import { UserService }          from './services/user.service';
 var app_routing_module_1 = require("./app.routing.module");
 var alert_component_1 = require("./_directives/alert.component");
@@ -42,9 +44,11 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             registry_component_1.RegistryComponent,
+            login_component_1.LoginComponent,
             main_component_1.TemplateComponent,
             users_component_1.UsersComponent,
             profile_component_1.ProfileComponent,
+            my_profile_component_1.MyProfileComponent,
             panel_user_component_1.PanelUserComponent,
             edit_profile_component_1.EditProfileComponent,
             friends_online_component_1.FriendsOnlineComponent,

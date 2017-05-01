@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var user_service_1 = require("../../_services/user.service");
-var ProfileComponent = (function () {
-    function ProfileComponent(userService, router, route, location) {
+var MyProfileComponent = (function () {
+    function MyProfileComponent(userService, router, route, location) {
         this.userService = userService;
         this.router = router;
         this.route = route;
@@ -24,7 +24,7 @@ var ProfileComponent = (function () {
         console.log(this.currentUser);
     }
     ;
-    ProfileComponent.prototype.ngOnInit = function () {
+    MyProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadAllUsers();
         this.userService.getById(this.currentUser["_id"]).subscribe(function (connectedUser) { _this.connectedUser = connectedUser; });
@@ -33,25 +33,25 @@ var ProfileComponent = (function () {
             .switchMap(function (params) { return _this.userService.getById(params["id"]); })
             .subscribe(function (user) { return _this.user = user; });
     };
-    ProfileComponent.prototype.loadAllUsers = function () {
+    MyProfileComponent.prototype.loadAllUsers = function () {
         var _this = this;
         this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
-    ProfileComponent.prototype.gotoEditProfile = function () {
+    MyProfileComponent.prototype.gotoEditProfile = function () {
         var id = "_id";
         this.router.navigate(['/template/edit-profile', this.user[id]]);
     };
-    return ProfileComponent;
+    return MyProfileComponent;
 }());
-ProfileComponent = __decorate([
+MyProfileComponent = __decorate([
     core_1.Component({
-        selector: 'profile',
-        templateUrl: './profile.component.html',
+        selector: 'my-profile',
+        templateUrl: './my-profile.component.html',
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.Router,
         router_1.ActivatedRoute,
         common_1.Location])
-], ProfileComponent);
-exports.ProfileComponent = ProfileComponent;
+], MyProfileComponent);
+exports.MyProfileComponent = MyProfileComponent;
 //# sourceMappingURL=profile.component.js.map

@@ -1,10 +1,10 @@
 import 'rxjs/add/operator/switchMap';
-import { Component,  OnInit }      from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location }               from '@angular/common';
+import { Component,  OnInit }       from '@angular/core';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
+import { Location }                 from '@angular/common';
 
 import { User }         from '../../../User';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   moduleId: module.id,
@@ -12,21 +12,33 @@ import { UserService } from '../../services/user.service';
   templateUrl: 'panel-user.component.html' 
 })
 
-export class PanelUserComponent{
-  user: User;
+export class PanelUserComponent implements OnInit{
+  currentUser: User;
+  connectedUser: User;
+  users: User[] = [];
 
   constructor(
     private userService: UserService,
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location
-  ) {}
+  ) {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        console.log(this.currentUser);};
+        
   
-// No funciona correctamente.
+  ngOnInit() {
+        this.loadAllUsers();
+    }
+ 
 
- // ngOnInit(): void {
- //   this.route.params
- //     .switchMap((params: Params) => this.userService.getUser(params["id"]))
- //     .subscribe(user => this.user = user);
- // }
+  private loadAllUsers() {
+        this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+
+  gotoProfile(): void {
+      const id = "_id";
+      this.router.navigate(['/template/my-profile', this.currentUser["_id"]]);
+    }
 }
 

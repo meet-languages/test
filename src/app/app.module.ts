@@ -7,10 +7,12 @@ import { AppComponent }  from './app.component';
 import { TemplateComponent }  from './components/template/main.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent }          from './components/profile/profile.component';
+import { MyProfileComponent }          from './components/my-profile/my-profile.component';
 import { EditProfileComponent }          from './components/edit-profile/edit-profile.component';
 import { PanelUserComponent }          from './components/panel-user/panel-user.component';
 import { FriendsOnlineComponent }          from './components/friends/friends-online.component';
 import { RegistryComponent }          from './components/registry/registry.component';
+import { LoginComponent }          from './components/registry/login.component';
 // import { UserService }          from './services/user.service';
 import { AppRoutingModule }     from './app.routing.module';
 
@@ -33,9 +35,11 @@ import { AppConfig } from './app.config';
   declarations: [
     AppComponent,
     RegistryComponent,
+    LoginComponent,
     TemplateComponent,
     UsersComponent,
     ProfileComponent,
+    MyProfileComponent,
     PanelUserComponent,
     EditProfileComponent,
     FriendsOnlineComponent,

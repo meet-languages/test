@@ -6,11 +6,11 @@ import { Location }                 from '@angular/common';
 import { User }         from '../../../User';
 import { UserService } from '../../_services/user.service';
 @Component({
-  selector: 'profile',
-  templateUrl: './profile.component.html',
+  selector: 'my-profile',
+  templateUrl: './my-profile.component.html',
 })
 
-export class ProfileComponent implements OnInit{
+export class MyProfileComponent implements OnInit{
   user: User;
   currentUser: User;
   connectedUser: User;

@@ -46,6 +46,9 @@ export class EditProfileComponent implements OnInit{
 
   save(): void {
     this.userService.update(this.user).subscribe(() => { this.loadUser() });
+    
+      const id = "_id";
+      this.router.navigate(['/template/my-profile', this.currentUser["_id"]]);
   }
 
   gotoProfile(): void {

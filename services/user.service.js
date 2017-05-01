@@ -29,6 +29,7 @@ function authenticate(email, password) {
             deferred.resolve({
                 _id: user._id,
                 email: user.email,
+                name: user.name,
                 token: jwt.sign({ sub: user._id }, 'daslfjhuq2kherdsajkn27483huedf')
             });
         } else {

@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var user_service_1 = require("../../_services/user.service");
-var PanelUserComponent = (function () {
-    function PanelUserComponent(userService, router, route, location) {
+var MyProfileComponent = (function () {
+    function MyProfileComponent(userService, router, route, location) {
         this.userService = userService;
         this.router = router;
         this.route = route;
@@ -24,29 +24,34 @@ var PanelUserComponent = (function () {
         console.log(this.currentUser);
     }
     ;
-    PanelUserComponent.prototype.ngOnInit = function () {
+    MyProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.loadAllUsers();
+        this.userService.getById(this.currentUser["_id"]).subscribe(function (connectedUser) { _this.connectedUser = connectedUser; });
+        console.log(this.connectedUser);
+        this.route.params
+            .switchMap(function (params) { return _this.userService.getById(params["id"]); })
+            .subscribe(function (user) { return _this.user = user; });
     };
-    PanelUserComponent.prototype.loadAllUsers = function () {
+    MyProfileComponent.prototype.loadAllUsers = function () {
         var _this = this;
         this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
-    PanelUserComponent.prototype.gotoProfile = function () {
+    MyProfileComponent.prototype.gotoEditProfile = function () {
         var id = "_id";
-        this.router.navigate(['/template/my-profile', this.currentUser["_id"]]);
+        this.router.navigate(['/template/edit-profile', this.user[id]]);
     };
-    return PanelUserComponent;
+    return MyProfileComponent;
 }());
-PanelUserComponent = __decorate([
+MyProfileComponent = __decorate([
     core_1.Component({
-        moduleId: module.id,
-        selector: 'panel-user',
-        templateUrl: 'panel-user.component.html'
+        selector: 'my-profile',
+        templateUrl: './my-profile.component.html',
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.Router,
         router_1.ActivatedRoute,
         common_1.Location])
-], PanelUserComponent);
-exports.PanelUserComponent = PanelUserComponent;
-//# sourceMappingURL=panel-user.component.js.map
+], MyProfileComponent);
+exports.MyProfileComponent = MyProfileComponent;
+//# sourceMappingURL=my-profile.component.js.map

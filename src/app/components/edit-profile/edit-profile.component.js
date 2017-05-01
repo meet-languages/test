@@ -44,6 +44,8 @@ var EditProfileComponent = (function () {
     EditProfileComponent.prototype.save = function () {
         var _this = this;
         this.userService.update(this.user).subscribe(function () { _this.loadUser(); });
+        var id = "_id";
+        this.router.navigate(['/template/my-profile', this.currentUser["_id"]]);
     };
     EditProfileComponent.prototype.gotoProfile = function () {
         var id = "_id";
