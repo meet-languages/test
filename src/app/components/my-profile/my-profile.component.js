@@ -30,7 +30,7 @@ var MyProfileComponent = (function () {
         this.userService.getById(this.currentUser["_id"]).subscribe(function (connectedUser) { _this.connectedUser = connectedUser; });
         console.log(this.connectedUser);
         this.route.params
-            .switchMap(function (params) { return _this.userService.getById(params["id"]); })
+            .switchMap(function (params) { return _this.userService.getById(_this.currentUser["_id"]); })
             .subscribe(function (user) { return _this.user = user; });
     };
     MyProfileComponent.prototype.loadAllUsers = function () {

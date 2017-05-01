@@ -30,7 +30,7 @@ export class MyProfileComponent implements OnInit{
         this.loadAllUsers();this.userService.getById(this.currentUser["_id"]).subscribe(connectedUser => { this.connectedUser = connectedUser; });
         console.log(this.connectedUser);
         this.route.params
-        .switchMap((params: Params) => this.userService.getById(params["id"]))
+        .switchMap((params: Params) => this.userService.getById(this.currentUser["_id"]))
         .subscribe(user => this.user = user);
 
         
