@@ -12,6 +12,7 @@ import { UserService } from '../../_services/user.service';
 
 export class ProfileComponent implements OnInit{
   user: User;
+  currentUser: User;
   friend: User;
 
   constructor(
