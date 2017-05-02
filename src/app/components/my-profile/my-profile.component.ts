@@ -13,8 +13,6 @@ import { UserService } from '../../_services/user.service';
 export class MyProfileComponent implements OnInit{
   user: User;
   currentUser: User;
-  connectedUser: User;
-  users: User[] = [];
 
   constructor(
     private userService: UserService,
@@ -23,23 +21,18 @@ export class MyProfileComponent implements OnInit{
     private location: Location
   ) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
-        console.log(this.currentUser);};
+      };
         
   
   ngOnInit() {
-        this.loadAllUsers();this.userService.getById(this.currentUser["_id"]).subscribe(connectedUser => { this.connectedUser = connectedUser; });
-        console.log(this.connectedUser);
-        this.route.params
-        .switchMap((params: Params) => this.userService.getById(this.currentUser["_id"]))
-        .subscribe(user => this.user = user);
-
-        
+        this.loadUser();    
     }
- 
 
-  private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
+  private loadUser(){
+      this.route.params
+      .switchMap((params: Params) => this.userService.getById(this.currentUser["_id"]))
+      .subscribe(user => this.user = user);
+  }
 
   gotoEditProfile(): void {
     const id = "_id";

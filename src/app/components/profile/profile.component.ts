@@ -12,9 +12,7 @@ import { UserService } from '../../_services/user.service';
 
 export class ProfileComponent implements OnInit{
   user: User;
-  currentUser: User;
-  connectedUser: User;
-  users: User[] = [];
+  friend: User;
 
   constructor(
     private userService: UserService,
@@ -26,15 +24,18 @@ export class ProfileComponent implements OnInit{
         
   
   ngOnInit() {
-        this.loadAllUsers();this.userService.getById(this.currentUser["_id"]).subscribe(connectedUser => { this.connectedUser = connectedUser; });
-        console.log(this.connectedUser);
-        this.route.params
-        .switchMap((params: Params) => this.userService.getById(params["id"]))
-        .subscribe(user => this.user = user);
+        this.loadUser(); 
     }
- 
 
-  private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
+  private loadUser(){
+      this.route.params
+      .switchMap((params: Params) => this.userService.getById(params["id"]))
+      .subscribe(user => this.user = user);
+  }
+
+ // addFriend(user: User): void {
+ //   this.user.friends.push(this.friend["_id"]);
+ //   this.userService.update(this.user).subscribe(() => { this.loadUser() });
+ // }
+ 
 }

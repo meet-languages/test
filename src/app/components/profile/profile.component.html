@@ -1,19 +1,25 @@
 <div *ngIf="user">
   <div>
     <div class="text-center">
-      <h3>My profile</h3>
+      <h3>Profile</h3>
     </div>
     <br><div>
           <div class="media">
             <div class="media-left">
               <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido">
             </div>
-            <div class="media-body">
+            <div class="media-body" style="padding-left: 15px">
               <h4 class="media-heading">{{ user.name }}</h4>
               <p>{{ user.description }}</p>
             </div>
           </div>
         <hr>
+        </div>
+        <div class="text-left">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="addFriend(user)" >
+            <span class="glyphicon glyphicon glyphicon-plus"></span>
+              Add Friend
+          </button>
         </div>
         <div>
           <div class="media">

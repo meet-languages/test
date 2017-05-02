@@ -19,23 +19,17 @@ var MyProfileComponent = (function () {
         this.router = router;
         this.route = route;
         this.location = location;
-        this.users = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
     ;
     MyProfileComponent.prototype.ngOnInit = function () {
+        this.loadUser();
+    };
+    MyProfileComponent.prototype.loadUser = function () {
         var _this = this;
-        this.loadAllUsers();
-        this.userService.getById(this.currentUser["_id"]).subscribe(function (connectedUser) { _this.connectedUser = connectedUser; });
-        console.log(this.connectedUser);
         this.route.params
             .switchMap(function (params) { return _this.userService.getById(_this.currentUser["_id"]); })
             .subscribe(function (user) { return _this.user = user; });
-    };
-    MyProfileComponent.prototype.loadAllUsers = function () {
-        var _this = this;
-        this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
     MyProfileComponent.prototype.gotoEditProfile = function () {
         var id = "_id";

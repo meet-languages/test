@@ -18,22 +18,17 @@ var ProfileComponent = (function () {
         this.userService = userService;
         this.route = route;
         this.location = location;
-        this.users = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ;
     ProfileComponent.prototype.ngOnInit = function () {
+        this.loadUser();
+    };
+    ProfileComponent.prototype.loadUser = function () {
         var _this = this;
-        this.loadAllUsers();
-        this.userService.getById(this.currentUser["_id"]).subscribe(function (connectedUser) { _this.connectedUser = connectedUser; });
-        console.log(this.connectedUser);
         this.route.params
             .switchMap(function (params) { return _this.userService.getById(params["id"]); })
             .subscribe(function (user) { return _this.user = user; });
-    };
-    ProfileComponent.prototype.loadAllUsers = function () {
-        var _this = this;
-        this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
     return ProfileComponent;
 }());
