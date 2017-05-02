@@ -13,6 +13,10 @@ var groups_component_1 = require("./components/groups/groups.component");
 var meetings_component_1 = require("./components/meetings/meetings.component");
 var search_component_1 = require("./components/search/search.component");
 var home_component_1 = require("./components/home/home.component");
+var messages_component_1 = require("./components/messages/messages.component");
+var notifications_component_1 = require("./components/notifications/notifications.component");
+var my_friends_component_1 = require("./components/my-friends/my-friends.component");
+var my_groups_component_1 = require("./components/my-groups/my-groups.component");
 var profile_component_1 = require("./components/profile/profile.component");
 var my_profile_component_1 = require("./components/my-profile/my-profile.component");
 var main_component_1 = require("./components/template/main.component");
@@ -28,6 +32,10 @@ exports.routes = [
             { path: 'meetings', component: meetings_component_1.MeetingsComponent },
             { path: 'search', component: search_component_1.SearchComponent },
             { path: 'home', component: home_component_1.HomeComponent },
+            { path: 'messages', component: messages_component_1.MessagesComponent },
+            { path: 'notifications', component: notifications_component_1.NotificationsComponent },
+            { path: 'my-friends', component: my_friends_component_1.MyFriendsComponent },
+            { path: 'my-groups', component: my_groups_component_1.MyGroupsComponent },
             { path: 'profile/:id', component: profile_component_1.ProfileComponent },
             { path: 'my-profile/:id', component: my_profile_component_1.MyProfileComponent },
             { path: 'edit-profile/:id', component: edit_profile_component_1.EditProfileComponent },

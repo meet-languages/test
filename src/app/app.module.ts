@@ -11,6 +11,10 @@ import { MeetingsComponent }              from './components/meetings/meetings.c
 import { ProfileComponent }               from './components/profile/profile.component';
 import { SearchComponent }                from './components/search/search.component';
 import { HomeComponent }                  from './components/home/home.component';
+import { MessagesComponent }              from './components/messages/messages.component';
+import { NotificationsComponent }         from './components/notifications/notifications.component';
+import { MyFriendsComponent }             from './components/my-friends/my-friends.component';
+import { MyGroupsComponent }              from './components/my-groups/my-groups.component';
 import { MyProfileComponent }             from './components/my-profile/my-profile.component';
 import { EditProfileComponent }           from './components/edit-profile/edit-profile.component';
 import { PanelUserComponent }             from './components/panel-user/panel-user.component';
@@ -48,6 +52,10 @@ import { AppConfig }                      from './app.config';
     MeetingsComponent,
     SearchComponent,
     HomeComponent,
+    MessagesComponent,
+    NotificationsComponent,
+    MyFriendsComponent,
+    MyGroupsComponent,
     ProfileComponent,
     MyProfileComponent,
     PanelUserComponent,

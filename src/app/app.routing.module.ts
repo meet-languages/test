@@ -7,6 +7,10 @@ import { GroupsComponent }                from './components/groups/groups.compo
 import { MeetingsComponent }              from './components/meetings/meetings.component';
 import { SearchComponent }                from './components/search/search.component';
 import { HomeComponent }                  from './components/home/home.component';
+import { MessagesComponent }              from './components/messages/messages.component';
+import { NotificationsComponent }         from './components/notifications/notifications.component';
+import { MyFriendsComponent }             from './components/my-friends/my-friends.component';
+import { MyGroupsComponent }              from './components/my-groups/my-groups.component';
 import { ProfileComponent }               from './components/profile/profile.component';
 import { MyProfileComponent }             from './components/my-profile/my-profile.component';
 import { TemplateComponent }              from './components/template/main.component';
@@ -23,6 +27,10 @@ export const routes: Routes = [
       { path: 'meetings', component: MeetingsComponent },
       { path: 'search', component: SearchComponent },
       { path: 'home', component: HomeComponent },
+      { path: 'messages', component: MessagesComponent },
+      { path: 'notifications', component: NotificationsComponent },
+      { path: 'my-friends', component: MyFriendsComponent },
+      { path: 'my-groups', component: MyGroupsComponent },
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'my-profile/:id', component: MyProfileComponent },
       { path: 'edit-profile/:id', component: EditProfileComponent },
