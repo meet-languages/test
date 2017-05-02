@@ -8,6 +8,9 @@ router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:_id', getById);
+
+router.get('/:term', getByName);
+
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
@@ -86,6 +89,20 @@ function _delete(req, res) {
 
 function getById(req, res) {
     userService.getById(req.params._id)
+        .then(function (user) {
+            if (user) {
+                res.send(user);
+            } else {
+                res.sendStatus(404);
+            }
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getByName(req, res) {
+    userService.getByName(req.params.term)
         .then(function (user) {
             if (user) {
                 res.send(user);

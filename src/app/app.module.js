@@ -12,11 +12,16 @@ var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var main_component_1 = require("./components/template/main.component");
 var users_component_1 = require("./components/users/users.component");
+var groups_component_1 = require("./components/groups/groups.component");
+var meetings_component_1 = require("./components/meetings/meetings.component");
 var profile_component_1 = require("./components/profile/profile.component");
+var search_component_1 = require("./components/search/search.component");
+var home_component_1 = require("./components/home/home.component");
 var my_profile_component_1 = require("./components/my-profile/my-profile.component");
 var edit_profile_component_1 = require("./components/edit-profile/edit-profile.component");
 var panel_user_component_1 = require("./components/panel-user/panel-user.component");
 var friends_online_component_1 = require("./components/friends/friends-online.component");
+var user_search_component_1 = require("./components/user-search/user-search.component");
 var registry_component_1 = require("./components/registry/registry.component");
 var login_component_1 = require("./components/registry/login.component");
 // import { UserService }          from './services/user.service';
@@ -26,6 +31,7 @@ var auth_guard_1 = require("./_guards/auth.guard");
 var alert_service_1 = require("./_services/alert.service");
 var authentication_service_1 = require("./_services/authentication.service");
 var user_service_1 = require("./_services/user.service");
+var user_search_service_1 = require("./_services/user-search.service");
 var app_config_1 = require("./app.config");
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
 var AppModule = (function () {
@@ -47,15 +53,21 @@ AppModule = __decorate([
             login_component_1.LoginComponent,
             main_component_1.TemplateComponent,
             users_component_1.UsersComponent,
+            groups_component_1.GroupsComponent,
+            meetings_component_1.MeetingsComponent,
+            search_component_1.SearchComponent,
+            home_component_1.HomeComponent,
             profile_component_1.ProfileComponent,
             my_profile_component_1.MyProfileComponent,
             panel_user_component_1.PanelUserComponent,
             edit_profile_component_1.EditProfileComponent,
             friends_online_component_1.FriendsOnlineComponent,
+            user_search_component_1.UserSearchComponent,
             alert_component_1.AlertComponent
         ],
         providers: [
             user_service_1.UserService,
+            user_search_service_1.UserSearchService,
             app_config_1.AppConfig,
             auth_guard_1.AuthGuard,
             authentication_service_1.AuthenticationService,

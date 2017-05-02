@@ -9,6 +9,10 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var registry_component_1 = require("./components/registry/registry.component");
 var users_component_1 = require("./components/users/users.component");
+var groups_component_1 = require("./components/groups/groups.component");
+var meetings_component_1 = require("./components/meetings/meetings.component");
+var search_component_1 = require("./components/search/search.component");
+var home_component_1 = require("./components/home/home.component");
 var profile_component_1 = require("./components/profile/profile.component");
 var my_profile_component_1 = require("./components/my-profile/my-profile.component");
 var main_component_1 = require("./components/template/main.component");
@@ -20,6 +24,10 @@ exports.routes = [
     { path: 'template', component: main_component_1.TemplateComponent, canActivate: [auth_guard_1.AuthGuard], children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: users_component_1.UsersComponent },
+            { path: 'groups', component: groups_component_1.GroupsComponent },
+            { path: 'meetings', component: meetings_component_1.MeetingsComponent },
+            { path: 'search', component: search_component_1.SearchComponent },
+            { path: 'home', component: home_component_1.HomeComponent },
             { path: 'profile/:id', component: profile_component_1.ProfileComponent },
             { path: 'my-profile/:id', component: my_profile_component_1.MyProfileComponent },
             { path: 'edit-profile/:id', component: edit_profile_component_1.EditProfileComponent },

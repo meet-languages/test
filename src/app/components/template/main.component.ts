@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './../../services/user.service';
-import { User } from '../../../User';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -25,11 +23,11 @@ import { RouterOutlet } from '@angular/router';
 
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="home.html">Home</a></li>
-          <li><a href="search.html">Search</a></li>
-          <li class="active"><a routerLink="/template/users" routerLinkActive="active">Members</a></li>
-          <li><a href="groups.html">Groups</a></li>
-          <li><a href="meetings.html">Meetings</a></li>
+          <li><a routerLink="/template/home" routerLinkActive="active">Home</a></li>
+          <li><a routerLink="/template/search" routerLinkActive="active">Search</a></li>
+          <li><a routerLink="/template/users" routerLinkActive="active">Members</a></li>
+          <li><a routerLink="/template/groups" routerLinkActive="active">Groups</a></li>
+          <li><a routerLink="/template/meetings" routerLinkActive="active">Meetings</a></li>
            <li><a href="#" [routerLink]="['/registry']"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
         </ul>
       </div>
@@ -71,18 +69,7 @@ import { RouterOutlet } from '@angular/router';
       <div id="searchPanel" class="well">
         <friends-online></friends-online>
       </div>
-        <div id="searchPanel" class="well">
-          <div class="form-group">
-
-                <h4><span class="glyphicon glyphicon-search"></span> Search:</h4>
-                <hr>
-                <form action="">
-                <input type="text" name="searchAds" class="col-xs-12">
-    
-                <button type="submit" class="btn btn-default">Submit</button>
-              </form>
-            </div>
-      </div>
+        <user-search></user-search>
     </div>
   </div>
 
@@ -99,7 +86,7 @@ import { RouterOutlet } from '@angular/router';
 <footer class="container-fluid text-center">
   <p>© 2017 M e e t L a n g u a g e s</p>
 </footer>`,
-  providers: [UserService],
+  providers: [],
   styleUrls: ['/style/style.css']
 })
 export class TemplateComponent  { }
