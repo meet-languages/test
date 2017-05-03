@@ -32,6 +32,7 @@ function authenticate(email, password) {
                 name: user.name,
                 messages: user.messages,
                 notifications: user.notifications,
+                groups: user.groups,
                 token: jwt.sign({ sub: user._id }, 'daslfjhuq2kherdsajkn27483huedf')
             });
         } else {
@@ -163,6 +164,7 @@ function update(_id, userParam) {
                           series: userParam.series,
                           activities: userParam.activities,
                           sports: userParam.sports,
+                          groups: userParam.groups,
                  },
                 function (err, user) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
@@ -200,6 +202,7 @@ function update(_id, userParam) {
                           series: userParam.series,
                           activities: userParam.activities,
                           sports: userParam.sports,
+                          groups: userParam.groups,
         };
  
         // update password if it was entered

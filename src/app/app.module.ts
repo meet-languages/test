@@ -7,8 +7,10 @@ import { AppComponent }                   from './app.component';
 import { TemplateComponent }              from './components/template/main.component';
 import { UsersComponent }                 from './components/users/users.component';
 import { GroupsComponent }                from './components/groups/groups.component';
+import { CreateGroupComponent }           from './components/create-group/create-group.component';
 import { MeetingsComponent }              from './components/meetings/meetings.component'
 import { ProfileComponent }               from './components/profile/profile.component';
+import { GroupPageComponent }             from './components/group-page/group-page.component';
 import { SearchComponent }                from './components/search/search.component';
 import { HomeComponent }                  from './components/home/home.component';
 import { MessagesComponent }              from './components/messages/messages.component';
@@ -30,6 +32,7 @@ import { AuthGuard }                      from './_guards/auth.guard';
 import { AlertService }                   from './_services/alert.service';
 import { AuthenticationService }          from './_services/authentication.service';
 import { UserService }                    from './_services/user.service';
+import { GroupService }                    from './_services/group.service';
 import { UserSearchService }              from './_services/user-search.service';
 import { AppConfig }                      from './app.config';
 
@@ -49,6 +52,8 @@ import { AppConfig }                      from './app.config';
     TemplateComponent,
     UsersComponent,
     GroupsComponent,
+    GroupPageComponent,
+    CreateGroupComponent,
     MeetingsComponent,
     SearchComponent,
     HomeComponent,
@@ -66,6 +71,7 @@ import { AppConfig }                      from './app.config';
   ],
   providers: [ 
     UserService,
+    GroupService,
     UserSearchService,
     AppConfig,
     AuthGuard,

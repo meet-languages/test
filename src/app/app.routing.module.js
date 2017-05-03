@@ -10,6 +10,8 @@ var router_1 = require("@angular/router");
 var registry_component_1 = require("./components/registry/registry.component");
 var users_component_1 = require("./components/users/users.component");
 var groups_component_1 = require("./components/groups/groups.component");
+var group_page_component_1 = require("./components/group-page/group-page.component");
+var create_group_component_1 = require("./components/create-group/create-group.component");
 var meetings_component_1 = require("./components/meetings/meetings.component");
 var search_component_1 = require("./components/search/search.component");
 var home_component_1 = require("./components/home/home.component");
@@ -29,6 +31,8 @@ exports.routes = [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: users_component_1.UsersComponent },
             { path: 'groups', component: groups_component_1.GroupsComponent },
+            { path: 'group-page/:id', component: group_page_component_1.GroupPageComponent },
+            { path: 'create-group', component: create_group_component_1.CreateGroupComponent },
             { path: 'meetings', component: meetings_component_1.MeetingsComponent },
             { path: 'search', component: search_component_1.SearchComponent },
             { path: 'home', component: home_component_1.HomeComponent },

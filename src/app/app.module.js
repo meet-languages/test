@@ -13,8 +13,10 @@ var app_component_1 = require("./app.component");
 var main_component_1 = require("./components/template/main.component");
 var users_component_1 = require("./components/users/users.component");
 var groups_component_1 = require("./components/groups/groups.component");
+var create_group_component_1 = require("./components/create-group/create-group.component");
 var meetings_component_1 = require("./components/meetings/meetings.component");
 var profile_component_1 = require("./components/profile/profile.component");
+var group_page_component_1 = require("./components/group-page/group-page.component");
 var search_component_1 = require("./components/search/search.component");
 var home_component_1 = require("./components/home/home.component");
 var messages_component_1 = require("./components/messages/messages.component");
@@ -35,6 +37,7 @@ var auth_guard_1 = require("./_guards/auth.guard");
 var alert_service_1 = require("./_services/alert.service");
 var authentication_service_1 = require("./_services/authentication.service");
 var user_service_1 = require("./_services/user.service");
+var group_service_1 = require("./_services/group.service");
 var user_search_service_1 = require("./_services/user-search.service");
 var app_config_1 = require("./app.config");
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
@@ -58,6 +61,8 @@ AppModule = __decorate([
             main_component_1.TemplateComponent,
             users_component_1.UsersComponent,
             groups_component_1.GroupsComponent,
+            group_page_component_1.GroupPageComponent,
+            create_group_component_1.CreateGroupComponent,
             meetings_component_1.MeetingsComponent,
             search_component_1.SearchComponent,
             home_component_1.HomeComponent,
@@ -75,6 +80,7 @@ AppModule = __decorate([
         ],
         providers: [
             user_service_1.UserService,
+            group_service_1.GroupService,
             user_search_service_1.UserSearchService,
             app_config_1.AppConfig,
             auth_guard_1.AuthGuard,

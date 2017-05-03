@@ -18,5 +18,6 @@ export class User {
   series: any;
   activities: any;
   sports: any;
+  groups: any[];
 }
   

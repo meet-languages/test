@@ -1,0 +1,50 @@
+import 'rxjs/add/operator/switchMap';
+import { Component,  OnInit }       from '@angular/core';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import { User }         from '../../../User';
+import { UserService } from '../../_services/user.service';
+import { Group }         from '../../../Group';
+import { GroupService } from '../../_services/group.service';
+@Component({
+  selector: 'group-page',
+  templateUrl: './group-page.component.html',
+})
+
+export class GroupPageComponent implements OnInit{
+  currentUser: User;
+  group: Group;
+
+  constructor(
+    private groupService: GroupService,
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) { 
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    };
+        
+  
+  ngOnInit() {
+        this.loadGroup(); 
+    }
+
+  private loadGroup(){
+      this.route.params
+      .switchMap((params: Params) => this.groupService.getById(params["id"]))
+      .subscribe(group => this.group = group);
+  }
+
+    joinGroup(group: Group): void {
+       // for (var i = 0; i < this.currentUser.groups.length; i++) {
+         //   if (this.currentUser.groups[i] !== group["_id"]) {
+           // }
+            // }
+
+                this.currentUser.groups.push(group["_id"]);
+                this.group.users.push(this.currentUser["_id"]);
+                this.userService.update(this.currentUser).subscribe(() => { });
+                this.groupService.update(this.group).subscribe(() => { });
+    }
+}

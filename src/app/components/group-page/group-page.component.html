@@ -1,0 +1,182 @@
+        <div class="media" *ngIf="group">
+            <div class="media-body">
+                      <div class="row">
+                        <div class="text-center">
+                          <h3> {{ group.title }} </h3>
+
+                        </div>
+                      </div>
+                        <hr>
+                        <p> {{ group.description }} </p>
+                      <br>
+                       <div class="panel panel-info text-left">
+                          <div class="panel-heading">Members</div>
+                          <div class="panel-body">
+                            <div class="text-center">
+                            <a href="profile.html">
+                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            <a href="profile.html">
+                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            <a href="profile.html">
+                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            <a href="profile.html">
+                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            <a href="profile.html">
+                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            <a href="profile.html">
+                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-left">
+                    <button type="button" class="btn btn-primary">
+                      <span class="glyphicon glyphicon-thumbs-up"></span>
+                      Like! <span class="badge">7</span>
+                    </button>
+                    <!-- Boton que despliega la caja de comentarios -->
+                    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#comments">
+                      Comments
+                    </button>
+                    <a (click)="joinGroup(group)">
+                      <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span>	Join group</button>
+                    </a>    
+                    <!-- Caja de comentarios -->
+                    <div id="comments" class="collapse">
+                        <div class="well">
+                            <textarea class="form-control noresize" rows="4" id="comments"></textarea>
+                            <div class=""><br>
+                              <!-- Comentarios -->
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="img/avatar.png" class="media-object" style="width:45px">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            <!-- Boton para poder comentar -->
+                                            <button type="button" class="btn btn-warning  btn-xs" data-toggle="collapse" data-target="#comment">
+                                              Responder
+                                            </button>
+                                        </p>
+                                        <div id="comment" class="collapse">
+                                            <div class="well container-fluid">
+                                                <div class="col-sm-2">
+                                                    <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control noresize" rows="2" id="comment"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Nested media object -->
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <img src="img/avatar.png" class="media-object" style="width:45px">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">John Doe <small><i>Posted on February 20, 2016</i></small></h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                  <!-- Boton para poder comentar -->
+                                                  <button type="button" class="btn btn-warning  btn-xs" data-toggle="collapse" data-target="#comment2">
+                                                    Responder
+                                                  </button>
+                                                </p>
+                                                <div id="comment2" class="collapse">
+                                                    <div class="well container-fluid">
+                                                        <div class="col-sm-2">
+                                                            <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <textarea class="form-control noresize" rows="2" id="comment"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Nested media object -->
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading">John Doe <small><i>Posted on February 21, 2016</i></small></h4>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                          <!-- Boton para poder comentar -->
+                                                          <button type="button" class="btn btn-warning  btn-xs" data-toggle="collapse" data-target="#comment3">
+                                                            Responder
+                                                          </button>
+                                                        </p>
+                                                        <div id="comment3" class="collapse">
+                                                            <div class="well container-fluid">
+                                                                <div class="col-sm-2">
+                                                                    <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                                </div>
+                                                                <div class="col-sm-10">
+                                                                    <textarea class="form-control noresize" rows="2" id="comment"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Nested media object -->
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Jane Doe <small><i>Posted on February 20, 2016</i></small></h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                      <!-- Boton para poder comentar -->
+                                                      <button type="button" class="btn btn-warning  btn-xs" data-toggle="collapse" data-target="#comment4">
+                                                        Responder
+                                                      </button>
+                                                    </p>
+                                                    <div id="comment4" class="collapse">
+                                                        <div class="well container-fluid">
+                                                            <div class="col-sm-2">
+                                                                <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <textarea class="form-control noresize" rows="2" id="comment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Nested media object -->
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="img/avatar.png" class="media-object" style="width:45px">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Jane Doe <small><i>Posted on February 19, 2016</i></small></h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                              <!-- Boton para poder comentar -->
+                                              <button type="button" class="btn btn-warning  btn-xs" data-toggle="collapse" data-target="#comment5">
+                                                Responder
+                                              </button>
+                                            </p>
+                                            <div id="comment5" class="collapse">
+                                                <div class="well container-fluid">
+                                                    <div class="col-sm-2">
+                                                        <img src="img/avatar.png" class="media-object" style="width:45px">
+                                                    </div>
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control noresize" rows="2" id="comment"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>

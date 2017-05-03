@@ -14,7 +14,6 @@ import { UserService } from '../../_services/user.service';
 
 export class PanelUserComponent implements OnInit{
   currentUser: User;
-  connectedUser: User;
   users: User[] = [];
 
   constructor(

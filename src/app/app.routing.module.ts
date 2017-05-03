@@ -4,6 +4,8 @@ import { RouterModule, Routes }           from '@angular/router';
 import { RegistryComponent }              from './components/registry/registry.component';
 import { UsersComponent }                 from './components/users/users.component';
 import { GroupsComponent }                from './components/groups/groups.component';
+import { GroupPageComponent }             from './components/group-page/group-page.component';
+import { CreateGroupComponent }           from './components/create-group/create-group.component';
 import { MeetingsComponent }              from './components/meetings/meetings.component';
 import { SearchComponent }                from './components/search/search.component';
 import { HomeComponent }                  from './components/home/home.component';
@@ -24,6 +26,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'users', pathMatch: 'full' },
       { path: 'users', component: UsersComponent },
       { path: 'groups', component: GroupsComponent },
+      { path: 'group-page/:id', component: GroupPageComponent },
+      { path: 'create-group', component: CreateGroupComponent },
       { path: 'meetings', component: MeetingsComponent },
       { path: 'search', component: SearchComponent },
       { path: 'home', component: HomeComponent },

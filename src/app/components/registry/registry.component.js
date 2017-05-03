@@ -163,6 +163,7 @@ var RegistryComponent = (function () {
                 { name: "BMX", isChecked: false },
                 { name: "Others", isChecked: false },
             ],
+            groups: [],
         };
         this.loading = false;
     }

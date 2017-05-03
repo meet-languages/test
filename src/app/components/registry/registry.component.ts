@@ -1,4 +1,4 @@
-import { Component, OnInit,Injectable } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService } from '../../_services/alert.service';
@@ -156,6 +156,7 @@ export class RegistryComponent implements OnInit {
             { name: "BMX", isChecked: false }, 
             { name: "Others", isChecked: false }, 
         ],
+    groups: [],
     };
     loading = false;
     returnUrl: string;
