@@ -36,6 +36,7 @@ export class CreateGroupComponent {
                     this.alertService.error(error._body);
                     this.loading = false;
                 });
+        this.router.navigate(['/template/groups']);
     }
 
 }

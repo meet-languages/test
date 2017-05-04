@@ -8,6 +8,7 @@ router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:_id', getById);
+router.get('/my-users/:_id', getMyUsers);
 
 router.get('/:term', getByName);
 
@@ -45,6 +46,16 @@ function register(req, res) {
  
 function getAll(req, res) {
     userService.getAll()
+        .then(function (users) {
+            res.send(users);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getMyUsers(req, res) {
+    userService.getMyUsers(req.params._id)
         .then(function (users) {
             res.send(users);
         })

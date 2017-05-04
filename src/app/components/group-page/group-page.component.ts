@@ -15,6 +15,7 @@ import { GroupService } from '../../_services/group.service';
 export class GroupPageComponent implements OnInit{
   currentUser: User;
   group: Group;
+  users: User;
 
   constructor(
     private groupService: GroupService,
@@ -28,6 +29,7 @@ export class GroupPageComponent implements OnInit{
   
   ngOnInit() {
         this.loadGroup(); 
+        this.loadMyUsers();
     }
 
   private loadGroup(){
@@ -36,15 +38,29 @@ export class GroupPageComponent implements OnInit{
       .subscribe(group => this.group = group);
   }
 
-    joinGroup(group: Group): void {
-       // for (var i = 0; i < this.currentUser.groups.length; i++) {
-         //   if (this.currentUser.groups[i] !== group["_id"]) {
-           // }
-            // }
-
-                this.currentUser.groups.push(group["_id"]);
-                this.group.users.push(this.currentUser["_id"]);
-                this.userService.update(this.currentUser).subscribe(() => { });
-                this.groupService.update(this.group).subscribe(() => { });
+  private loadMyUsers() {
+      this.route.params
+      .switchMap((params: Params) => this.userService.getMyUsers(params["id"]))
+      .subscribe(users => { this.users = users; });
     }
+
+    joinGroup(group: Group): void {
+        for (var i = 0; i < this.currentUser.groups.length; i++) {
+            if (this.currentUser.groups[i] !== group["_id"]) {
+              this.currentUser.groups.push(group["_id"]);
+              this.group.users.push(this.currentUser["_id"]);
+              this.userService.update(this.currentUser).subscribe(() => { });
+              this.groupService.update(this.group).subscribe(() => { });
+              this.loadGroup();
+            }
+        }
+
+                
+    }
+/*
+    changeButton(this: any) {
+      if (this.value==="Close Curtain") {
+        this.value = "Open Curtain";}
+      else {this.value = "Close Curtain"}
+  }*/
 }

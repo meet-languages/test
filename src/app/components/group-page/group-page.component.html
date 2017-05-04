@@ -11,6 +11,9 @@
                       <br>
                        <div class="panel panel-info text-left">
                           <div class="panel-heading">Members</div>
+                          <ul *ngFor="let user of users">
+                              <li>{{ user.name }}</li>
+                          </ul>
                           <div class="panel-body">
                             <div class="text-center">
                             <a href="profile.html">
@@ -38,8 +41,30 @@
                       Comments
                     </button>
                     <a (click)="joinGroup(group)">
-                      <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span>	Join group</button>
-                    </a>    
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>	Join group</button>
+                    </a>  
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Congratulations!!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Now you are a member of "{{ group.title }}"</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+
+                        </div>
+                    </div>  
+
                     <!-- Caja de comentarios -->
                     <div id="comments" class="collapse">
                         <div class="well">

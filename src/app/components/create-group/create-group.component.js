@@ -31,6 +31,7 @@ var CreateGroupComponent = (function () {
             _this.alertService.error(error._body);
             _this.loading = false;
         });
+        this.router.navigate(['/template/groups']);
     };
     return CreateGroupComponent;
 }());

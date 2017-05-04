@@ -25,6 +25,7 @@ var GroupPageComponent = (function () {
     ;
     GroupPageComponent.prototype.ngOnInit = function () {
         this.loadGroup();
+        this.loadMyUsers();
     };
     GroupPageComponent.prototype.loadGroup = function () {
         var _this = this;
@@ -32,15 +33,22 @@ var GroupPageComponent = (function () {
             .switchMap(function (params) { return _this.groupService.getById(params["id"]); })
             .subscribe(function (group) { return _this.group = group; });
     };
+    GroupPageComponent.prototype.loadMyUsers = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.userService.getMyUsers(params["id"]); })
+            .subscribe(function (users) { _this.users = users; });
+    };
     GroupPageComponent.prototype.joinGroup = function (group) {
-        // for (var i = 0; i < this.currentUser.groups.length; i++) {
-        //   if (this.currentUser.groups[i] !== group["_id"]) {
-        // }
-        // }
-        this.currentUser.groups.push(group["_id"]);
-        this.group.users.push(this.currentUser["_id"]);
-        this.userService.update(this.currentUser).subscribe(function () { });
-        this.groupService.update(this.group).subscribe(function () { });
+        for (var i = 0; i < this.currentUser.groups.length; i++) {
+            if (this.currentUser.groups[i] !== group["_id"]) {
+                this.currentUser.groups.push(group["_id"]);
+                this.group.users.push(this.currentUser["_id"]);
+                this.userService.update(this.currentUser).subscribe(function () { });
+                this.groupService.update(this.group).subscribe(function () { });
+                this.loadGroup();
+            }
+        }
     };
     return GroupPageComponent;
 }());

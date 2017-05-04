@@ -12,6 +12,7 @@ var service = {};
 service.authenticate = authenticate;
 service.getAll = getAll;
 service.getById = getById;
+service.getMyUsers = getMyUsers;
 service.create = create;
 service.update = update;
 service.delete = _delete;
@@ -61,6 +62,23 @@ function getAll() {
     return deferred.promise;
 }
 
+function getMyUsers(_id) {
+    var deferred = Q.defer();
+ 
+    db.users.find({ "groups": _id }).toArray(function (err, users) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+ 
+        // return users (without hashed passwords)
+        users = _.map(users, function (user) {
+            return _.omit(user, 'hash');
+        });
+        console.log(users);
+ 
+        deferred.resolve(users);
+    });
+ 
+    return deferred.promise;
+}
  
 function getByName(term) {
     var deferred = Q.defer();

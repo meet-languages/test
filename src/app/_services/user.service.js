@@ -19,6 +19,9 @@ var UserService = (function () {
     UserService.prototype.getAll = function () {
         return this.http.get(this.config.apiUrl + '/users', this.jwt()).map(function (response) { return response.json(); });
     };
+    UserService.prototype.getMyUsers = function (_id) {
+        return this.http.get(this.config.apiUrl + '/users/my-users/' + _id, this.jwt()).map(function (response) { return response.json(); });
+    };
     UserService.prototype.getById = function (_id) {
         return this.http.get(this.config.apiUrl + '/users/' + _id, this.jwt()).map(function (response) { return response.json(); });
     };
