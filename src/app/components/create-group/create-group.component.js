@@ -20,6 +20,8 @@ var CreateGroupComponent = (function () {
         this.alertService = alertService;
         this.model = { users: [] };
         this.loading = false;
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.model.users.push(this.currentUser["_id"]);
     }
     CreateGroupComponent.prototype.createGroup = function () {
         var _this = this;

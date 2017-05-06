@@ -40,14 +40,19 @@ var GroupPageComponent = (function () {
             .subscribe(function (users) { _this.users = users; });
     };
     GroupPageComponent.prototype.joinGroup = function (group) {
-        for (var i = 0; i < this.currentUser.groups.length; i++) {
-            if (this.currentUser.groups[i] !== group["_id"]) {
-                this.currentUser.groups.push(group["_id"]);
-                this.group.users.push(this.currentUser["_id"]);
-                this.userService.update(this.currentUser).subscribe(function () { });
-                this.groupService.update(this.group).subscribe(function () { });
-                this.loadGroup();
+        var contains = function (id, user) {
+            for (var i = 0; i < user.groups.length; i++) {
+                if (contains(user.groups[i]))
+                    return true;
             }
+            return false;
+        };
+        if (contains(group["_id"], this.currentUser) == false) {
+            this.currentUser.groups.push(group["_id"]);
+            this.group.users.push(this.currentUser["_id"]);
+            this.userService.update(this.currentUser).subscribe(function () { });
+            this.groupService.update(this.group).subscribe(function () { });
+            this.loadGroup();
         }
     };
     return GroupPageComponent;

@@ -23,6 +23,7 @@ var MyGroupsComponent = (function () {
     ;
     MyGroupsComponent.prototype.ngOnInit = function () {
         this.loadMyGroups();
+        console.log(this.currentUser);
     };
     MyGroupsComponent.prototype.loadMyGroups = function () {
         var _this = this;
