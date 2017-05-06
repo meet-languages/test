@@ -1,57 +1,17 @@
 <div class="text-center">
-        <h3>Meetings</h3>
-          <hr>
-        <div class="text-center">
-          <div class="panel panel-info text-left">
-            <div class="panel-heading">Meet at Flor de America in Segovia (Spain)</div>
-            <div class="panel-body">
-              <div>
-                <p>Me and some school partners have met with Erasmus students...</p> <!--from England to exchange the language.</p>
-                <p>Every persons that wants to come are invited.</p>
-                <p>We have met on Sunday morning, 23 of April at 12:00</p>-->
-
-              </div>
-              <div class="text-right">
-                <a href="meeting.html"><button type="button" class="btn btn-warning">Meeting</button></a>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-info text-left">
-            <div class="panel-heading">Meet at Flor de America in Segovia (Spain)</div>
-            <div class="panel-body">
-              <div>
-                <p>Me and some school partners have met with Erasmus students...</p> <!--from England to exchange the language.</p>
-                <p>Every persons that wants to come are invited.</p>
-                <p>We have met on Sunday morning, 23 of April at 12:00</p>-->
-
-              </div>
-              <div class="text-right">
-                <a href="meeting.html"><button type="button" class="btn btn-warning">Meeting</button></a>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-info text-left">
-            <div class="panel-heading">Meet at Flor de America in Segovia (Spain)</div>
-            <div class="panel-body">
-              <div>
-                <p>Me and some school partners have met with Erasmus students...</p> <!--from England to exchange the language.</p>
-                <p>Every persons that wants to come are invited.</p>
-                <p>We have met on Sunday morning, 23 of April at 12:00</p>-->
-
-              </div>
-              <div class="text-right">
-                <a href="meeting.html"><button type="button" class="btn btn-warning">Meeting</button></a>
-              </div>
-            </div>
-          </div>
-          <!--
-          <div class="text-center">
-            <a href="create-meeting.html"><button type="button" class="btn btn-primary" >
-              	<span class="glyphicon glyphicon glyphicon-plus"></span>
-                Add meeting
-            </button></a>
-          </div>
-          -->
+  <h3>Meetings</h3>
+  <hr>
+  <div class="text-center">
+    <div class="panel panel-info text-left" *ngFor="let meeting of meetings">
+      <div class="panel-heading">{{ meeting.title }}</div>
+      <div class="panel-body">
+        <div>
+          <p>{{ meeting.description | subString }}</p>
+        </div>
+        <div class="text-right">
+          <a (click)="onSelect(meeting)" (click)="gotoMeetingPage()" ><button type="button" class="btn btn-warning">Meeting</button></a>
         </div>
       </div>
-
+    </div>
+  </div>
+</div>

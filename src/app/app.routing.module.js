@@ -13,6 +13,7 @@ var groups_component_1 = require("./components/groups/groups.component");
 var group_page_component_1 = require("./components/group-page/group-page.component");
 var create_group_component_1 = require("./components/create-group/create-group.component");
 var meetings_component_1 = require("./components/meetings/meetings.component");
+var meeting_page_component_1 = require("./components/meeting-page/meeting-page.component");
 var search_component_1 = require("./components/search/search.component");
 var home_component_1 = require("./components/home/home.component");
 var messages_component_1 = require("./components/messages/messages.component");
@@ -34,6 +35,7 @@ exports.routes = [
             { path: 'group-page/:id', component: group_page_component_1.GroupPageComponent },
             { path: 'create-group', component: create_group_component_1.CreateGroupComponent },
             { path: 'meetings', component: meetings_component_1.MeetingsComponent },
+            { path: 'meeting-page/:id', component: meeting_page_component_1.MeetingPageComponent },
             { path: 'search', component: search_component_1.SearchComponent },
             { path: 'home', component: home_component_1.HomeComponent },
             { path: 'messages', component: messages_component_1.MessagesComponent },

@@ -7,6 +7,7 @@ import { GroupsComponent }                from './components/groups/groups.compo
 import { GroupPageComponent }             from './components/group-page/group-page.component';
 import { CreateGroupComponent }           from './components/create-group/create-group.component';
 import { MeetingsComponent }              from './components/meetings/meetings.component';
+import { MeetingPageComponent }           from './components/meeting-page/meeting-page.component';
 import { SearchComponent }                from './components/search/search.component';
 import { HomeComponent }                  from './components/home/home.component';
 import { MessagesComponent }              from './components/messages/messages.component';
@@ -29,6 +30,7 @@ export const routes: Routes = [
       { path: 'group-page/:id', component: GroupPageComponent },
       { path: 'create-group', component: CreateGroupComponent },
       { path: 'meetings', component: MeetingsComponent },
+      { path: 'meeting-page/:id', component: MeetingPageComponent },
       { path: 'search', component: SearchComponent },
       { path: 'home', component: HomeComponent },
       { path: 'messages', component: MessagesComponent },

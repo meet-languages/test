@@ -8,7 +8,8 @@ import { TemplateComponent }              from './components/template/main.compo
 import { UsersComponent }                 from './components/users/users.component';
 import { GroupsComponent }                from './components/groups/groups.component';
 import { CreateGroupComponent }           from './components/create-group/create-group.component';
-import { MeetingsComponent }              from './components/meetings/meetings.component'
+import { MeetingsComponent }              from './components/meetings/meetings.component';
+import { MeetingPageComponent }           from './components/meeting-page/meeting-page.component'
 import { ProfileComponent }               from './components/profile/profile.component';
 import { GroupPageComponent }             from './components/group-page/group-page.component';
 import { SearchComponent }                from './components/search/search.component';
@@ -32,9 +33,13 @@ import { AuthGuard }                      from './_guards/auth.guard';
 import { AlertService }                   from './_services/alert.service';
 import { AuthenticationService }          from './_services/authentication.service';
 import { UserService }                    from './_services/user.service';
-import { GroupService }                    from './_services/group.service';
+import { GroupService }                   from './_services/group.service';
+import { MeetingService }                 from './_services/meeting.service';
 import { UserSearchService }              from './_services/user-search.service';
 import { AppConfig }                      from './app.config';
+
+// CUSTOM PIPES
+import { SubStringPipe }                  from './components/meetings/subString.pipe';
 
 
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
@@ -55,6 +60,7 @@ import { AppConfig }                      from './app.config';
     GroupPageComponent,
     CreateGroupComponent,
     MeetingsComponent,
+    MeetingPageComponent,
     SearchComponent,
     HomeComponent,
     MessagesComponent,
@@ -67,11 +73,13 @@ import { AppConfig }                      from './app.config';
     EditProfileComponent,
     FriendsOnlineComponent,
     UserSearchComponent,
-    AlertComponent
+    AlertComponent,
+    SubStringPipe
   ],
   providers: [ 
     UserService,
     GroupService,
+    MeetingService,
     UserSearchService,
     AppConfig,
     AuthGuard,
