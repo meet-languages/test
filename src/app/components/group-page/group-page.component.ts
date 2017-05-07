@@ -21,6 +21,7 @@ export class GroupPageComponent implements OnInit {
     private groupService: GroupService,
     private userService: UserService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -59,9 +60,16 @@ export class GroupPageComponent implements OnInit {
       this.groupService.update(this.group).subscribe(() => { });
       this.loadGroup();
     }
-
-
   }
+  onSelect(user: User): void {
+      this.currentUser = user;
+    }
+
+    gotoProfile(): void {
+      const id = "_id";
+      this.router.navigate(['/template/profile', this.currentUser[id]]);
+    }
+    
   /*
       changeButton(this: any) {
         if (this.value==="Close Curtain") {

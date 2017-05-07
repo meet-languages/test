@@ -15,10 +15,11 @@ var common_1 = require("@angular/common");
 var user_service_1 = require("../../_services/user.service");
 var group_service_1 = require("../../_services/group.service");
 var GroupPageComponent = (function () {
-    function GroupPageComponent(groupService, userService, route, location) {
+    function GroupPageComponent(groupService, userService, route, router, location) {
         this.groupService = groupService;
         this.userService = userService;
         this.route = route;
+        this.router = router;
         this.location = location;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
@@ -55,6 +56,13 @@ var GroupPageComponent = (function () {
             this.loadGroup();
         }
     };
+    GroupPageComponent.prototype.onSelect = function (user) {
+        this.currentUser = user;
+    };
+    GroupPageComponent.prototype.gotoProfile = function () {
+        var id = "_id";
+        this.router.navigate(['/template/profile', this.currentUser[id]]);
+    };
     return GroupPageComponent;
 }());
 GroupPageComponent = __decorate([
@@ -65,6 +73,7 @@ GroupPageComponent = __decorate([
     __metadata("design:paramtypes", [group_service_1.GroupService,
         user_service_1.UserService,
         router_1.ActivatedRoute,
+        router_1.Router,
         common_1.Location])
 ], GroupPageComponent);
 exports.GroupPageComponent = GroupPageComponent;
