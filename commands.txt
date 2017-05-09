@@ -1,0 +1,1000 @@
+  990  cd ..
+  991  node server
+  992  npm start
+  993  cd client/
+  994  npm start
+  995  cd ..
+  996  node server
+  997  cd ..
+  998  cd mytasklist2
+  999  node server
+ 1000  node serve
+ 1001  cd client
+ 1002  npm start
+ 1003  node server
+ 1004  cd ..
+ 1005  node server
+ 1006  npm install express --save
+ 1007  node server
+ 1008  npm install body-parser --save
+ 1009  node server
+ 1010  npm install mongojs --save
+ 1011  node server
+ 1012  npm install ejs --save
+ 1013  node server
+ 1014  cd ..
+ 1015  cd node_course/
+ 1016  cd proyecto/
+ 1017  npm start
+ 1018  ls
+ 1019  node app
+ 1020  cd ..
+ 1021  cd Angular_2/
+ 1022  cd mytasklist2
+ 1023  node server
+ 1024  mongo start
+ 1025  ls
+ 1026  mongod
+ 1027  mongod 
+ 1028  mongod
+ 1029  mongo
+ 1030  mongod
+ 1031  mongo
+ 1032  mongod close
+ 1033  mongod shutdown
+ 1034  mongod --shutdown
+ 1035  mongod --start
+ 1036  mongod 
+ 1037  mongo --version
+ 1038  mongod
+ 1039  mongod --dbpathç
+ 1040  mongod --dbpath
+ 1041  mongod --dbpath /srv/mongodb/
+ 1042  npm install mongo
+ 1043  mongod
+ 1044  npm install mongod
+ 1045  çmongod
+ 1046  mongod
+ 1047  sudo service mongodb start
+ 1048  mongod
+ 1049  mongod --config /etc/mongodb.conf
+ 1050  cd ..
+ 1051  ls
+ 1052  cd mongodb/
+ 1053  mongod
+ 1054  ls
+ 1055  cd mongodb-linux-x86_64-amazon-3.4.3/
+ 1056  ls
+ 1057  monfod
+ 1058  mongod
+ 1059  cd bin/
+ 1060  ls
+ 1061  mongod
+ 1062  sudo mongod
+ 1063  cd ..
+ 1064  sudo service mongodb stop
+ 1065  mongod
+ 1066  sudo service mongodb start
+ 1067  mongod
+ 1068  sudo mkdir -p /data/db/
+ 1069  sudo chown `id -u` /data/db
+ 1070  mongod
+ 1071  mongodb
+ 1072  mongod
+ 1073  sudo mkdir -p /data/db/
+ 1074  sudo chown `id -u` /data/db
+ 1075  sudo mongod
+ 1076  mongo
+ 1077  cd $
+ 1078  cd /
+ 1079  ls
+ 1080  sudo apt-get install mongodb
+ 1081  sudo apt-get update
+ 1082  sudo service mongodb start
+ 1083  mongo
+ 1084  sudo apt-get remove mongodb
+ 1085  sudo apt-get install mongodb
+ 1086  sudo apt-get update
+ 1087  sudo service mongodb start
+ 1088  mongo
+ 1089  sudo apt-get autoremove mongodb
+ 1090  sudo apt-get install mongodb
+ 1091  sudo apt-get update
+ 1092  sudo service mongodb start
+ 1093  mongo
+ 1094  sudo apt-get autoremove mongodb
+ 1095  curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.2.tgz
+ 1096  sudo curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.2.tgz
+ 1097  tar -zxvf mongodb-linux-x86_64-3.4.2.tgz
+ 1098  sudo tar -zxvf mongodb-linux-x86_64-3.4.2.tgz
+ 1099  mkdir -p mongodb
+ 1100  sudo mkdir -p mongodb
+ 1101  ls
+ 1102  sudo cp -R -n mongodb-linux-x86_64-3.4.2/ mongodb
+ 1103  sudo export PATH=mongodb/bin:$PATH
+ 1104  export PATH=mongodb/bin:$PATH
+ 1105  sudo mkdir -p /data/db
+ 1106  sudo chown `id -u` /data/db
+ 1107  mongod
+ 1108  mongo
+ 1109  ls
+ 1110  cd mongodb
+ 1111  ls
+ 1112  mongodb-linux-x86_64-3.4.2/
+ 1113  cd mongodb-linux-x86_64-3.4.2/
+ 1114  ls
+ 1115  export PATH=/mongodb/mongodb-linux-x86_64-3.4.2/bin:$PATH
+ 1116  cd ..
+ 1117  mongo
+ 1118  mongod
+ 1119  mongo
+ 1120  sudo mongo
+ 1121  mongo
+ 1122  sudo service mongodb start
+ 1123  service mongodb start
+ 1124  service mongod start
+ 1125  mongodb --path
+ 1126  mongod
+ 1127  mongo
+ 1128  sudo mongo
+ 1129  cd ..
+ 1130  mongo
+ 1131  service mongod start
+ 1132  service mongodb start
+ 1133  sudo rm /var/lib/mongodb/mongod.lock
+ 1134  mongod --repair
+ 1135  sudo service mongodb start
+ 1136  sudo rm mongodb
+ 1137  sudo rmdir mongodb
+ 1138  sudo rm -r mongodb
+ 1139  sudo rm -r mongodb-linux-x86_64-3.4.2
+ 1140  cd /home/rnovo/Descargas/
+ 1141  sudo tar -zxvf mongodb-linux-x86_64-3.4.2.tgz
+ 1142  sudo tar -zxvf mongodb-linux-x86_64-amazon-3.4.3.tgz mongodb-linux-x86_64-amazon-3.4.3/
+ 1143  mkdir -p mongodb
+ 1144  sudo cp -R -n mongodb-linux-x86_64-amazon-3.4.3 mongodb
+ 1145  export PATH=/home/rnovo/Descargas/mongodb/mongodb-linux-x86_64-amazon-3.4.3/bin:$PATH
+ 1146  sudo service mongodb start
+ 1147  mongo
+ 1148  mongodb
+ 1149  mongod
+ 1150  sudo rm -r mongodb
+ 1151  cd ..
+ 1152  sudo apt-get install mongodb
+ 1153  sudo apt-get update
+ 1154  sudo service mongodb start
+ 1155  mongo
+ 1156  mongod
+ 1157  sudo mongod
+ 1158  sudo apt-get autoremove mongodb
+ 1159  ls
+ 1160  sudo rm -r mongodb/
+ 1161  ls
+ 1162  sudo curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.2.tgz
+ 1163  tar -zxvf mongodb-linux-x86_64-3.4.2.tgz
+ 1164  mkdir -p ./mongodb
+ 1165  ls
+ 1166  cp -R -n mongodb-linux-x86_64-3.4.2/ mongodb
+ 1167  export PATH=/home/rnovo/mongodb/mongodb-linux-x86_64-3.4.2/bin:$PATH
+ 1168  rmdir -p /data/db
+ 1169  sudo rmdir -p /data/db
+ 1170  sudo rm /data/db
+ 1171  sudo rm -r /data/db
+ 1172  mkdir -p /data/db
+ 1173  sudo mkdir -p /data/db
+ 1174  mongod
+ 1175  mongod --dbpath /data/db/
+ 1176  mongod --dbpath /data/db
+ 1177  sudo mongod --dbpath /data/db
+ 1178  service mongodb start
+ 1179  service mongodb stop
+ 1180  service mongodb start
+ 1181  service mongod start
+ 1182  sudo mongod
+ 1183  ls
+ 1184  cd mongodb/mongodb-linux-x86_64-3.4.2/bin
+ 1185  sudo mongod
+ 1186  mongod
+ 1187  mongo
+ 1188  sudo su
+ 1189  mongod
+ 1190  p4 kk.c 
+ 1191  gcc p4 kk.c 
+ 1192  ./p4 kk.c 
+ 1193  sudo ./p4 kk.c 
+ 1194  ./p4
+ 1195  ./p4.out
+ 1196  gcc p4.c
+ 1197  ./a.out kk.c 
+ 1198  gcc p4.c -o p4
+ 1199  ./p4 kk.c 
+ 1200  ./p4 kk.c kk.c 
+ 1201  gcc p4.c -o p4
+ 1202  ./p4 kk.c kk.c 
+ 1203  gcc p4.c -o p4
+ 1204  ./p4 kk.c kk.c 
+ 1205  flex p4.l
+ 1206  lte p4.l
+ 1207  ./lte p4.l
+ 1208  gcc p4.c -o p4
+ 1209  ./p4 kk.c kk.c 
+ 1210  lte p4
+ 1211  sudo ./lte p4
+ 1212  lte ptt4
+ 1213  ls
+ 1214  lte p4
+ 1215  ./lte p4
+ 1216  sudo ./lte p4
+ 1217  chmod +x lte
+ 1218  ./lte p4
+ 1219  ./p4 kk.c
+ 1220  ./p4 kk.c kk.c 
+ 1221  ./lte p4
+ 1222  ./p4 kk.c kk.c 
+ 1223  ./lte p4
+ 1224  ./p4 kk.c kk.c 
+ 1225  ./lte p4
+ 1226  ./p4 kk.c kk.c 
+ 1227  ./lte p4
+ 1228  ./p4 kk.c kk.c 
+ 1229  ./lte p4
+ 1230  ./p4 kk.c kk.c 
+ 1231  ./lte p4
+ 1232  ./p4 kk.c kk.c 
+ 1233  ./lte p4
+ 1234  ./p4 kk.c kk.c 
+ 1235  ./lte p4
+ 1236  ./p4 kk.c kk.c 
+ 1237  ./lte p4
+ 1238  ./p4 kk.c kk.c 
+ 1239  ./lte p4
+ 1240  ./p4 kk.c kk.c 
+ 1241  ./lte p4
+ 1242  ./p4 kk.c kk.c 
+ 1243  ./lte p4
+ 1244  ./p4 kk.c kk.c 
+ 1245  ./lte p4
+ 1246  ./p4 kk.c kk.c 
+ 1247  ./lte p4
+ 1248  ./p4 kk.c kk.c 
+ 1249  ./lte p4
+ 1250  ./p4 kk.c kk.c 
+ 1251  ./lte p4
+ 1252  ./p4 kk.c kk.c 
+ 1253  ./lte p4
+ 1254  ./p4 kk.c kk.c 
+ 1255  ./lte p4
+ 1256  ./p4 kk.c kk.c 
+ 1257  ./lte p4
+ 1258  ./p4 kk.c kk.c 
+ 1259  ./lte p4
+ 1260  ./p4 kk.c kk.c 
+ 1261  ./lte p4
+ 1262  ./p4 kk.c kk.c 
+ 1263  ./lte p4
+ 1264  ./p4 kk.c kk.c 
+ 1265  ./lte p4
+ 1266  ./p4 kk.c kk.c 
+ 1267  ./lte p4
+ 1268  ./p4 kk.c kk.c 
+ 1269  ./lte p4
+ 1270  ./p4 kk.c kk.c 
+ 1271  ./lte p4
+ 1272  ./p4 kk.c kk.c 
+ 1273  ./lte p4
+ 1274  ./p4 kk.c kk.c 
+ 1275  ./lte p4
+ 1276  ./p4 kk.c kk.c 
+ 1277  ./lte p4
+ 1278  ./p4 kk.c kk.c 
+ 1279  ./lte p4
+ 1280  ./p4 kk.c kk.c 
+ 1281  ./lte p4
+ 1282  ./p4 kk.c kk.c 
+ 1283  ./lte p4
+ 1284  ./p4 kk.c kk.c 
+ 1285  ./lte p4
+ 1286  ./p4 kk.c kk.c 
+ 1287  ./lte p4
+ 1288  ./p4 kk.c kk.c ç
+ 1289  ./lte p4
+ 1290  ./p4 kk.c kk.c ç
+ 1291  ./lte p4
+ 1292  ./p4 kk.c kk.c ç
+ 1293  ./lte p4
+ 1294  ./p4 kk.c kk.c ç
+ 1295  ./lte p4
+ 1296  ./p4 kk.c kk.c ç
+ 1297  ./lte p4
+ 1298  ./p4 kk.c kk.c ç
+ 1299  ./p4 kk.c kk.c
+ 1300  ./p4 kk.c kk.c ç
+ 1301  ./lte p4
+ 1302  ./p4 kk.c kk.c
+ 1303  ./lte p4
+ 1304  ./p4 kk.c kk.c
+ 1305  ./lte p4
+ 1306  ./p4 kk.c kk.c
+ 1307  ./lte p4
+ 1308  ./p4 kk.c kk.c
+ 1309  ./lte p4
+ 1310  ./p4 kk.c kk.c
+ 1311  ./lte p4
+ 1312  ./p4 kk.c kk.c
+ 1313  ./lte p4
+ 1314  ./p4 kk.c kk.c
+ 1315  ./lte p4
+ 1316  ./p4 kk.c kk.c
+ 1317  ./lte p4
+ 1318  ./p4 kk.c kk.c
+ 1319  ./lte p4
+ 1320  ./p4 kk.c kk.c
+ 1321  ./lte p4
+ 1322  ./p4 kk.c kk.c
+ 1323  ./lte p4
+ 1324  ./p4 kk.c kk.c
+ 1325  ./lte p4
+ 1326  ./p4 kk.c kk.c
+ 1327  ./lte p4
+ 1328  ./p4 kk.c kk.c
+ 1329  ./lte p4
+ 1330  ./p4 kk.c kk.c
+ 1331  ./lte p4
+ 1332  ./p4 kk.c kk.c
+ 1333  ./lte p4
+ 1334  ./p4 kk.c kk.c
+ 1335  ./lte p4
+ 1336  ./p4 kk.c kk.c
+ 1337  ./lte p4
+ 1338  ./p4 kk.c kk.c
+ 1339  ./lte p4
+ 1340  ./p4 kk.c kk.c
+ 1341  ./lte p4
+ 1342  ./p4 kk.c kk.c
+ 1343  ./lte p4
+ 1344  ./p4 kk.c kk.c
+ 1345  ./lte p4
+ 1346  ./p4 kk.c kk.c
+ 1347  ./lte p4
+ 1348  ./p4 kk.c kk.c
+ 1349  ./lte p4
+ 1350  ./p4 kk.c kk.c
+ 1351  ./lte p4
+ 1352  ./p4 kk.c kk.c
+ 1353  ./lte p4
+ 1354  ./p4 kk.c kk.c
+ 1355  ./lte p4
+ 1356  ./p4 kk.c kk.c
+ 1357  ./lte p4
+ 1358  ./p4 kk.c kk.c
+ 1359  ./lte p4
+ 1360  ./p4 kk.c kk.c
+ 1361  ./lte p4
+ 1362  ./p4 kk.c kk.c
+ 1363  ./lte p4
+ 1364  ./p4 kk.c kk.c
+ 1365  ./lte p4
+ 1366  ./p4 kk.c kk.c
+ 1367  ./lte p4
+ 1368  ./p4 kk.c kk.c
+ 1369  ./lte p4
+ 1370  ./p4 kk.c kk.c
+ 1371  ./lte p4
+ 1372  ./p4 kk.c kk.c
+ 1373  ./lte p4
+ 1374  ./p4 kk.c kk.c
+ 1375  ./lte p4
+ 1376  ./p4 kk.c kk.c
+ 1377  ./lte p4
+ 1378  ./p4 kk.c kk.c
+ 1379  ./lte p4
+ 1380  ./p4 kk.c kk.c
+ 1381  ./lte p4
+ 1382  ./p4 kk.c kk.c
+ 1383  ./lte p4
+ 1384  ./p4 kk.c kk.c
+ 1385  ./lte p4
+ 1386  ./p4 kk.c kk.c
+ 1387  ./lte p4
+ 1388  ./p4 kk.c kk.c
+ 1389  ./lte p4
+ 1390  ./p4 kk.c kk.c
+ 1391  ./lte p4
+ 1392  ./p4 kk.c kk.c
+ 1393  ./lte p4
+ 1394  ./p4 kk.c kk.c
+ 1395  ./lte p4
+ 1396  ./p4 kk.c kk.c
+ 1397  ./lte p4
+ 1398  ./p4 kk.c kk.c
+ 1399  ./lte p4
+ 1400  ./p4 kk.c kk.c
+ 1401  ./lte p4
+ 1402  ./p4 kk.c kk.c
+ 1403  ./lte p4
+ 1404  ./p4 kk.c kk.c
+ 1405  ./lte p4
+ 1406  ./p4 kk.c kk.c
+ 1407  ./lte p4
+ 1408  ./p4 kk.c kk.c
+ 1409  ./lte p4
+ 1410  ./p4 kk.c kk.c
+ 1411  ./lte p4
+ 1412  ./p4 kk.c kk.c
+ 1413  ./lte p4
+ 1414  ./p4 kk.c kk.c
+ 1415  ./lte p4
+ 1416  ./p4 kk.c kk.c
+ 1417  ./lte p4
+ 1418  ./p4 kk.c kk.c
+ 1419  ./lte p4
+ 1420  ./p4 kk.c kk.c
+ 1421  ./lte p4
+ 1422  ./p4 kk.c kk.c
+ 1423  ./lte p4ç
+ 1424  ./lte p4
+ 1425  ./p4 kk.c kk.c
+ 1426  ./lte p
+ 1427  ./lte p4
+ 1428  ./p4 kk.c kk.c
+ 1429  ./lte p4
+ 1430  ./p4 kk.c kk.c
+ 1431  ./lte p4
+ 1432  ./p4 kk.c kk.c
+ 1433  ./lte p4
+ 1434  ./p4 kk.c kk.c
+ 1435  ./lte p4ç
+ 1436  ./lte p4
+ 1437  ./p4 kk.c kk.c
+ 1438  ./lte p4
+ 1439  ./p4 kk.c kk.c
+ 1440  ./p4 prueva.java
+ 1441  ./p4 kk.c kk.c
+ 1442  ./lte p4
+ 1443  ./p4 prueva.java
+ 1444  ./lte p4
+ 1445  ./p4 prueva.java
+ 1446  ./lte p4
+ 1447  ./p4 prueva.java[A
+ 1448  ./p4 prueva.java
+ 1449  ./lte p4
+ 1450  ./p4 prueva.java
+ 1451  ./lte p4
+ 1452  ./p4 prueva.java
+ 1453  ./lte p4
+ 1454  ./p4 prueva.java
+ 1455  ./lte p4
+ 1456  ./p4 prueva.java
+ 1457  ./lte p4
+ 1458  ./p4 prueva.java
+ 1459  ./lte p4
+ 1460  ./p4 prueva.java
+ 1461  ./lte p4
+ 1462  ./p4 prueva.java
+ 1463  ./lte p4
+ 1464  ./p4 prueva.java
+ 1465  ./lte p4
+ 1466  ./p4 prueva.java
+ 1467  ./lte p4
+ 1468  ./p4 prueva.java
+ 1469  ./lte p4
+ 1470  ./p4 prueva.java
+ 1471  ./lte p4
+ 1472  ./p4 prueva.java
+ 1473  ./p4 kk.c 
+ 1474  ./lte p4
+ 1475  ./p4 kk.c 
+ 1476  ./p4 kk.java 
+ 1477  ./p4 kk0.c
+ 1478  ./lte p4
+ 1479  ./p4 kk0.c
+ 1480  ./p4 kk.java 
+ 1481  ./lte p4
+ 1482  ./p4 kk.java 
+ 1483  ./lte p4
+ 1484  ./p4 kk.java 
+ 1485  ./lte p4
+ 1486  ./p4 kk.java 
+ 1487  ./lte p4
+ 1488  ./p4 kk.java 
+ 1489  ./lte p4
+ 1490  ./p4 kk.java 
+ 1491  ./lte p4
+ 1492  ./p4 kk.java 
+ 1493  ./lte p4
+ 1494  ./p4 kk.java 
+ 1495  ./lte p4
+ 1496  ./p4 kk.java 
+ 1497  ./lte p4
+ 1498  ./p4 kk.java 
+ 1499  ./lte p4
+ 1500  ./p4 kk.java 
+ 1501  ./lte p4
+ 1502  ./p4 kk.java 
+ 1503  ./lte p4
+ 1504  ./p4 kk.java 
+ 1505  ./lte p4
+ 1506  ./p4 kk.java 
+ 1507  ./lte p4
+ 1508  ./p4 kk.java 
+ 1509  ./lte p4
+ 1510  ./p4 kk.java 
+ 1511  ./lte p4
+ 1512  ./p4 kk.java 
+ 1513  ./lte p4
+ 1514  ./p4 kk.java 
+ 1515  ./lte p4
+ 1516  ./p4 kk.java 
+ 1517  ./lte p4
+ 1518  ./p4 kk.java 
+ 1519  ./lte p4
+ 1520  ./p4 kk.java 
+ 1521  ./lte p4
+ 1522  ./p4 kk.java 
+ 1523  ./lte p4
+ 1524  ./p4 kk.java 
+ 1525  ./lte p4
+ 1526  ./p4 kk.java 
+ 1527  ./lte p4
+ 1528  ./p4 kk.java 
+ 1529  ./lte p4
+ 1530  ./p4 kk.java 
+ 1531  ./lte p4
+ 1532  ./p4 kk.java 
+ 1533  ./lte p4
+ 1534  ./p4 kk.java 
+ 1535  ./lte p4
+ 1536  ./p4 kk.java 
+ 1537  ./lte p4
+ 1538  ./p4 kk.java 
+ 1539  ./lte p4
+ 1540  ./p4 kk.java 
+ 1541  ./lte p4[A
+ 1542  ./lte p4ç
+ 1543  ./lte p4
+ 1544  ./p4 kk.java 
+ 1545  ./lte p4
+ 1546  ./p4 kk.java 
+ 1547  ./lte p4
+ 1548  ./p4 kk.java 
+ 1549  ./lte p4
+ 1550  ./p4 kk.java 
+ 1551  ./lte p4
+ 1552  ./p4 kk.java 
+ 1553  ./lte p4
+ 1554  ./p4 kk.java 
+ 1555  ./lte p4
+ 1556  ./p4 kk.java 
+ 1557  ./lte p4
+ 1558  ./p4 kk.java 
+ 1559  ./lte p4
+ 1560  ./p4 kk.java 
+ 1561  ./lte p4
+ 1562  ./p4 kk.java 
+ 1563  ./lte p4
+ 1564  ./p4 kk.java 
+ 1565  ./lte p4
+ 1566  ./p4 kk.java 
+ 1567  ./lte p4
+ 1568  ./p4 kk.java 
+ 1569  mongo ds161580.mlab.com:61580/mydb -u mydb -p Ringinf15
+ 1570  mongo ds161580.mlab.com:61580/mydb -u mydb -p Meet2017
+ 1571  mongo ds161580.mlab.com:61580/mydb -u rlrc -p Ringinf15
+ 1572  mongo ds161580.mlab.com:61580/mydb -u rlrc -p Meet2017
+ 1573  mongo ds161580.mlab.com:61580/mydb -u meetlanguages -p Meet2017
+ 1574  mongo ds161580.mlab.com:61580/mydb -u meetlanguages -p Ringinf15
+ 1575  cd ..
+ 1576  cd proyecto
+ 1577  node app.js 
+ 1578  mongod
+ 1579  cd ..
+ 1580  ls
+ 1581  sudo apt-get install mongodb
+ 1582  sudo apt-get update
+ 1583  mongod
+ 1584  sudo service mongodb start
+ 1585  mongod
+ 1586  sudo service mongodb startmongo
+ 1587  mongo
+ 1588  cd MEGAsync/
+ 1589  cd Angular_2/
+ 1590  cd quickstart
+ 1591  node start
+ 1592  npm start
+ 1593  cd ..
+ 1594  find 
+ 1595  cd ..
+ 1596  cd node_course/
+ 1597  find
+ 1598  cd proyectoMeet/
+ 1599  npm app.js 
+ 1600  node app.js 
+ 1601  mongo ds161580.mlab.com:61580/mydb -u <dbuser> -p <dbpassword>
+ 1602  mongo ds161580.mlab.com:61580/mydb -u rlrc -p Ringinf15
+ 1603  mongo ds161580.mlab.com:61580/mydb -u rlrc -p Meet2017
+ 1604  mongo ds163360.mlab.com:63360/meetlanguages -u <dbuser> -p <dbpassword>
+ 1605  mongo ds163360.mlab.com:63360/meetlanguages -u root -p Meet2017
+ 1606  brew services start mongodb
+ 1607  sudo service start mongodb
+ 1608  mongo ds163360.mlab.com:63360/meetlanguages -u root -p Meet2017
+ 1609  node app.js 
+ 1610  node install mongoose --save
+ 1611  npm install mongoose --save
+ 1612  git
+ 1613  cd ..
+ 1614  ls
+ 1615  git clone https://github.com/meet-languages/meet-languajes-MEAN
+ 1616  ls
+ 1617  cd meet-languajes-MEAN/
+ 1618  cp ../node_course/proyectoMeet/back-end/ .
+ 1619  cp ../node_course/proyectoMeet/back-end/ . -R
+ 1620  ls
+ 1621  git add back-end/
+ 1622  git commit -m "Add back-end"
+ 1623  git config --global user.email "raul.rodriguez.carracedo@alumnos.uva.es"
+ 1624  git config --global user.name "rlrc40"
+ 1625  git commit -m "Add back-end"
+ 1626  git push
+ 1627  cp ../Angular_2/quickstartMeet/front-end/ .
+ 1628  cp ../Angular_2/quickstartMeet/front-end/ . -R
+ 1629  git add front-end/
+ 1630  git commit -m "Add front-end"
+ 1631  git push
+ 1632  cd ..
+ 1633  cd Angular_2/
+ 1634  cd quickstartMeet/
+ 1635  npm start
+ 1636  cd ..
+ 1637  cd..
+ 1638  cd ..
+ 1639  cd node_course/proyectoMeet/
+ 1640  node app.js 
+ 1641  clear
+ 1642  node app.js 
+ 1643  cd ..
+ 1644  cd node_course/proyectoMeet/
+ 1645  mongo
+ 1646  mongodb
+ 1647  mongod
+ 1648  mongo
+ 1649  db.users.insert({   name: "Raúl",   lastName: "Rodríguez",   nat_lang: "Spanish",   lang_learn: ["English"],   username: "rlrc",   password: "123123123",   email: "rlrc30@gmail.com",   description: " bablalbalblablalblab  ab alb lab ",   messages: 3,   notifications: 6, } );
+ 1650  mongod
+ 1651  mongo
+ 1652  cd ..
+ 1653  cd Angular_2/quickstart
+ 1654  npm start
+ 1655  cd ..
+ 1656  mkdir tasklist
+ 1657  npm init
+ 1658  cd tasklist/
+ 1659  npm init
+ 1660  npm install express body-parser ejs mongojs --save
+ 1661  node server.js 
+ 1662  npm install -g nodemon
+ 1663  sudo npm install -g nodemon
+ 1664  node server.js 
+ 1665  cd client/
+ 1666  git clone https://github.com/angular/quickstart.git .
+ 1667  npm install
+ 1668  cd ..
+ 1669  cd mytasklist
+ 1670  npm start
+ 1671  cd ..
+ 1672  cd mytasklist2
+ 1673  npm start
+ 1674  cd ..
+ 1675  cd quickstartMeet
+ 1676  npm install mongojs --save
+ 1677  npm start
+ 1678  node server.js 
+ 1679  npm install ejs --save
+ 1680  node server.js 
+ 1681  cd ..
+ 1682  cd userslist/
+ 1683  npm start
+ 1684  cd client/ç
+ 1685  cd client/
+ 1686  npm start
+ 1687  ls
+ 1688  cd app
+ 1689  npm start
+ 1690  cd ..
+ 1691  npm start
+ 1692  npm server.js 
+ 1693  node server.js 
+ 1694  cd client/
+ 1695  ls
+ 1696  cd app
+ 1697  ls
+ 1698  cd ..
+ 1699  npm install -g nodemon
+ 1700  sudo npm install -g nodemon
+ 1701  npm start
+ 1702  cd client/
+ 1703  ls
+ 1704  npm install
+ 1705  npm start
+ 1706  cd ..
+ 1707  cd..
+ 1708  cd ..
+ 1709  cd userslist/
+ 1710* npm starthistory
+ 1711  cd ..
+ 1712  cd mytasklist2
+ 1713  npm starty
+ 1714  npm start
+ 1715  npm --help
+ 1716  npm rebuld
+ 1717  npm rebuild
+ 1718  npm start
+ 1719  npm --help
+ 1720  npm stop
+ 1721  npm config
+ 1722  npm start
+ 1723  npm rebuild
+ 1724  npm start
+ 1725  npm rebuild
+ 1726  npm start
+ 1727  cd ..
+ 1728  cd mytasklist3
+ 1729  npm start
+ 1730  cd ..
+ 1731  cd meetlanguages/
+ 1732  npm init
+ 1733  npm install express body-parser ejs mongojs --save
+ 1734  npm start
+ 1735  node server.js 
+ 1736  node se
+ 1737  node server.js 
+ 1738  mkidr client
+ 1739  mkdir client
+ 1740  cd client
+ 1741  git clone https://github.com/angular/quickstart.git .
+ 1742  npm install
+ 1743  npm start
+ 1744  cd ..
+ 1745  npm install -g nodemon
+ 1746  sudo npm install -g nodemon
+ 1747  nodemon
+ 1748  npm start
+ 1749  node server.js 
+ 1750  cd client/
+ 1751  npm start
+ 1752  cd ..
+ 1753  node server.js 
+ 1754  start server.js 
+ 1755  npm start
+ 1756  node server.js 
+ 1757  cd client/
+ 1758  npm install
+ 1759  npm start
+ 1760  node services/
+ 1761  cd ..
+ 1762  npm start
+ 1763  sudo npm install -g nodemon
+ 1764  npm start
+ 1765  node server.js 
+ 1766  npm start
+ 1767  ./lte p4
+ 1768  ./p4 kk.java 
+ 1769  ./lte p4
+ 1770  ./p4 kk.java 
+ 1771  ./lte p4
+ 1772  ./p4 kk.java 
+ 1773  ./lte p4
+ 1774  ./p4 kk.java 
+ 1775  ./lte p4
+ 1776  ./p4 kk.java 
+ 1777  ./lte p4
+ 1778  ./p4 kk.java 
+ 1779  ./lte p4
+ 1780  ./p4 kk.java 
+ 1781  ./lte p4
+ 1782  ./p4 kk.java 
+ 1783  ./lte p4
+ 1784  ./p4 kk.java 
+ 1785  ./lte p4
+ 1786  ./p4 kk.java 
+ 1787  ./lte p4
+ 1788  ./p4 kk.java 
+ 1789  ./lte p4
+ 1790  ./p4 kk.java 
+ 1791  ./lte p4
+ 1792  ./p4 kk.java 
+ 1793  ./lte p4
+ 1794  ./p4 kk.java 
+ 1795  ./lte p4
+ 1796  ./p4 kk.java 
+ 1797  ./lte p4
+ 1798  ./p4 kk.java 
+ 1799  ./lte p4
+ 1800  ./p4 kk.java 
+ 1801  ./lte p4
+ 1802  ./p4 kk.java 
+ 1803  ./lte p4
+ 1804  ./p4 kk.java 
+ 1805  ./lte p4
+ 1806  ./p4 kk.java 
+ 1807  ./lte p4
+ 1808  ./p4 kk.java 
+ 1809  ./lte p4
+ 1810  ./p4 kk.java 
+ 1811  ./lte p4
+ 1812  ./p4 kk.java 
+ 1813  ./lte p4
+ 1814  ./p4 kk.java 
+ 1815  ./lte p4
+ 1816  ./p4 kk.java 
+ 1817  ./lte p4
+ 1818  ./p4 kk.java 
+ 1819  ./lte p4
+ 1820  ./p4 kk.java 
+ 1821  ./lte p4
+ 1822  ./p4 kk.java 
+ 1823  ./lte p4
+ 1824  ./p4 kk.java 
+ 1825  ./lte p4
+ 1826  ./p4 kk.java 
+ 1827  ./lte p4
+ 1828  ./p4 kk.java 
+ 1829  ./lte p4
+ 1830  ./p4 kk.java 
+ 1831  ./lte p4
+ 1832  ./p4 kk.java 
+ 1833  ./lte p4
+ 1834  ./p4 kk.java 
+ 1835  ./lte p4
+ 1836  ./p4 kk.java 
+ 1837  ./lte p4
+ 1838  ./p4 kk.java 
+ 1839  ./lte p4
+ 1840  ./p4 kk.java 
+ 1841  ./lte p4
+ 1842  ./p4 kk.java 
+ 1843  ./lte p4
+ 1844  ./p4 kk.java 
+ 1845  ./lte p4
+ 1846  ./p4 kk.java 
+ 1847  ./lte p4
+ 1848  ./p4 kk.java 
+ 1849  ./lte p4
+ 1850  ./p4 kk.java 
+ 1851  ./lte p4
+ 1852  ./p4 kk.java 
+ 1853  ./lte p4
+ 1854  ./p4 kk.java 
+ 1855  ./lte p4
+ 1856  ./p4 kk.java 
+ 1857  ./lte p4
+ 1858  ./p4 kk.java 
+ 1859  ./lte p4
+ 1860  ./p4 kk.java 
+ 1861  ./lte p4
+ 1862  ./p4 kk.java 
+ 1863  ./lte p4
+ 1864  ./p4 kk.java 
+ 1865  ./lte p4
+ 1866  ./p4 kk.java 
+ 1867  ./lte p4
+ 1868  ./p4 kk.java 
+ 1869  ./lte p4
+ 1870  ./p4 kk.java 
+ 1871  ./lte p4
+ 1872  ./p4 kk.java 
+ 1873  ./lte p4
+ 1874  ./p4 kk.java 
+ 1875  ./lte p4
+ 1876  ./p4 kk.java 
+ 1877  ./lte p4
+ 1878  ./p4 kk.java 
+ 1879  ./lte p4
+ 1880  ./p4 kk.java 
+ 1881  ./lte p4
+ 1882  ./p4 kk.java 
+ 1883  ./lte p4
+ 1884  ./p4 kk.java 
+ 1885  ./lte p4
+ 1886  ./p4 kk.java 
+ 1887  ./lte p4
+ 1888  ./p4 kk.java 
+ 1889  ./lte p4
+ 1890  ./p4 kk.java 
+ 1891  ./lte p4
+ 1892  ./p4 kk.java 
+ 1893  ./lte p4
+ 1894  ./p4 kk.java 
+ 1895  ./lte p4
+ 1896  ./p4 kk.java 
+ 1897  ./lte p4
+ 1898  ./p4 kk.java 
+ 1899  ./lte p4
+ 1900  ./p4 kk.java 
+ 1901  ./lte p4
+ 1902  ./p4 kk.java 
+ 1903  ./lte p4
+ 1904  ./p4 kk.java 
+ 1905  ./lte p4
+ 1906  ./p4 kk.java 
+ 1907  ./lte p4
+ 1908  ./p4 kk.java 
+ 1909  ./lte p4
+ 1910  ./p4 kk.java 
+ 1911  ./lte p4
+ 1912  ./p4 kk.java 
+ 1913  ./lte p4
+ 1914  ./p4 kk.java 
+ 1915  ./lte p4
+ 1916  ./p4 kk.java 
+ 1917  ./lte p4
+ 1918  ./p4 kk.java 
+ 1919  ./lte p4
+ 1920  ./p4 kk.java 
+ 1921  ./lte p4
+ 1922  ./p4 kk.java 
+ 1923  ./lte p4
+ 1924  ./p4 kk.java 
+ 1925  ./lte p4
+ 1926  ./p4 kk.java 
+ 1927  ./lte p4
+ 1928  ./p4 kk.java 
+ 1929  ./lte p4
+ 1930  ./p4 kk.java 
+ 1931  ./lte p4
+ 1932  ./p4 kk.java 
+ 1933  ./lte p4
+ 1934  ./p4 kk.java 
+ 1935  ./lte p4
+ 1936  ./p4 kk.java 
+ 1937  ./lte p4
+ 1938  ./p4 kk.java 
+ 1939  ./lte p4
+ 1940  ./p4 kk.java 
+ 1941  ./lte p4
+ 1942  ./p4 kk.java 
+ 1943  ./lte p4
+ 1944  ./p4 kk.java 
+ 1945  ./lte p4
+ 1946  ./p4 kk.java 
+ 1947  ./lte p4
+ 1948  ./p4 kk.java 
+ 1949  ./lte p4
+ 1950  ./p4 kk.java 
+ 1951  ./lte p4
+ 1952  ./p4 kk.java 
+ 1953  ./lte p4
+ 1954  ./p4 kk.java 
+ 1955  ./lte p4
+ 1956  ./p4 kk.java 
+ 1957  ./p4 kk.java  kk.java
+ 1958  ./p4 kk.java 
+ 1959  ./lte p4
+ 1960  ./p4 kk.java 
+ 1961  node server.js 
+ 1962  ls
+ 1963  npm server.js 
+ 1964  npm starty
+ 1965  npm start
+ 1966  npm install express body-parser ejs mongojs --save
+ 1967  node server.js 
+ 1968  npm start
+ 1969  npm install
+ 1970  npm init
+ 1971  node server.js 
+ 1972  npm start
+ 1973  node app
+ 1974  node app.js
+ 1975  ls
+ 1976  cat package.json 
+ 1977  npm start
+ 1978  node index.js
+ 1979  node app.js
+ 1980  cd Postman/
+ 1981  xdg-open INSTALL
+ 1982  ./configure
+ 1983  ls
+ 1984  ./Postman 
+ 1985  pwd
+ 1986  pdw
+ 1987  xkill
+ 1988  history
+ 1989  history >> commands.txt
