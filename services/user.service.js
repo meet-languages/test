@@ -34,8 +34,10 @@ function authenticate(email, password) {
                 messages: user.messages,
                 notifications: user.notifications,
                 groups: user.groups,
-                token: jwt.sign({ sub: user._id }, 'daslfjhuq2kherdsajkn27483huedf')
+                //Signing a token with 1 hour of expiration:
+                token: jwt.sign({ sub: user._id, exp: Math.floor(Date.now() / 1000) + (60 * 60), }, 'daslfjhuq2kherdsajkn27483huedf')
             });
+            
         } else {
             // authentication failed
             deferred.resolve();

@@ -1,23 +1,24 @@
 <div class="text-center">
   <h3>Members</h3>
 </div>
-<div class="media" *ngFor="let user of users"
-   >
-  <hr>
-  <div class="media-left">
-    <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido">
-  </div>
-  <div class="media-body" style="padding-left: 15px">
-    <h4 class="media-heading" style="cursor: pointer"><a  (click)="onSelect(user)" (click)="gotoProfile()">{{user.name}} {{user.lastName}}</a></h4>
-    <p>Native language: {{user.nat_lang}}</p>
-    <p>Language that I want to learn: {{user.lang_learn}}</p>
-    <p>Description: {{user.description}}</p>
-  </div>
-  <div class="text-right">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<div class="media" *ngFor="let user of users">
+  <div *ngIf="user['_id'] !== currentUser['_id']">
+    <hr>
+    <div class="media-left">
+      <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido">
+    </div>
+    <div class="media-body" style="padding-left: 15px">
+      <h4 class="media-heading" style="cursor: pointer"><a (click)="onSelect(user)" (click)="gotoProfile()">{{user.name}} {{user.lastName}}</a></h4>
+      <p>Native language: {{user.nat_lang}}</p>
+      <p>Language that I want to learn: {{user.lang_learn}}</p>
+      <p>Description: {{user.description}}</p>
+    </div>
+    <div class="text-right">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       <span class="glyphicon glyphicon glyphicon-plus"></span>
         Add Friend
     </button>
+    </div>
   </div>
 </div>
 <hr>

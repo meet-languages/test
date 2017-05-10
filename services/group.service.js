@@ -45,7 +45,7 @@ function getMyGroups(_id) {
         groups = _.map(groups, function (group) {
             return _.omit(group, 'hash');
         });
-        console.log(groups);
+        // console.log(groups);
 
         deferred.resolve(groups);
     });
@@ -74,7 +74,7 @@ function getById(_id) {
 
 function create(groupParam) {
     var deferred = Q.defer();
-    console.log(groupParam);
+    // console.log(groupParam);
 
     // validation
     db.groups.findOne(
@@ -111,7 +111,7 @@ function create(groupParam) {
 
 function update(_id, groupParam) {
     var deferred = Q.defer();
-    console.log(groupParam);
+    // console.log(groupParam);
 
     // validation
     db.groups.findById(_id, function (err, group) {
