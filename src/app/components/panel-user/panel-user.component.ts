@@ -22,8 +22,7 @@ export class PanelUserComponent implements OnInit{
     private route: ActivatedRoute,
     private location: Location
   ) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
-        console.log(this.currentUser);};
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'))};
         
   
   ngOnInit() {

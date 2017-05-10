@@ -12,10 +12,12 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var alert_service_1 = require("../../_services/alert.service");
 var group_service_1 = require("../../_services/group.service");
+var user_service_1 = require("../../_services/user.service");
 var CreateGroupComponent = (function () {
-    function CreateGroupComponent(route, groupService, router, alertService) {
+    function CreateGroupComponent(route, groupService, userService, router, alertService) {
         this.route = route;
         this.groupService = groupService;
+        this.userService = userService;
         this.router = router;
         this.alertService = alertService;
         this.model = { users: [] };
@@ -35,6 +37,10 @@ var CreateGroupComponent = (function () {
         });
         this.router.navigate(['/template/groups']);
     };
+    CreateGroupComponent.prototype.loadAllGroups = function () {
+        var _this = this;
+        this.groupService.getAll().subscribe(function (groups) { _this.groups = groups; });
+    };
     return CreateGroupComponent;
 }());
 CreateGroupComponent = __decorate([
@@ -47,6 +53,7 @@ CreateGroupComponent = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
         group_service_1.GroupService,
+        user_service_1.UserService,
         router_1.Router,
         alert_service_1.AlertService])
 ], CreateGroupComponent);

@@ -6,6 +6,7 @@ import { Group } from '../../../Group';
 
 import { AlertService } from '../../_services/alert.service';
 import { GroupService } from '../../_services/group.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
     moduleId: module.id,
@@ -19,6 +20,7 @@ import { GroupService } from '../../_services/group.service';
 export class CreateGroupComponent {
     currentUser: User;
     model: any = { users: [] };
+    groups: Group[];
 
     loading = false;
     returnUrl: string;
@@ -26,6 +28,7 @@ export class CreateGroupComponent {
     constructor(
         private route: ActivatedRoute,
         private groupService: GroupService,
+        private userService: UserService,
         private router: Router,
         private alertService: AlertService) {
 
@@ -45,6 +48,10 @@ export class CreateGroupComponent {
                 this.loading = false;
             });
         this.router.navigate(['/template/groups']);
+    }
+
+    private loadAllGroups() {
+        this.groupService.getAll().subscribe(groups => { this.groups = groups; });
     }
 
 }

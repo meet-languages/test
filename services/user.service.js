@@ -72,7 +72,7 @@ function getMyUsers(_id) {
         users = _.map(users, function (user) {
             return _.omit(user, 'hash');
         });
-        console.log(users);
+        // console.log(users);
  
         deferred.resolve(users);
     });
@@ -90,7 +90,7 @@ function getByName(term) {
         users = _.map(users, function (user) {
             return _.omit(user, 'hash');
         });
-        console.log(users);
+        // console.log(users);
  
         deferred.resolve(users);
     });
@@ -155,7 +155,6 @@ function create(userParam) {
  
 function update(_id, userParam) {
     var deferred = Q.defer();
-    console.log(userParam);
  
     // validation
     db.users.findById(_id, function (err, user) {

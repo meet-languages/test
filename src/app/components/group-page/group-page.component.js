@@ -22,10 +22,12 @@ var GroupPageComponent = (function () {
         this.router = router;
         this.location = location;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log(this.currentUser);
     }
     ;
     GroupPageComponent.prototype.ngOnInit = function () {
         this.loadGroup();
+        this.loadUser();
         this.loadMyUsers();
     };
     GroupPageComponent.prototype.loadGroup = function () {
@@ -40,20 +42,61 @@ var GroupPageComponent = (function () {
             .switchMap(function (params) { return _this.userService.getMyUsers(params["id"]); })
             .subscribe(function (users) { _this.users = users; });
     };
-    GroupPageComponent.prototype.joinGroup = function (group) {
-        var contains = function (id, user) {
-            for (var i = 0; i < user.groups.length; i++) {
-                if (contains(user.groups[i]))
-                    return true;
+    GroupPageComponent.prototype.loadUser = function () {
+        var _this = this;
+        this.userService.getById(this.currentUser["_id"])
+            .subscribe(function (user) { return _this.user = user; });
+    };
+    GroupPageComponent.prototype.userInGroup = function (id) {
+        for (var i = 0; i < this.user.groups.length; i++) {
+            if (this.user.groups[i] == id) {
+                return true;
             }
-            return false;
-        };
-        if (contains(group["_id"], this.currentUser) == false) {
-            this.currentUser.groups.push(group["_id"]);
-            this.group.users.push(this.currentUser["_id"]);
-            this.userService.update(this.currentUser).subscribe(function () { });
-            this.groupService.update(this.group).subscribe(function () { });
+        }
+        return false;
+    };
+    GroupPageComponent.prototype.joinGroup = function (group) {
+        var _this = this;
+        console.log(this.user.groups);
+        if (this.userInGroup(group["_id"]) == false) {
+            this.user.groups.push(group["_id"]);
+            this.group.users.push(this.user["_id"]);
+            this.userService.update(this.user).subscribe(function () {
+                _this.loadGroup();
+                _this.loadUser();
+                _this.loadMyUsers();
+            });
+            this.groupService.update(this.group).subscribe(function () {
+                _this.loadGroup();
+                _this.loadUser();
+                _this.loadMyUsers();
+            });
+        }
+    };
+    GroupPageComponent.prototype.leaveGroup = function (group) {
+        var _this = this;
+        if (this.userInGroup(group["_id"]) == true) {
+            var indexUser = this.user.groups.indexOf(group["_id"]);
+            var indexGroup = this.group.users.indexOf(this.user["_id"]);
+            if (indexUser > -1) {
+                this.user.groups.splice(indexUser, 1);
+            }
+            if (indexGroup > -1) {
+                this.group.users.splice(indexGroup, 1);
+            }
+            this.userService.update(this.user).subscribe(function () {
+                _this.loadGroup();
+                _this.loadUser();
+                _this.loadMyUsers();
+            });
+            this.groupService.update(this.group).subscribe(function () {
+                _this.loadGroup();
+                _this.loadUser();
+                _this.loadMyUsers();
+            });
             this.loadGroup();
+            this.loadUser();
+            this.loadMyUsers();
         }
     };
     GroupPageComponent.prototype.onSelect = function (user) {

@@ -21,7 +21,6 @@ var PanelUserComponent = (function () {
         this.location = location;
         this.users = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
     ;
     PanelUserComponent.prototype.ngOnInit = function () {
