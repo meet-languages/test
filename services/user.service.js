@@ -109,7 +109,9 @@ function getByName(term) {
     var deferred = Q.defer();
 
     db.users.findOne({ name: term }).toArray(function (err, users) {
-        if (err) deferred.reject(err.name + ': ' + err.message);
+        if (err) {
+            deferred.reject(err.name + ': ' + err.message);
+        }
 
         // return users (without hashed passwords)
         users = _.map(users, function (user) {
