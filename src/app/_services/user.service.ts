@@ -16,9 +16,9 @@ export class UserService {
         return this.http.get(this.config.apiUrl + '/users/my-users/' + _id, this.jwt()).map((response: Response) => response.json());
     }
 
-   /* searchUser(user: User) {
-        return this.http.get(this.config.apiUrl + '/users/my-users/' + user, this.jwt()).map((response: Response) => response.json());
-    }*/
+    searchUser(user: User) {
+        return this.http.get(this.config.apiUrl + '/users/search-user/' + user, this.jwt()).map((response: Response) => response.json());
+    }
  
     getById(_id: string) {
         return this.http.get(this.config.apiUrl + '/users/' + _id, this.jwt()).map((response: Response) => response.json());

@@ -9,7 +9,7 @@ router.post('/register', register);
 router.get('/', getAll);
 router.get('/:_id', getById);
 router.get('/my-users/:_id', getMyUsers);
-
+router.get('/search-user', searchUser);
 router.get('/:term', getByName);
 
 router.get('/current', getCurrent);
@@ -58,6 +58,16 @@ function getMyUsers(req, res) {
     userService.getMyUsers(req.params._id)
         .then(function (users) {
             res.send(users);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function searchUser(req, res) {
+    userService.searchUser(req.body)
+        .then(function () {
+            res.sendStatus(200);
         })
         .catch(function (err) {
             res.status(400).send(err);
