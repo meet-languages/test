@@ -74,7 +74,7 @@ function getById(_id) {
 
 function create(groupParam) {
     var deferred = Q.defer();
-    // console.log(groupParam);
+     console.log(groupParam);
 
     // validation
     db.groups.findOne(
@@ -166,6 +166,7 @@ function update(_id, groupParam) {
 }
 
 function _delete(_id) {
+    console.log("iiiin");
     var deferred = Q.defer();
 
     db.groups.remove(

@@ -7,6 +7,41 @@
             </div>
         </div>
         <hr>
+        <div>
+            <div class="col-sm-8">
+                <kbd>Create by: {{ group.creator_name }}</kbd>
+            </div>
+            <div class="col-sm-4 text-right">
+                <a *ngIf="group.creator_id == currentUser['_id']" class="text-right">
+                      <button type="button" class="btn-xs btn-danger" data-toggle="modal" data-target="#myModalDelete"><span class="glyphicon glyphicon-remove"></span> Remove group</button>
+            </a>
+            </div>
+        </div>
+
+        <br><br>
+
+        <!-- Modal borrado -->
+        <div id="myModalDelete" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Delete {{ group.title }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really want to delete this group?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="deleteGroup(group['_id'])">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <p> {{ group.description }} </p>
         <br>
         <div class="panel panel-info text-left">
@@ -30,14 +65,14 @@
                       Comments
                     </button>
             <a *ngIf="userInGroup(group['_id'])" (click)="leaveGroup(group)">
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-minus"></span> leave group</button>
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalJoin"><span class="glyphicon glyphicon-minus"></span> leave group</button>
             </a>
             <a *ngIf="!userInGroup(group['_id'])" (click)="joinGroup(group)">
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span> join group</button>
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalLeave"><span class="glyphicon glyphicon-plus"></span> join group</button>
             </a>
 
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
+            <!-- Modal Join -->
+            <div id="e3" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
@@ -48,6 +83,27 @@
                         </div>
                         <div class="modal-body">
                             <p>Now you are a member of "{{ group.title }}"</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal Delete -->
+            <div id="myModalLeave" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Congratulations!!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Now you are not a member of "{{ group.title }}"</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -29,6 +29,7 @@ var GroupPageComponent = (function () {
         this.loadGroup();
         this.loadUser();
         this.loadMyUsers();
+        // this.loadCreatorUser();
     };
     GroupPageComponent.prototype.loadGroup = function () {
         var _this = this;
@@ -46,6 +47,14 @@ var GroupPageComponent = (function () {
         var _this = this;
         this.userService.getById(this.currentUser["_id"])
             .subscribe(function (user) { return _this.user = user; });
+    };
+    //private loadCreatorUser() {
+    //  this.userService.getById(this.group.creator)
+    //    .subscribe(creatorUser => this.creatorUser = creatorUser);
+    //}
+    GroupPageComponent.prototype.deleteGroup = function (_id) {
+        this.groupService.delete(_id).subscribe(function () { });
+        this.router.navigate(['/template/groups']);
     };
     GroupPageComponent.prototype.userInGroup = function (id) {
         for (var i = 0; i < this.user.groups.length; i++) {

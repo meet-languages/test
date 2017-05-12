@@ -38,6 +38,8 @@ export class CreateGroupComponent {
 
     createGroup() {
         this.loading = true;
+        this.model.creator_id = this.currentUser["_id"];
+        this.model.creator_name = this.currentUser.name;
         this.groupService.create(this.model)
             .subscribe(
             data => {

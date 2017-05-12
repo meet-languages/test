@@ -17,6 +17,7 @@ export class GroupPageComponent implements OnInit {
   group: Group;
   users: User[];
   user: User;
+  creatorUser: User;
 
   constructor(
     private groupService: GroupService,
@@ -34,6 +35,7 @@ export class GroupPageComponent implements OnInit {
     this.loadGroup();
     this.loadUser();
     this.loadMyUsers();
+    // this.loadCreatorUser();
   }
 
   private loadGroup(): void {
@@ -51,6 +53,16 @@ export class GroupPageComponent implements OnInit {
   private loadUser() {
     this.userService.getById(this.currentUser["_id"])
       .subscribe(user => this.user = user);
+  }
+
+  //private loadCreatorUser() {
+  //  this.userService.getById(this.group.creator)
+  //    .subscribe(creatorUser => this.creatorUser = creatorUser);
+  //}
+
+  deleteGroup(_id: string) {
+    this.groupService.delete(_id).subscribe(() => { });
+    this.router.navigate(['/template/groups']);
   }
 
   private userInGroup(id: any) {

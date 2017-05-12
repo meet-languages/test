@@ -28,6 +28,8 @@ var CreateGroupComponent = (function () {
     CreateGroupComponent.prototype.createGroup = function () {
         var _this = this;
         this.loading = true;
+        this.model.creator_id = this.currentUser["_id"];
+        this.model.creator_name = this.currentUser.name;
         this.groupService.create(this.model)
             .subscribe(function (data) {
             _this.alertService.success('Group create successful', true);
