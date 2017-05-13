@@ -48,10 +48,6 @@ var GroupPageComponent = (function () {
         this.userService.getById(this.currentUser["_id"])
             .subscribe(function (user) { return _this.user = user; });
     };
-    //private loadCreatorUser() {
-    //  this.userService.getById(this.group.creator)
-    //    .subscribe(creatorUser => this.creatorUser = creatorUser);
-    //}
     GroupPageComponent.prototype.deleteGroup = function (_id) {
         this.groupService.delete(_id).subscribe(function () { });
         this.router.navigate(['/template/groups']);
@@ -64,49 +60,52 @@ var GroupPageComponent = (function () {
         }
         return false;
     };
+    GroupPageComponent.prototype.userInLikes = function (id) {
+        for (var i = 0; i < this.group.likes.length; i++) {
+            if (this.group.likes[i] == id) {
+                return true;
+            }
+        }
+        return false;
+    };
     GroupPageComponent.prototype.joinGroup = function (group) {
         var _this = this;
-        console.log(this.user.groups);
-        if (this.userInGroup(group["_id"]) == false) {
-            this.user.groups.push(group["_id"]);
-            this.group.users.push(this.user["_id"]);
-            this.userService.update(this.user).subscribe(function () {
-                _this.loadGroup();
-                _this.loadUser();
-                _this.loadMyUsers();
-            });
-            this.groupService.update(this.group).subscribe(function () {
-                _this.loadGroup();
-                _this.loadUser();
-                _this.loadMyUsers();
-            });
-        }
+        this.user.groups.push(group["_id"]);
+        this.group.users.push(this.user["_id"]);
+        this.userService.update(this.user).subscribe(function () {
+            _this.loadGroup();
+            _this.loadUser();
+            _this.loadMyUsers();
+        });
+        this.groupService.update(this.group).subscribe(function () {
+            _this.loadGroup();
+            _this.loadUser();
+            _this.loadMyUsers();
+        });
     };
     GroupPageComponent.prototype.leaveGroup = function (group) {
         var _this = this;
-        if (this.userInGroup(group["_id"]) == true) {
-            var indexUser = this.user.groups.indexOf(group["_id"]);
-            var indexGroup = this.group.users.indexOf(this.user["_id"]);
-            if (indexUser > -1) {
-                this.user.groups.splice(indexUser, 1);
-            }
-            if (indexGroup > -1) {
-                this.group.users.splice(indexGroup, 1);
-            }
-            this.userService.update(this.user).subscribe(function () {
-                _this.loadGroup();
-                _this.loadUser();
-                _this.loadMyUsers();
-            });
-            this.groupService.update(this.group).subscribe(function () {
-                _this.loadGroup();
-                _this.loadUser();
-                _this.loadMyUsers();
-            });
-            this.loadGroup();
-            this.loadUser();
-            this.loadMyUsers();
+        var indexUser = this.user.groups.indexOf(group["_id"]);
+        var indexGroup = this.group.users.indexOf(this.user["_id"]);
+        if (indexUser > -1) {
+            this.user.groups.splice(indexUser, 1);
         }
+        if (indexGroup > -1) {
+            this.group.users.splice(indexGroup, 1);
+        }
+        this.userService.update(this.user).subscribe(function () {
+            _this.loadGroup();
+            _this.loadUser();
+            _this.loadMyUsers();
+        });
+        this.groupService.update(this.group).subscribe(function () {
+            _this.loadGroup();
+            _this.loadUser();
+            _this.loadMyUsers();
+        });
+        this.loadGroup();
+        this.loadUser();
+        this.loadMyUsers();
     };
     GroupPageComponent.prototype.onSelect = function (user) {
         this.currentUser = user;
@@ -114,6 +113,27 @@ var GroupPageComponent = (function () {
     GroupPageComponent.prototype.gotoProfile = function () {
         var id = "_id";
         this.router.navigate(['/template/profile', this.currentUser[id]]);
+    };
+    GroupPageComponent.prototype.like = function (user) {
+        var _this = this;
+        this.group.likes.push(user["_id"]);
+        this.groupService.update(this.group).subscribe(function () {
+            _this.loadGroup();
+            _this.loadUser();
+            _this.loadMyUsers();
+        });
+    };
+    GroupPageComponent.prototype.disLike = function (user) {
+        var _this = this;
+        var indexGroup = this.group.likes.indexOf(this.user["_id"]);
+        if (indexGroup > -1) {
+            this.group.likes.splice(indexGroup, 1);
+        }
+        this.groupService.update(this.group).subscribe(function () {
+            _this.loadGroup();
+            _this.loadUser();
+            _this.loadMyUsers();
+        });
     };
     return GroupPageComponent;
 }());

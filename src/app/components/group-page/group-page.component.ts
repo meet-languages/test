@@ -55,11 +55,6 @@ export class GroupPageComponent implements OnInit {
       .subscribe(user => this.user = user);
   }
 
-  //private loadCreatorUser() {
-  //  this.userService.getById(this.group.creator)
-  //    .subscribe(creatorUser => this.creatorUser = creatorUser);
-  //}
-
   deleteGroup(_id: string) {
     this.groupService.delete(_id).subscribe(() => { });
     this.router.navigate(['/template/groups']);
@@ -74,51 +69,56 @@ export class GroupPageComponent implements OnInit {
     return false;
   }
 
-  joinGroup(group: Group): void {
-    console.log(this.user.groups);
-    if (this.userInGroup(group["_id"]) == false) {
-      this.user.groups.push(group["_id"]);
-      this.group.users.push(this.user["_id"]);
-      this.userService.update(this.user).subscribe(() => {
-        this.loadGroup();
-        this.loadUser();
-        this.loadMyUsers();
-      });
-      this.groupService.update(this.group).subscribe(() => {
-        this.loadGroup();
-        this.loadUser();
-        this.loadMyUsers();
-      });
+  private userInLikes(id: any) {
+    for (var i = 0; i < this.group.likes.length; i++) {
+      if (this.group.likes[i] == id) {
+        return true;
+      }
     }
+    return false;
+  }
+
+  joinGroup(group: Group): void {
+    this.user.groups.push(group["_id"]);
+    this.group.users.push(this.user["_id"]);
+    this.userService.update(this.user).subscribe(() => {
+      this.loadGroup();
+      this.loadUser();
+      this.loadMyUsers();
+    });
+    this.groupService.update(this.group).subscribe(() => {
+      this.loadGroup();
+      this.loadUser();
+      this.loadMyUsers();
+    });
+
   }
 
   leaveGroup(group: Group): void {
 
-    if (this.userInGroup(group["_id"]) == true) {
-
-      var indexUser = this.user.groups.indexOf(group["_id"]);
-      var indexGroup = this.group.users.indexOf(this.user["_id"]);
-      if (indexUser > -1) {
-        this.user.groups.splice(indexUser, 1);
-      }
-      if (indexGroup > -1) {
-        this.group.users.splice(indexGroup, 1);
-      }
-      this.userService.update(this.user).subscribe(() => {
-        this.loadGroup();
-        this.loadUser();
-        this.loadMyUsers();
-      });
-      this.groupService.update(this.group).subscribe(() => {
-        this.loadGroup();
-        this.loadUser();
-        this.loadMyUsers();
-      });
-
+    var indexUser = this.user.groups.indexOf(group["_id"]);
+    var indexGroup = this.group.users.indexOf(this.user["_id"]);
+    if (indexUser > -1) {
+      this.user.groups.splice(indexUser, 1);
+    }
+    if (indexGroup > -1) {
+      this.group.users.splice(indexGroup, 1);
+    }
+    this.userService.update(this.user).subscribe(() => {
       this.loadGroup();
       this.loadUser();
       this.loadMyUsers();
-    }
+    });
+    this.groupService.update(this.group).subscribe(() => {
+      this.loadGroup();
+      this.loadUser();
+      this.loadMyUsers();
+    });
+
+    this.loadGroup();
+    this.loadUser();
+    this.loadMyUsers();
+
   }
 
 
@@ -129,6 +129,27 @@ export class GroupPageComponent implements OnInit {
   gotoProfile(): void {
     const id = "_id";
     this.router.navigate(['/template/profile', this.currentUser[id]]);
+  }
+
+  like(user: User): void {
+    this.group.likes.push(user["_id"]);
+    this.groupService.update(this.group).subscribe(() => {
+      this.loadGroup();
+      this.loadUser();
+      this.loadMyUsers();
+    });
+  }
+
+  disLike(user: User): void {
+    var indexGroup = this.group.likes.indexOf(this.user["_id"]);
+    if (indexGroup > -1) {
+      this.group.likes.splice(indexGroup, 1);
+    }
+    this.groupService.update(this.group).subscribe(() => {
+      this.loadGroup();
+      this.loadUser();
+      this.loadMyUsers();
+    });
   }
 
   /*

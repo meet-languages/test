@@ -19,7 +19,7 @@ import { UserService } from '../../_services/user.service';
 @Injectable()
 export class CreateGroupComponent {
     currentUser: User;
-    model: any = { users: [] };
+    model: any = { users: [], likes: [] };
     groups: Group[];
 
     loading = false;

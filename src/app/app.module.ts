@@ -40,6 +40,7 @@ import { AppConfig }                      from './app.config';
 
 // CUSTOM PIPES
 import { SubStringPipe }                  from './components/meetings/subString.pipe';
+import { Length }                         from './components/group-page/length.pipe';
 
 
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
@@ -74,7 +75,8 @@ import { SubStringPipe }                  from './components/meetings/subString.
     FriendsOnlineComponent,
     UserSearchComponent,
     AlertComponent,
-    SubStringPipe
+    SubStringPipe,
+    Length
   ],
   providers: [ 
     UserService,

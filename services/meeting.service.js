@@ -125,6 +125,7 @@ function update(_id, meetingParam) {
         var set = {
             title: meetingParam.title,
             description: meetingParam.description,
+            likes: meetingParam.likes
         };
 
         // update password if it was entered

@@ -44,35 +44,48 @@
 
         <p> {{ group.description }} </p>
         <br>
-        <div class="panel panel-info text-left">
+
+        <div class="panel panel-info text-center ">
             <div class="panel-heading">Members</div>
             <div class="panel-body text-center">
-                <div class="text-center" *ngFor="let user of users">
-                    <span class="text-center">
-                            <a style="cursor: pointer" (click)="onSelect(user)" (click)="gotoProfile()">
+                <div class="">
+                    <div class="text-center" style="display: inline-block" *ngFor="let user of users">
+                        <div class="text-center">
+                            <a style="cursor: pointer; margin-left: 10px" (click)="onSelect(user)" (click)="gotoProfile()">
                             <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
-                       {{user.name}}</span>
+                        </div>
+                        <div class="text-center text-muted medium">
+                            {{user.name}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="text-left" *ngIf="user">
-            <button type="button" class="btn btn-primary">
-                      <span class="glyphicon glyphicon-thumbs-up"></span>
-                      Like! <span class="badge">7</span>
-                    </button>
+            <button type="button" class="btn btn-primary" *ngIf="!userInLikes(currentUser['_id'])" (click)="like(currentUser)">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                 Like! <span class="badge">{{ group.likes | length }}</span>
+            </button>
+
+            <button type="button" class="btn btn-primary" *ngIf="userInLikes(currentUser['_id'])" (click)="disLike(currentUser)">
+                <span class="glyphicon glyphicon-thumbs-down"></span>
+                 Like! <span class="badge">{{ group.likes | length }}</span>
+            </button>
+
             <!-- Boton que despliega la caja de comentarios -->
             <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#comments">
                       Comments
                     </button>
             <a *ngIf="userInGroup(group['_id'])" (click)="leaveGroup(group)">
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalJoin"><span class="glyphicon glyphicon-minus"></span> leave group</button>
+                      <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> leave group</button>
             </a>
             <a *ngIf="!userInGroup(group['_id'])" (click)="joinGroup(group)">
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalLeave"><span class="glyphicon glyphicon-plus"></span> join group</button>
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalJoin"><span class="glyphicon glyphicon-plus"></span> join group</button>
             </a>
 
             <!-- Modal Join -->
-            <div id="e3" class="modal fade" role="dialog">
+            <div id="myModalJoin" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
@@ -83,27 +96,6 @@
                         </div>
                         <div class="modal-body">
                             <p>Now you are a member of "{{ group.title }}"</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Modal Delete -->
-            <div id="myModalLeave" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Congratulations!!</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Now you are not a member of "{{ group.title }}"</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

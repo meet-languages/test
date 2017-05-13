@@ -44,6 +44,7 @@ var user_search_service_1 = require("./_services/user-search.service");
 var app_config_1 = require("./app.config");
 // CUSTOM PIPES
 var subString_pipe_1 = require("./components/meetings/subString.pipe");
+var length_pipe_1 = require("./components/group-page/length.pipe");
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
 var AppModule = (function () {
     function AppModule() {
@@ -82,7 +83,8 @@ AppModule = __decorate([
             friends_online_component_1.FriendsOnlineComponent,
             user_search_component_1.UserSearchComponent,
             alert_component_1.AlertComponent,
-            subString_pipe_1.SubStringPipe
+            subString_pipe_1.SubStringPipe,
+            length_pipe_1.Length
         ],
         providers: [
             user_service_1.UserService,

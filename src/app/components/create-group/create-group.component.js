@@ -20,7 +20,7 @@ var CreateGroupComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.alertService = alertService;
-        this.model = { users: [] };
+        this.model = { users: [], likes: [] };
         this.loading = false;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.model.users.push(this.currentUser["_id"]);

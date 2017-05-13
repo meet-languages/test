@@ -11,10 +11,15 @@
         </div>
     </div>
     <div class="text-left">
-        <button type="button" class="btn btn-primary">
-                      <span class="glyphicon glyphicon-thumbs-up"></span>
-                      Like! <span class="badge">7</span>
-                    </button>
+        <button type="button" class="btn btn-primary" *ngIf="!userInLikes(currentUser['_id'])" (click)="like(currentUser)">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                 Like! <span class="badge">{{ meeting.likes | length }}</span>
+            </button>
+
+            <button type="button" class="btn btn-primary" *ngIf="userInLikes(currentUser['_id'])" (click)="disLike(currentUser)">
+                <span class="glyphicon glyphicon-thumbs-down"></span>
+                 Like! <span class="badge">{{ meeting.likes | length }}</span>
+            </button>
         <!-- Boton que despliega la caja de comentarios -->
         <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#comments">
                       Comments

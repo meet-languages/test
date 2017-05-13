@@ -145,6 +145,7 @@ function update(_id, groupParam) {
             type: groupParam.type,
             description: groupParam.description,
             users: groupParam.users,
+            likes: groupParam.likes
         };
 
         // update password if it was entered
