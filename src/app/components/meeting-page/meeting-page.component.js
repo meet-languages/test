@@ -39,7 +39,7 @@ var MeetingPageComponent = (function () {
             .subscribe(function (user) { return _this.user = user; });
     };
     MeetingPageComponent.prototype.userInLikes = function (id) {
-        for (var i = 0; i < this.meeting.likes.length; i++) {
+        for (var i = 0; i <= this.meeting.likes.length; i++) {
             if (this.meeting.likes[i] == id) {
                 return true;
             }

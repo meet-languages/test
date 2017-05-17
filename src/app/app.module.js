@@ -19,6 +19,8 @@ var meeting_page_component_1 = require("./components/meeting-page/meeting-page.c
 var profile_component_1 = require("./components/profile/profile.component");
 var group_page_component_1 = require("./components/group-page/group-page.component");
 var search_component_1 = require("./components/search/search.component");
+var search_form_component_1 = require("./components/search/search-form/search-form.component");
+var search_users_component_1 = require("./components/search/search-users/search-users.component");
 var home_component_1 = require("./components/home/home.component");
 var messages_component_1 = require("./components/messages/messages.component");
 var notifications_component_1 = require("./components/notifications/notifications.component");
@@ -71,6 +73,8 @@ AppModule = __decorate([
             meetings_component_1.MeetingsComponent,
             meeting_page_component_1.MeetingPageComponent,
             search_component_1.SearchComponent,
+            search_form_component_1.SearchFormComponent,
+            search_users_component_1.SearchUsersComponent,
             home_component_1.HomeComponent,
             messages_component_1.MessagesComponent,
             notifications_component_1.NotificationsComponent,

@@ -14,36 +14,50 @@ import { UserService } from '../../../_services/user.service';
 })
 
 export class SearchFormComponent implements OnInit {
-  currentUser: User;
+
   users: User[];
+  currentUser: User;
   user: User;
+  userToSearch: any = {
+    nat_lang: null,
+    lang_learn: null,
+    sex: null
+  };
+
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser);
   };
 
   ngOnInit(): void {
     this.loadUser();
-    this.loadMyUsers();
   }
 
 
-  private loadMyUsers() {
-    this.route.params
-      .switchMap((params: Params) => this.userService.getMyUsers(params["id"]))
-      .subscribe(users => { this.users = users; });
+  searchUsers() {
+    this.userService.searchUsers(this.userToSearch)
+      .subscribe(users => { this.users = users;this.setData(users); });
+    this.gotoSearchUsers();
   }
+
 
   private loadUser() {
     this.userService.getById(this.currentUser["_id"])
       .subscribe(user => this.user = user);
   }
 
+  gotoSearchUsers(): void {
+    this.router.navigate(['/template/search/search-users'], "Asdawdasd");
+  }
+
+  setData(users: User[]) {
+    console.log(users);
+    this.userService.setData(this.users);
+  }
 
 }

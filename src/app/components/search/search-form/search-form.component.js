@@ -18,24 +18,34 @@ var SearchFormComponent = (function () {
         this.route = route;
         this.router = router;
         this.location = location;
+        this.userToSearch = {
+            nat_lang: null,
+            lang_learn: null,
+            sex: null
+        };
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
     ;
     SearchFormComponent.prototype.ngOnInit = function () {
         this.loadUser();
-        this.loadMyUsers();
     };
-    SearchFormComponent.prototype.loadMyUsers = function () {
+    SearchFormComponent.prototype.searchUsers = function () {
         var _this = this;
-        this.route.params
-            .switchMap(function (params) { return _this.userService.getMyUsers(params["id"]); })
-            .subscribe(function (users) { _this.users = users; });
+        this.userService.searchUsers(this.userToSearch)
+            .subscribe(function (users) { _this.users = users; _this.setData(users); });
+        this.gotoSearchUsers();
     };
     SearchFormComponent.prototype.loadUser = function () {
         var _this = this;
         this.userService.getById(this.currentUser["_id"])
             .subscribe(function (user) { return _this.user = user; });
+    };
+    SearchFormComponent.prototype.gotoSearchUsers = function () {
+        this.router.navigate(['/template/search/search-users'], "Asdawdasd");
+    };
+    SearchFormComponent.prototype.setData = function (users) {
+        console.log(users);
+        this.userService.setData(this.users);
     };
     return SearchFormComponent;
 }());

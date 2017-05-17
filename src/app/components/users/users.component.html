@@ -1,9 +1,9 @@
 <div class="text-center">
   <h3>Members</h3>
+  <hr>
 </div>
 <div class="media" *ngFor="let user of users">
   <div *ngIf="user['_id'] !== currentUser['_id']">
-    <hr>
     <div class="media-left">
       <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido">
     </div>
@@ -18,7 +18,7 @@
       <span class="glyphicon glyphicon glyphicon-plus"></span>
         Add Friend
     </button>
+    <hr>
     </div>
   </div>
 </div>
-<hr>

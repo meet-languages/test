@@ -15,6 +15,8 @@ var create_group_component_1 = require("./components/create-group/create-group.c
 var meetings_component_1 = require("./components/meetings/meetings.component");
 var meeting_page_component_1 = require("./components/meeting-page/meeting-page.component");
 var search_component_1 = require("./components/search/search.component");
+var search_form_component_1 = require("./components/search/search-form/search-form.component");
+var search_users_component_1 = require("./components/search/search-users/search-users.component");
 var home_component_1 = require("./components/home/home.component");
 var messages_component_1 = require("./components/messages/messages.component");
 var notifications_component_1 = require("./components/notifications/notifications.component");
@@ -28,7 +30,8 @@ var auth_guard_1 = require("./_guards/auth.guard");
 exports.routes = [
     { path: '', redirectTo: 'template', canActivate: [auth_guard_1.AuthGuard], pathMatch: 'full' },
     { path: 'registry', component: registry_component_1.RegistryComponent },
-    { path: 'template', component: main_component_1.TemplateComponent, canActivate: [auth_guard_1.AuthGuard], children: [
+    {
+        path: 'template', component: main_component_1.TemplateComponent, canActivate: [auth_guard_1.AuthGuard], children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: users_component_1.UsersComponent },
             { path: 'groups', component: groups_component_1.GroupsComponent },
@@ -36,7 +39,13 @@ exports.routes = [
             { path: 'create-group', component: create_group_component_1.CreateGroupComponent },
             { path: 'meetings', component: meetings_component_1.MeetingsComponent },
             { path: 'meeting-page/:id', component: meeting_page_component_1.MeetingPageComponent },
-            { path: 'search', component: search_component_1.SearchComponent },
+            {
+                path: 'search', component: search_component_1.SearchComponent, children: [
+                    { path: '', redirectTo: 'search-form', pathMatch: 'full' },
+                    { path: 'search-form', component: search_form_component_1.SearchFormComponent },
+                    { path: 'search-users', component: search_users_component_1.SearchUsersComponent },
+                ]
+            },
             { path: 'home', component: home_component_1.HomeComponent },
             { path: 'messages', component: messages_component_1.MessagesComponent },
             { path: 'notifications', component: notifications_component_1.NotificationsComponent },
@@ -45,7 +54,8 @@ exports.routes = [
             { path: 'profile/:id', component: profile_component_1.ProfileComponent },
             { path: 'my-profile/:id', component: my_profile_component_1.MyProfileComponent },
             { path: 'edit-profile/:id', component: edit_profile_component_1.EditProfileComponent },
-        ] },
+        ]
+    },
     { path: '**', redirectTo: 'registry' }
 ];
 var AppRoutingModule = (function () {

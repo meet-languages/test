@@ -2,22 +2,22 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('services/user.service.js');
- 
+
 // routes
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/:_id', getById);
 router.get('/my-users/:_id', getMyUsers);
-router.get('/search-user', searchUser);
+router.get('/search-users/:user', searchUsers);
 router.get('/:term', getByName);
 
 router.get('/current', getCurrent);
 router.put('/:_id', update);
 router.delete('/:_id', _delete);
- 
+
 module.exports = router;
- 
+
 function authenticate(req, res) {
     userService.authenticate(req.body.email, req.body.password)
         .then(function (user) {
@@ -33,7 +33,7 @@ function authenticate(req, res) {
             res.status(400).send(err);
         });
 }
- 
+
 function register(req, res) {
     userService.create(req.body)
         .then(function () {
@@ -43,7 +43,7 @@ function register(req, res) {
             res.status(400).send(err);
         });
 }
- 
+
 function getAll(req, res) {
     userService.getAll()
         .then(function (users) {
@@ -64,16 +64,16 @@ function getMyUsers(req, res) {
         });
 }
 
-function searchUser(req, res) {
-    userService.searchUser(req.body)
-        .then(function () {
-            res.sendStatus(200);
+function searchUsers(req, res) {
+    userService.searchUsers(JSON.parse(req.params.user))
+        .then(function (users) {
+            res.send(users);
         })
         .catch(function (err) {
             res.status(400).send(err);
         });
 }
- 
+
 function getCurrent(req, res) {
     userService.getById(req.user.sub)
         .then(function (user) {
@@ -87,7 +87,7 @@ function getCurrent(req, res) {
             res.status(400).send(err);
         });
 }
- 
+
 function update(req, res) {
     userService.update(req.params._id, req.body)
         .then(function () {
@@ -97,7 +97,7 @@ function update(req, res) {
             res.status(400).send(err);
         });
 }
- 
+
 function _delete(req, res) {
     userService.delete(req.params._id)
         .then(function () {

@@ -18,19 +18,21 @@ var SearchComponent = (function () {
         this.route = route;
         this.router = router;
         this.location = location;
+        this.userToSearch = {
+            nat_lang: null,
+            lang_learn: null,
+            sex: null
+        };
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
     ;
     SearchComponent.prototype.ngOnInit = function () {
         this.loadUser();
-        this.loadMyUsers();
+        this.loadAllUsers();
     };
-    SearchComponent.prototype.loadMyUsers = function () {
+    SearchComponent.prototype.loadAllUsers = function () {
         var _this = this;
-        this.route.params
-            .switchMap(function (params) { return _this.userService.getMyUsers(params["id"]); })
-            .subscribe(function (users) { _this.users = users; });
+        this.userService.getAll().subscribe(function (users) { _this.users = users; });
     };
     SearchComponent.prototype.loadUser = function () {
         var _this = this;

@@ -44,7 +44,7 @@ export class MeetingPageComponent implements OnInit {
     }
 
     private userInLikes(id: any) {
-        for (var i = 0; i < this.meeting.likes.length; i++) {
+        for (var i = 0; i <= this.meeting.likes.length; i++) {
             if (this.meeting.likes[i] == id) {
                 return true;
             }

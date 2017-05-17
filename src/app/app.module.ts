@@ -13,6 +13,8 @@ import { MeetingPageComponent }           from './components/meeting-page/meetin
 import { ProfileComponent }               from './components/profile/profile.component';
 import { GroupPageComponent }             from './components/group-page/group-page.component';
 import { SearchComponent }                from './components/search/search.component';
+import { SearchFormComponent }            from './components/search/search-form/search-form.component';
+import { SearchUsersComponent }           from './components/search/search-users/search-users.component';
 import { HomeComponent }                  from './components/home/home.component';
 import { MessagesComponent }              from './components/messages/messages.component';
 import { NotificationsComponent }         from './components/notifications/notifications.component';
@@ -63,6 +65,8 @@ import { Length }                         from './components/group-page/length.p
     MeetingsComponent,
     MeetingPageComponent,
     SearchComponent,
+    SearchFormComponent,
+    SearchUsersComponent,
     HomeComponent,
     MessagesComponent,
     NotificationsComponent,

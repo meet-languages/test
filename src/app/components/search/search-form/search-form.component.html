@@ -6,7 +6,7 @@
         <div class="form-group col-sm-12 ">
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <label for="nativeLanguage">Native language:</label>
-                <select class="form-control" id="nativeLanguage">
+                <select class="form-control" id="nativeLanguage" name="nat_lang" [(ngModel)]="userToSearch.nat_lang">
               <option selected="">Spanish</option>
               <option>English</option>
               <option>Italian</option>
@@ -16,7 +16,7 @@
 
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <label for="languageLearn">Language they want to learn:</label>
-                <select class="form-control" id="languageLearn">
+                <select class="form-control" id="languageLearn" name="lang_learn" [(ngModel)]="userToSearch.lang_learn">
               <option>Spanish</option>
               <option selected="">English</option>
               <option>Italian</option>
@@ -26,8 +26,8 @@
 
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <label for="sex" class="col-sm-3">Sex: </label>
-                <label class="col-sm-2"><input name="sex" checked=""  type="radio"> Man</label>
-                <label class="col-sm-3"><input name="sex" type="radio"> Woman</label>
+                <label class="col-sm-2"><input type="radio" name="sex" [(ngModel)]="userToSearch.sex" [checked]="userToSearch.sex == 'M'" name="sex" value="male"> Man</label>
+                <label class="col-sm-3"><input type="radio" name="sex" [checked]="userToSearch.sex == 'F'" [(ngModel)]="userToSearch.sex" name="sex" value="female"> Woman</label>
             </div>
         </div>
 
@@ -387,7 +387,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <button type="submit" class="btn btn-default">Find!</button>
+                <button type="submit" class="btn btn-default" (click)="searchUsers()">Find!</button>
             </div>
         </div>
 

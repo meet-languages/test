@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var Subject_1 = require("rxjs/Subject");
 var app_config_1 = require("../app.config");
 var UserService = (function () {
     function UserService(http, config) {
         this.http = http;
         this.config = config;
+        this.subject = new Subject_1.Subject();
     }
     UserService.prototype.getAll = function () {
         return this.http.get(this.config.apiUrl + '/users', this.jwt()).map(function (response) { return response.json(); });
@@ -22,8 +24,8 @@ var UserService = (function () {
     UserService.prototype.getMyUsers = function (_id) {
         return this.http.get(this.config.apiUrl + '/users/my-users/' + _id, this.jwt()).map(function (response) { return response.json(); });
     };
-    UserService.prototype.searchUser = function (user) {
-        return this.http.get(this.config.apiUrl + '/users/search-user/' + user, this.jwt()).map(function (response) { return response.json(); });
+    UserService.prototype.searchUsers = function (user) {
+        return this.http.get(this.config.apiUrl + '/users/search-users/' + JSON.stringify(user), this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.getById = function (_id) {
         return this.http.get(this.config.apiUrl + '/users/' + _id, this.jwt()).map(function (response) { return response.json(); });
@@ -36,6 +38,13 @@ var UserService = (function () {
     };
     UserService.prototype.delete = function (_id) {
         return this.http.delete(this.config.apiUrl + '/users/' + _id, this.jwt());
+    };
+    UserService.prototype.getData = function () {
+        return this.subject.asObservable();
+    };
+    UserService.prototype.setData = function (usersSearch) {
+        this.usersSearch = usersSearch;
+        this.subject.next(usersSearch);
     };
     // private helper methods
     UserService.prototype.jwt = function () {

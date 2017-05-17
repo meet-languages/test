@@ -13,29 +13,25 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var user_service_1 = require("../../../_services/user.service");
 var SearchUsersComponent = (function () {
-    function SearchUsersComponent(userService, route, router, location) {
+    function SearchUsersComponent(userService, route, location, router) {
         this.userService = userService;
         this.route = route;
-        this.router = router;
         this.location = location;
+        this.router = router;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
-    ;
     SearchUsersComponent.prototype.ngOnInit = function () {
-        this.loadUser();
-        this.loadMyUsers();
-    };
-    SearchUsersComponent.prototype.loadMyUsers = function () {
         var _this = this;
-        this.route.params
-            .switchMap(function (params) { return _this.userService.getMyUsers(params["id"]); })
-            .subscribe(function (users) { _this.users = users; });
+        this.userService.getData().subscribe(function (users) {
+            _this.users = users;
+        });
     };
-    SearchUsersComponent.prototype.loadUser = function () {
-        var _this = this;
-        this.userService.getById(this.currentUser["_id"])
-            .subscribe(function (user) { return _this.user = user; });
+    SearchUsersComponent.prototype.onSelect = function (user) {
+        this.currentUser = user;
+    };
+    SearchUsersComponent.prototype.gotoProfile = function () {
+        var id = "_id";
+        this.router.navigate(['/template/profile', this.currentUser[id]]);
     };
     return SearchUsersComponent;
 }());
@@ -48,8 +44,8 @@ SearchUsersComponent = __decorate([
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.ActivatedRoute,
-        router_1.Router,
-        common_1.Location])
+        common_1.Location,
+        router_1.Router])
 ], SearchUsersComponent);
 exports.SearchUsersComponent = SearchUsersComponent;
 //# sourceMappingURL=search-users.component.js.map

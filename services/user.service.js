@@ -13,7 +13,7 @@ service.authenticate = authenticate;
 service.getAll = getAll;
 service.getById = getById;
 service.getMyUsers = getMyUsers;
-service.searchUser = searchUser;
+service.searchUsers = searchUsers;
 service.create = create;
 service.update = update;
 service.delete = _delete;
@@ -83,13 +83,12 @@ function getMyUsers(_id) {
     return deferred.promise;
 }
 
-function searchUser(userParam) {
+function searchUsers(userParam) {
     var deferred = Q.defer();
-
     db.users.find({
         nat_lang: userParam.nat_lang,
         lang_learn: userParam.lang_learn,
-        sex: userParam.sex,
+        sex: userParam.sex
     }).toArray(function (err, users) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
