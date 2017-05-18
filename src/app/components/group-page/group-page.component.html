@@ -81,7 +81,7 @@
                       <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> leave group</button>
             </a>
             <a *ngIf="!userInGroup(group['_id'])" (click)="joinGroup(group)">
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalJoin"><span class="glyphicon glyphicon-plus"></span> join group</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalJoin"><span class="glyphicon glyphicon-plus"></span> join group</button>
             </a>
 
             <!-- Modal Join -->

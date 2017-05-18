@@ -24,6 +24,9 @@ var UserService = (function () {
     UserService.prototype.getMyUsers = function (_id) {
         return this.http.get(this.config.apiUrl + '/users/my-users/' + _id, this.jwt()).map(function (response) { return response.json(); });
     };
+    UserService.prototype.getMyFriends = function (_id) {
+        return this.http.get(this.config.apiUrl + '/users/my-friends/' + _id, this.jwt()).map(function (response) { return response.json(); });
+    };
     UserService.prototype.searchUsers = function (user) {
         return this.http.get(this.config.apiUrl + '/users/search-users/' + JSON.stringify(user), this.jwt()).map(function (response) { return response.json(); });
     };

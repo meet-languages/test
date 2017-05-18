@@ -157,9 +157,11 @@ export class RegistryComponent implements OnInit {
             { name: "Others", isChecked: false }, 
         ],
     groups: [],
+    friends: [],
     };
     loading = false;
     returnUrl: string;
+    
  
     constructor(
         private route: ActivatedRoute,
@@ -182,6 +184,7 @@ export class RegistryComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
+                    this.router.navigate(['/template']);
                 },
                 error => {
                     this.alertService.error(error._body);

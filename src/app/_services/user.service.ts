@@ -20,6 +20,10 @@ export class UserService {
         return this.http.get(this.config.apiUrl + '/users/my-users/' + _id, this.jwt()).map((response: Response) => response.json());
     }
 
+    getMyFriends(_id: string) {
+        return this.http.get(this.config.apiUrl + '/users/my-friends/' + _id, this.jwt()).map((response: Response) => response.json());
+    }
+
     searchUsers(user: User) {
         return this.http.get(this.config.apiUrl + '/users/search-users/' + JSON.stringify(user), this.jwt()).map((response: Response) => response.json());
     }

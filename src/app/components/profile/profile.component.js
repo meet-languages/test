@@ -23,6 +23,53 @@ var ProfileComponent = (function () {
     ;
     ProfileComponent.prototype.ngOnInit = function () {
         this.loadUser();
+        this.loadCurrentUser();
+        this.loadMyFriends();
+    };
+    ProfileComponent.prototype.loadMyFriends = function () {
+        var _this = this;
+        this.userService.getMyFriends(this.currentUser["_id"]).subscribe(function (friends) { _this.friends = friends; });
+    };
+    ProfileComponent.prototype.loadCurrentUser = function () {
+        var _this = this;
+        this.userService.getById(this.currentUser["_id"])
+            .subscribe(function (currentUser) { return _this.currentUser = currentUser; });
+    };
+    ProfileComponent.prototype.userInFriends = function (id) {
+        for (var i = 0; i < this.currentUser.friends.length; i++) {
+            if (this.currentUser.friends[i] == id) {
+                return true;
+            }
+        }
+        return false;
+    };
+    ProfileComponent.prototype.joinFriend = function (user) {
+        var _this = this;
+        this.currentUser.friends.push(user["_id"]);
+        user.friends.push(this.currentUser["_id"]);
+        this.userService.update(user).subscribe(function () {
+            _this.loadMyFriends();
+        });
+        this.userService.update(this.currentUser).subscribe(function () {
+            _this.loadMyFriends();
+        });
+    };
+    ProfileComponent.prototype.leaveFriend = function (user) {
+        var _this = this;
+        var indexCurrentUser = user.friends.indexOf(this.currentUser["_id"]);
+        var indexUser = this.currentUser.friends.indexOf(user["_id"]);
+        if (indexCurrentUser > -1) {
+            this.currentUser.friends.splice(indexCurrentUser, 1);
+        }
+        if (indexUser > -1) {
+            user.friends.splice(indexUser, 1);
+        }
+        this.userService.update(this.currentUser).subscribe(function () {
+            _this.loadMyFriends();
+        });
+        this.userService.update(user).subscribe(function () {
+            _this.loadMyFriends();
+        });
     };
     ProfileComponent.prototype.loadUser = function () {
         var _this = this;

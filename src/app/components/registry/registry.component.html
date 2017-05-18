@@ -9,6 +9,7 @@
                     <div class="text-center">
                         <h2>Register</h2>
                     </div>
+                    <alert></alert>
                     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
                         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
                             <label for="name">Name</label>

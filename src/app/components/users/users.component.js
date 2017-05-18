@@ -16,10 +16,12 @@ var UsersComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.users = [];
+        this.friends = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     UsersComponent.prototype.ngOnInit = function () {
         this.loadAllUsers();
+        this.loadCurrentUser();
     };
     UsersComponent.prototype.deleteUser = function (_id) {
         var _this = this;
@@ -28,6 +30,52 @@ var UsersComponent = (function () {
     UsersComponent.prototype.loadAllUsers = function () {
         var _this = this;
         this.userService.getAll().subscribe(function (users) { _this.users = users; });
+    };
+    UsersComponent.prototype.loadMyFriends = function () {
+        var _this = this;
+        this.userService.getMyFriends(this.currentUser["_id"]).subscribe(function (friends) { _this.friends = friends; });
+    };
+    UsersComponent.prototype.loadCurrentUser = function () {
+        var _this = this;
+        this.userService.getById(this.currentUser["_id"])
+            .subscribe(function (currentUser) { return _this.currentUser = currentUser; });
+    };
+    UsersComponent.prototype.userInFriends = function (id) {
+        for (var i = 0; i < this.currentUser.friends.length; i++) {
+            if (this.currentUser.friends[i] == id) {
+                return true;
+            }
+        }
+        return false;
+    };
+    UsersComponent.prototype.joinFriend = function (user) {
+        var _this = this;
+        this.currentUser.friends.push(user["_id"]);
+        user.friends.push(this.currentUser["_id"]);
+        this.userService.update(user).subscribe(function () {
+            _this.loadMyFriends();
+        });
+        this.userService.update(this.currentUser).subscribe(function () {
+            _this.loadMyFriends();
+        });
+        console.log(this.currentUser.friends);
+    };
+    UsersComponent.prototype.leaveFriend = function (user) {
+        var _this = this;
+        var indexCurrentUser = user.friends.indexOf(this.currentUser["_id"]);
+        var indexUser = this.currentUser.friends.indexOf(user["_id"]);
+        if (indexCurrentUser > -1) {
+            this.currentUser.friends.splice(indexCurrentUser, 1);
+        }
+        if (indexUser > -1) {
+            user.friends.splice(indexUser, 1);
+        }
+        this.userService.update(this.currentUser).subscribe(function () {
+            _this.loadMyFriends();
+        });
+        this.userService.update(user).subscribe(function () {
+            _this.loadMyFriends();
+        });
     };
     UsersComponent.prototype.onSelect = function (user) {
         this.currentUser = user;

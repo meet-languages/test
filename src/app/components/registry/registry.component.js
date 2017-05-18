@@ -164,6 +164,7 @@ var RegistryComponent = (function () {
                 { name: "Others", isChecked: false },
             ],
             groups: [],
+            friends: [],
         };
         this.loading = false;
     }
@@ -179,6 +180,7 @@ var RegistryComponent = (function () {
         this.userService.create(this.model)
             .subscribe(function (data) {
             _this.alertService.success('Registration successful', true);
+            _this.router.navigate(['/template']);
         }, function (error) {
             _this.alertService.error(error._body);
             _this.loading = false;

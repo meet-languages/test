@@ -19,5 +19,6 @@ export class User {
   activities: any;
   sports: any;
   groups: any[];
+  friends: any[];
 }
   

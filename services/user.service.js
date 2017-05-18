@@ -13,6 +13,7 @@ service.authenticate = authenticate;
 service.getAll = getAll;
 service.getById = getById;
 service.getMyUsers = getMyUsers;
+service.getMyFriends = getMyFriends;
 service.searchUsers = searchUsers;
 service.create = create;
 service.update = update;
@@ -35,6 +36,7 @@ function authenticate(email, password) {
                 messages: user.messages,
                 notifications: user.notifications,
                 groups: user.groups,
+                friends: user.friends,
                 //Signing a token with 1 hour of expiration:
                 token: jwt.sign({ sub: user._id, exp: Math.floor(Date.now() / 1000) + (60 * 60), }, 'daslfjhuq2kherdsajkn27483huedf')
             });
@@ -73,6 +75,24 @@ function getMyUsers(_id) {
 
         // return users (without hashed passwords)
         users = _.map(users, function (user) {
+            return _.omit(user, 'hash');
+        });
+        // console.log(users);
+
+        deferred.resolve(users);
+    });
+
+    return deferred.promise;
+}
+
+function getMyFriends(_id) {
+    var deferred = Q.defer();
+
+    db.users.find({ "friends": _id }).toArray(function (err, friends) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        // return users (without hashed passwords)
+        users = _.map(friends, function (user) {
             return _.omit(user, 'hash');
         });
         // console.log(users);
@@ -181,7 +201,6 @@ function create(userParam) {
 
 function update(_id, userParam) {
     var deferred = Q.defer();
-
     // validation
     db.users.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
@@ -209,6 +228,8 @@ function update(_id, userParam) {
                     activities: userParam.activities,
                     sports: userParam.sports,
                     groups: userParam.groups,
+                    friends: userParam.friends,
+
                 },
                 function (err, user) {
                     if (err) deferred.reject(err.name + ': ' + err.message);
@@ -247,6 +268,7 @@ function update(_id, userParam) {
             activities: userParam.activities,
             sports: userParam.sports,
             groups: userParam.groups,
+            friends: userParam.friends,
         };
 
         // update password if it was entered
