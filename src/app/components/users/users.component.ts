@@ -14,6 +14,7 @@ import { Router } from '@angular/router'
 
 export class UsersComponent implements OnInit {
     currentUser: User;
+    selectUser: User;
     users: User[] = [];
     friends: User[] = [];
 
@@ -24,6 +25,7 @@ export class UsersComponent implements OnInit {
     ngOnInit() {
         this.loadAllUsers();
         this.loadCurrentUser();
+        this.loadMyFriends();
     }
 
     deleteUser(_id: string) {
@@ -57,17 +59,17 @@ export class UsersComponent implements OnInit {
         user.friends.push(this.currentUser["_id"]);
         this.userService.update(user).subscribe(() => {
             this.loadMyFriends();
+            this.loadCurrentUser();
         });
         this.userService.update(this.currentUser).subscribe(() => {
             this.loadMyFriends();
+            this.loadCurrentUser();
         });
-        console.log(this.currentUser.friends);
     }
 
     leaveFriend(user: User): void {
-
-        var indexCurrentUser = user.friends.indexOf(this.currentUser["_id"]);
-        var indexUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexCurrentUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexUser = user.friends.indexOf(this.currentUser["_id"]);
         if (indexCurrentUser > -1) {
             this.currentUser.friends.splice(indexCurrentUser, 1);
         }
@@ -76,19 +78,21 @@ export class UsersComponent implements OnInit {
         }
         this.userService.update(this.currentUser).subscribe(() => {
             this.loadMyFriends();
+            this.loadCurrentUser();
         });
         this.userService.update(user).subscribe(() => {
             this.loadMyFriends();
+            this.loadCurrentUser();
         });
     }
 
     onSelect(user: User): void {
-        this.currentUser = user;
+        this.selectUser = user;
     }
 
     gotoProfile(): void {
         const id = "_id";
-        this.router.navigate(['/template/profile', this.currentUser[id]]);
+        this.router.navigate(['/template/profile', this.selectUser[id]]);
     }
 
 }

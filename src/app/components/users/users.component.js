@@ -22,6 +22,7 @@ var UsersComponent = (function () {
     UsersComponent.prototype.ngOnInit = function () {
         this.loadAllUsers();
         this.loadCurrentUser();
+        this.loadMyFriends();
     };
     UsersComponent.prototype.deleteUser = function (_id) {
         var _this = this;
@@ -54,16 +55,17 @@ var UsersComponent = (function () {
         user.friends.push(this.currentUser["_id"]);
         this.userService.update(user).subscribe(function () {
             _this.loadMyFriends();
+            _this.loadCurrentUser();
         });
         this.userService.update(this.currentUser).subscribe(function () {
             _this.loadMyFriends();
+            _this.loadCurrentUser();
         });
-        console.log(this.currentUser.friends);
     };
     UsersComponent.prototype.leaveFriend = function (user) {
         var _this = this;
-        var indexCurrentUser = user.friends.indexOf(this.currentUser["_id"]);
-        var indexUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexCurrentUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexUser = user.friends.indexOf(this.currentUser["_id"]);
         if (indexCurrentUser > -1) {
             this.currentUser.friends.splice(indexCurrentUser, 1);
         }
@@ -72,17 +74,19 @@ var UsersComponent = (function () {
         }
         this.userService.update(this.currentUser).subscribe(function () {
             _this.loadMyFriends();
+            _this.loadCurrentUser();
         });
         this.userService.update(user).subscribe(function () {
             _this.loadMyFriends();
+            _this.loadCurrentUser();
         });
     };
     UsersComponent.prototype.onSelect = function (user) {
-        this.currentUser = user;
+        this.selectUser = user;
     };
     UsersComponent.prototype.gotoProfile = function () {
         var id = "_id";
-        this.router.navigate(['/template/profile', this.currentUser[id]]);
+        this.router.navigate(['/template/profile', this.selectUser[id]]);
     };
     return UsersComponent;
 }());

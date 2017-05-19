@@ -23,7 +23,6 @@ export class MyFriendsComponent implements OnInit {
   ngOnInit() {
     this.loadCurrentUser();
     this.loadMyFriends();
-    console.log(this.currentUser.friends);
   }
 
   private loadMyFriends() {
@@ -36,24 +35,23 @@ export class MyFriendsComponent implements OnInit {
   }
 
   leaveFriend(user: User): void {
-    console.log(this.currentUser.friends, "\n", user.friends);
-    var indexCurrentUser = user.friends.indexOf(this.currentUser["_id"]);
-    var indexUser = this.currentUser.friends.indexOf(user["_id"]);
-    if (indexCurrentUser > -1) {
-      this.currentUser.friends.splice(indexCurrentUser, 1);
-      this.friends.splice(indexCurrentUser, 1);
+        var indexCurrentUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexUser = user.friends.indexOf(this.currentUser["_id"]);
+        if (indexCurrentUser > -1) {
+            this.currentUser.friends.splice(indexCurrentUser, 1);
+        }
+        if (indexUser > -1) {
+            user.friends.splice(indexUser, 1);
+        }
+        this.userService.update(this.currentUser).subscribe(() => {
+            this.loadMyFriends();
+            this.loadCurrentUser();
+        });
+        this.userService.update(user).subscribe(() => {
+            this.loadMyFriends();
+            this.loadCurrentUser();
+        });
     }
-    if (indexUser > -1) {
-      user.friends.splice(indexUser, 1);
-    }
-    this.userService.update(this.currentUser).subscribe(() => {
-      this.loadMyFriends();
-    });
-    this.userService.update(user).subscribe(() => {
-      this.loadMyFriends();
-    });
-    console.log(this.currentUser.friends, "\n", user.friends);
-  }
 
   onSelect(user: User): void {
     this.currentUser = user;

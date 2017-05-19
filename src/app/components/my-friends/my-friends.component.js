@@ -21,7 +21,6 @@ var MyFriendsComponent = (function () {
     MyFriendsComponent.prototype.ngOnInit = function () {
         this.loadCurrentUser();
         this.loadMyFriends();
-        console.log(this.currentUser.friends);
     };
     MyFriendsComponent.prototype.loadMyFriends = function () {
         var _this = this;
@@ -34,23 +33,22 @@ var MyFriendsComponent = (function () {
     };
     MyFriendsComponent.prototype.leaveFriend = function (user) {
         var _this = this;
-        console.log(this.currentUser.friends, "\n", user.friends);
-        var indexCurrentUser = user.friends.indexOf(this.currentUser["_id"]);
-        var indexUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexCurrentUser = this.currentUser.friends.indexOf(user["_id"]);
+        var indexUser = user.friends.indexOf(this.currentUser["_id"]);
         if (indexCurrentUser > -1) {
             this.currentUser.friends.splice(indexCurrentUser, 1);
-            this.friends.splice(indexCurrentUser, 1);
         }
         if (indexUser > -1) {
             user.friends.splice(indexUser, 1);
         }
         this.userService.update(this.currentUser).subscribe(function () {
             _this.loadMyFriends();
+            _this.loadCurrentUser();
         });
         this.userService.update(user).subscribe(function () {
             _this.loadMyFriends();
+            _this.loadCurrentUser();
         });
-        console.log(this.currentUser.friends, "\n", user.friends);
     };
     MyFriendsComponent.prototype.onSelect = function (user) {
         this.currentUser = user;
