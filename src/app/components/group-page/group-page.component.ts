@@ -27,7 +27,6 @@ export class GroupPageComponent implements OnInit {
     private location: Location
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser);
   };
 
 

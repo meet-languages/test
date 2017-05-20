@@ -185,6 +185,7 @@ var RegistryComponent = (function () {
             _this.loading = false;
         });
         this.loading = true;
+        setTimeout(function () { }, 2000);
         this.authenticationService.login(this.model.email, this.model.password)
             .subscribe(function (data) {
             _this.router.navigate([_this.returnUrl]);

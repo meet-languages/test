@@ -44,6 +44,7 @@ export class CreateGroupComponent {
             .subscribe(
             data => {
                 this.alertService.success('Group create successful', true);
+                this.join();
             },
             error => {
                 this.alertService.error(error._body);
@@ -52,8 +53,12 @@ export class CreateGroupComponent {
         this.router.navigate(['/template/groups']);
     }
 
-    private loadAllGroups() {
-        this.groupService.getAll().subscribe(groups => { this.groups = groups; });
+    private join() {
+        this.groupService.getAll().subscribe(groups => {
+        this.groups = groups;
+            this.currentUser.groups.push(groups[groups.length - 1]["_id"]);
+            this.userService.update(this.currentUser).subscribe(() => { });
+        });
     }
 
 }

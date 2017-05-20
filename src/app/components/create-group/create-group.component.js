@@ -33,15 +33,20 @@ var CreateGroupComponent = (function () {
         this.groupService.create(this.model)
             .subscribe(function (data) {
             _this.alertService.success('Group create successful', true);
+            _this.join();
         }, function (error) {
             _this.alertService.error(error._body);
             _this.loading = false;
         });
         this.router.navigate(['/template/groups']);
     };
-    CreateGroupComponent.prototype.loadAllGroups = function () {
+    CreateGroupComponent.prototype.join = function () {
         var _this = this;
-        this.groupService.getAll().subscribe(function (groups) { _this.groups = groups; });
+        this.groupService.getAll().subscribe(function (groups) {
+            _this.groups = groups;
+            _this.currentUser.groups.push(groups[groups.length - 1]["_id"]);
+            _this.userService.update(_this.currentUser).subscribe(function () { });
+        });
     };
     return CreateGroupComponent;
 }());

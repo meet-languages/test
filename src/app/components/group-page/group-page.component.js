@@ -22,7 +22,6 @@ var GroupPageComponent = (function () {
         this.router = router;
         this.location = location;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser);
     }
     ;
     GroupPageComponent.prototype.ngOnInit = function () {

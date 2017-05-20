@@ -190,6 +190,7 @@ export class RegistryComponent implements OnInit {
                     this.loading = false;
                 });
         this.loading = true;
+        setTimeout(() => {}, 2000); 
         this.authenticationService.login(this.model.email, this.model.password)
             .subscribe(
                 data => {

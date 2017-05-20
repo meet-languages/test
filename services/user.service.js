@@ -21,7 +21,7 @@ service.delete = _delete;
 
 module.exports = service;
 
-function authenticate(email, password) {
+function authenticate(email, password) {console.log(email);
     var deferred = Q.defer();
 
     db.users.findOne({ email: email }, function (err, user) {
@@ -187,7 +187,7 @@ function create(userParam) {
 
         db.users.insert(
             user,
-            function (err, doc) {
+            function (err, doc) { console.log(doc);
                 if (err) deferred.reject(err.name + ': ' + err.message);
 
                 deferred.resolve();
