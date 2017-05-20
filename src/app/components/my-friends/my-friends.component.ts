@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../_services/user.service';
 import { User } from '../../../User';
-import { AuthHttp } from 'angular2-jwt'
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,

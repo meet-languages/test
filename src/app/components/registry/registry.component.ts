@@ -181,10 +181,9 @@ export class RegistryComponent implements OnInit {
     register() {
         this.loading = true;
         this.userService.create(this.model)
-            .subscribe(
+            .subscribe( 
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/template']);
                 },
                 error => {
                     this.alertService.error(error._body);

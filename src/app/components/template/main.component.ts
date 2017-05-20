@@ -20,7 +20,6 @@ import { RouterOutlet } from '@angular/router';
     </button>
 
 
-
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
           <li><a routerLink="/template/home" routerLinkActive="active">Home</a></li>

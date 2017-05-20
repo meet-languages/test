@@ -105,11 +105,9 @@ function getMyFriends(_id) {
 
 function searchUsers(userParam) {
     var deferred = Q.defer();
-    db.users.find({
-        nat_lang: userParam.nat_lang,
-        lang_learn: userParam.lang_learn,
-        sex: userParam.sex
-    }).toArray(function (err, users) {
+    db.users.find(
+        userParam
+        ).toArray(function (err, users) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         // return users (without hashed passwords)

@@ -12,7 +12,6 @@ export class UserSearchService {
   constructor(private http: Http) {}
 
   search(term: string): Observable<User[]> {
-      console.log("user-search.service");
         return this.http.get('http://localhost:4000/users/' + term, this.jwt()).map((response: Response) => response.json());
   }
 

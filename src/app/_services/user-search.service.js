@@ -16,7 +16,6 @@ var UserSearchService = (function () {
         this.http = http;
     }
     UserSearchService.prototype.search = function (term) {
-        console.log("user-search.service");
         return this.http.get('http://localhost:4000/users/' + term, this.jwt()).map(function (response) { return response.json(); });
     };
     UserSearchService.prototype.jwt = function () {

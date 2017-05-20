@@ -1,26 +1,19 @@
 <div class="text-center">
     <h3>Search people</h3>
     <hr>
-    <form action="members.html">
+    <form>
 
         <div class="form-group col-sm-12 ">
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <label for="nativeLanguage">Native language:</label>
                 <select class="form-control" id="nativeLanguage" name="nat_lang" [(ngModel)]="userToSearch.nat_lang">
-              <option selected="">Spanish</option>
-              <option>English</option>
-              <option>Italian</option>
-              <option>French</option>
+               <option *ngFor="let c of lang_values" [selected]="userToSearch.nat_lang == c">{{c}}</option>
             </select>
             </div>
-
             <div class="form-group col-sm-offset-1 col-sm-10 well">
-                <label for="languageLearn">Language they want to learn:</label>
+                <label for="languageLearn">Language I want to learn:</label>
                 <select class="form-control" id="languageLearn" name="lang_learn" [(ngModel)]="userToSearch.lang_learn">
-              <option>Spanish</option>
-              <option selected="">English</option>
-              <option>Italian</option>
-              <option>French</option>
+               <option *ngFor="let c of lang_values" [selected]="userToSearch.lang_learn == c" >{{c}}</option>
             </select>
             </div>
 
@@ -37,357 +30,82 @@
             <button type="button" class="btn btn-info btn-xs" data-toggle="collapse" data-target="#advance">Advanced search</button>
         </div>
         <div id="advance" class="collapse">
+            <div class="form-group col-sm-offset-1 col-sm-10 well">
+                <label for="occupation">Occupation:</label>
+                <select class="form-control" id="occupation" name="occupation" [(ngModel)]="userToSearch.occupation">
+               <option *ngFor="let c of occupation_values" [selected]="userToSearch.occupation == c" >{{c}}</option>
+            </select>
+            </div>
 
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <div>
                     <label for="literature">Literature:</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" *ngFor="let l of literature">
                     <div class="checkbox">
-                        <label><input name="literature" value="Self-help" type="checkbox">Self-help</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Tales"   type="checkbox">Tales</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Legens" type="checkbox">Legens</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Religion"   type="checkbox">Religion</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="literature" value="Science Fiction" type="checkbox">Science Fiction</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Philosophy" type="checkbox">Philosophy</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Novels" type="checkbox">Novels</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Terror"   type="checkbox">Terror</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="literature" value="Comic"   type="checkbox">Comic</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Sciences" type="checkbox">Sciences</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Poetries" type="checkbox">Poetries</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="literature" value="Memories"   type="checkbox">Memories</label>
+                        <label><input name="literature" type="checkbox" value="{{l.name}}" [checked]="userToSearch.isChecked" (click)="userToSearch.isChecked = !userToSearch.isChecked">{{ l.name }}</label>
                     </div>
                 </div>
             </div>
+
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <div>
-                    <label for="film" class="">Film:</label>
+                    <label for="music">Music:</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" *ngFor="let m of music">
                     <div class="checkbox">
-                        <label><input name="film" value="Action" type="checkbox">Action</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Science Fiction"   type="checkbox">Science Fiction</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Drama"   type="checkbox">Drama</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Musical" type="checkbox">Musical</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="film" value="Romantic" type="checkbox">Romantic</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Animation"   type="checkbox">Animation</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Fantasy" type="checkbox">Fantasy</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Terror"   type="checkbox">Terror</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="film" value="Thriller"   type="checkbox">Thriller</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Adventure" type="checkbox">Adventure</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Western" type="checkbox">Western</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Mistery"   type="checkbox">Mistery</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="film" value="Police" type="checkbox">Police</label>
+                        <label><input name="music" type="checkbox" value="{{m.name}}" [checked]="m.isChecked" (click)="m.isChecked = !m.isChecked">{{ m.name }}</label>
                     </div>
                 </div>
             </div>
+
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <div>
-                    <label for="series" class="">Series:</label>
+                    <label for="films">Films:</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" *ngFor="let f of films">
                     <div class="checkbox">
-                        <label><input name="series" value="Breaking bad" type="checkbox">Breaking bad</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Person of interest"   type="checkbox">Person of interest</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Gotham" type="checkbox">Gotham</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Arrow"   type="checkbox">Arrow</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="series" value="Shameles" type="checkbox">Shameles</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Game of Thrones" type="checkbox">Game of Thrones</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="The walking dead" type="checkbox">The walking dead</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="House"   type="checkbox">House</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="series" value="How I met your mother" type="checkbox">How I met your mother</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Big Bang theory"   type="checkbox">Big Bang theory</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Flash" type="checkbox">Flash</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="series" value="Vikings" type="checkbox">Vikings</label>
+                        <label><input name="films" type="checkbox" value="{{f.name}}" [checked]="f.isChecked" (click)="f.isChecked = !f.isChecked">{{ f.name }}</label>
                     </div>
                 </div>
             </div>
+
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <div>
-                    <label for="activities" class="">Activities:</label>
+                    <label for="series">Series:</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" *ngFor="let s of series">
                     <div class="checkbox">
-                        <label><input name="activities" value="Learn languages"   type="checkbox">Learn languages</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Auto / Motorbike"   type="checkbox">Auto / Motorbike</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Science"   type="checkbox">Science</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Sports"   type="checkbox">Sports</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Shopping" type="checkbox">Shopping</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Theatre" type="checkbox">Theatre</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Astronomy"   type="checkbox">Astronomy</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Bar / Clubs" type="checkbox">Bar / Clubs</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="activities" value="Games" type="checkbox">Games</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="TV"   type="checkbox">TV</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Nature" type="checkbox">Nature</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Meet friends" type="checkbox">Meet friends</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Cooking"   type="checkbox">Restaurants</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Museums / Exhibits" type="checkbox">Museums / Exhibits</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Music"   type="checkbox">Music</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Travels"   type="checkbox">Travels</label>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="activities" value="Astrology" type="checkbox">Astrology</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Dance" type="checkbox">Dance</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Movies"   type="checkbox">Movies</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Internet"   type="checkbox">Internet</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Crafts" type="checkbox">Crafts</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Computers"   type="checkbox">Computers</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Technology" type="checkbox">Technology</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Reading"   type="checkbox">Reading</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="activities" value="Cooking" type="checkbox">Cooking</label>
+                        <label><input name="series" type="checkbox" value="{{s.name}}" [checked]="s.isChecked" (click)="s.isChecked = !s.isChecked">{{ s.name }}</label>
                     </div>
                 </div>
             </div>
+
             <div class="form-group col-sm-offset-1 col-sm-10 well">
                 <div>
-                    <label for="sports" class="">Sports:</label>
+                    <label for="activities">Activities:</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" *ngFor="let a of activities">
                     <div class="checkbox">
-                        <label><input name="sports" value="Martial arts" type="checkbox">Martial arts</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Athletics" type="checkbox">Athletics</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Motoring"   type="checkbox">Motoring</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Badminton"   type="checkbox">Badminton</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Golf" type="checkbox">Golf</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Handball" type="checkbox">Handball</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Hockey" type="checkbox">Hockey</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Cycling"   type="checkbox">Cycling</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Extreme Sports"   type="checkbox">Extreme Sports</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Riding" type="checkbox">Riding</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Skiing" type="checkbox">Skiing</label>
+                        <label><input name="activities" type="checkbox" value="{{a.name}}" [checked]="a.isChecked" (click)="a.isChecked = !a.isChecked">{{ a.name }}</label>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="checkbox">
-                        <label><input name="sports" value="Dance"   type="checkbox">Dance</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Basket" type="checkbox">Basket</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Baseball" type="checkbox">Baseball</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Billiards"   type="checkbox">Billiards</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Swimming" type="checkbox">Swimming</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Navigation" type="checkbox">Navigation</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Skate"   type="checkbox">Skate</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Table tennis" type="checkbox">Table tennis</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Volleyball" type="checkbox">Volleyball</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Yoga"   type="checkbox">Yoga</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Soccer" type="checkbox">Soccer</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Water-skiing" type="checkbox">Water-skiing</label>
-                    </div>
+            </div>
+
+            <div class="form-group col-sm-offset-1 col-sm-10 well">
+                <div>
+                    <label for="sports">Sports:</label>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" *ngFor="let s of sports">
                     <div class="checkbox">
-                        <label><input name="sports" value="Boxing" type="checkbox">Boxing</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Diving"   type="checkbox">Diving</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Hike" type="checkbox">Hike</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Hunting"   type="checkbox">Hunting</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Squash" type="checkbox">Squash</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Surf" type="checkbox">Surf</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Tennis"   type="checkbox">Tennis</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Football" type="checkbox">Football</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Gymnastics" type="checkbox">Gymnastics</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Gym"   type="checkbox">Gym</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="BMX" type="checkbox">BMX</label>
-                    </div>
-                    <div class="checkbox">
-                        <label><input name="sports" value="Others" type="checkbox">Others</label>
+                        <label><input name="sports" type="checkbox" value="{{s.name}}" [checked]="s.isChecked" (click)="s.isChecked = !s.isChecked">{{ s.name }}</label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
-                <button type="submit" class="btn btn-default" (click)="searchUsers()">Find!</button>
+                <button type="submit" class="btn btn-primary" (click)="searchUsers()">Find!</button>
             </div>
         </div>
 
