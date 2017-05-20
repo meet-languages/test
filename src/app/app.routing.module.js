@@ -26,6 +26,7 @@ var profile_component_1 = require("./components/profile/profile.component");
 var my_profile_component_1 = require("./components/my-profile/my-profile.component");
 var main_component_1 = require("./components/template/main.component");
 var edit_profile_component_1 = require("./components/edit-profile/edit-profile.component");
+var imgupload_component_1 = require("./components/imgupload/imgupload.component");
 var auth_guard_1 = require("./_guards/auth.guard");
 exports.routes = [
     { path: '', redirectTo: 'template', canActivate: [auth_guard_1.AuthGuard], pathMatch: 'full' },
@@ -54,6 +55,7 @@ exports.routes = [
             { path: 'profile/:id', component: profile_component_1.ProfileComponent },
             { path: 'my-profile/:id', component: my_profile_component_1.MyProfileComponent },
             { path: 'edit-profile/:id', component: edit_profile_component_1.EditProfileComponent },
+            { path: 'imgupload', component: imgupload_component_1.imgUploadComponent },
         ]
     },
     { path: '**', redirectTo: 'registry' }

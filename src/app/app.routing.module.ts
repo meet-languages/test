@@ -20,6 +20,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TemplateComponent } from './components/template/main.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { imgUploadComponent } from './components/imgupload/imgupload.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 export const routes: Routes = [
@@ -49,6 +50,7 @@ export const routes: Routes = [
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'my-profile/:id', component: MyProfileComponent },
       { path: 'edit-profile/:id', component: EditProfileComponent },
+      { path: 'imgupload', component: imgUploadComponent },
     ]
   },
 

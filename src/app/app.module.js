@@ -35,6 +35,7 @@ var registry_component_1 = require("./components/registry/registry.component");
 var login_component_1 = require("./components/registry/login.component");
 // import { UserService }          from './services/user.service';
 var app_routing_module_1 = require("./app.routing.module");
+var imgupload_component_1 = require("./components/imgupload/imgupload.component");
 var alert_component_1 = require("./_directives/alert.component");
 var auth_guard_1 = require("./_guards/auth.guard");
 var alert_service_1 = require("./_services/alert.service");
@@ -44,6 +45,7 @@ var group_service_1 = require("./_services/group.service");
 var meeting_service_1 = require("./_services/meeting.service");
 var user_search_service_1 = require("./_services/user-search.service");
 var app_config_1 = require("./app.config");
+var img_service_1 = require("./_services/img.service");
 // CUSTOM PIPES
 var subString_pipe_1 = require("./components/meetings/subString.pipe");
 var length_pipe_1 = require("./components/group-page/length.pipe");
@@ -88,7 +90,8 @@ AppModule = __decorate([
             user_search_component_1.UserSearchComponent,
             alert_component_1.AlertComponent,
             subString_pipe_1.SubStringPipe,
-            length_pipe_1.Length
+            length_pipe_1.Length,
+            imgupload_component_1.imgUploadComponent
         ],
         providers: [
             user_service_1.UserService,
@@ -98,7 +101,8 @@ AppModule = __decorate([
             app_config_1.AppConfig,
             auth_guard_1.AuthGuard,
             authentication_service_1.AuthenticationService,
-            alert_service_1.AlertService
+            alert_service_1.AlertService,
+            img_service_1.imgService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

@@ -29,6 +29,7 @@ import { RegistryComponent }              from './components/registry/registry.c
 import { LoginComponent }                 from './components/registry/login.component';
 // import { UserService }          from './services/user.service';
 import { AppRoutingModule }               from './app.routing.module';
+import { imgUploadComponent }             from './components/imgupload/imgupload.component';
 
 import { AlertComponent }                 from './_directives/alert.component';
 import { AuthGuard }                      from './_guards/auth.guard';
@@ -39,6 +40,7 @@ import { GroupService }                   from './_services/group.service';
 import { MeetingService }                 from './_services/meeting.service';
 import { UserSearchService }              from './_services/user-search.service';
 import { AppConfig }                      from './app.config';
+import { imgService }                     from './_services/img.service';
 
 // CUSTOM PIPES
 import { SubStringPipe }                  from './components/meetings/subString.pipe';
@@ -80,9 +82,10 @@ import { Length }                         from './components/group-page/length.p
     UserSearchComponent,
     AlertComponent,
     SubStringPipe,
-    Length
+    Length,
+    imgUploadComponent
   ],
-  providers: [ 
+  providers: [
     UserService,
     GroupService,
     MeetingService,
@@ -90,7 +93,8 @@ import { Length }                         from './components/group-page/length.p
     AppConfig,
     AuthGuard,
     AuthenticationService,
-    AlertService
+    AlertService,
+    imgService
      ],
   bootstrap: [ AppComponent ]
 })
