@@ -67,7 +67,7 @@
             </div>
             <div class="col-sm-4"  *ngFor="let l of user.literature">
               <div class="checkbox">
-                <label><input name="literature" type="checkbox" value="{{l.name}}" [checked]="l.isChecked" (click)="l.isChecked = !l.isChecked">{{ l.name }}</label>
+                <label><input name="literature" type="checkbox" value="{{l.name}}" [checked]="l.isChecked" (change)="l.isChecked = !l.isChecked">{{ l.name }}</label>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="col-sm-4" *ngFor="let m of user.music">
               <div class="checkbox" >
-                <label><input name="music" type="checkbox" value="{{m.name}}" [checked]="m.isChecked" (click)="m.isChecked = !m.isChecked">{{ m.name }}</label>
+                <label><input name="music" type="checkbox" value="{{m.name}}" [checked]="m.isChecked" (change)="m.isChecked = !m.isChecked">{{ m.name }}</label>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
             </div>
             <div class="col-sm-4" *ngFor="let f of user.films">
               <div class="checkbox" >
-                <label><input name="films" type="checkbox" value="{{f.name}}" [checked]="f.isChecked" (click)="f.isChecked = !f.isChecked">{{ f.name }}</label>
+                <label><input name="films" type="checkbox" value="{{f.name}}" [checked]="f.isChecked" (change)="f.isChecked = !f.isChecked">{{ f.name }}</label>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
             </div>
             <div class="col-sm-4" *ngFor="let s of user.series">
               <div class="checkbox" >
-                <label><input name="series" type="checkbox" value="{{s.name}}" [checked]="s.isChecked" (click)="s.isChecked = !s.isChecked">{{ s.name }}</label>
+                <label><input name="series" type="checkbox" value="{{s.name}}" [checked]="s.isChecked" (change)="s.isChecked = !s.isChecked">{{ s.name }}</label>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@
             </div>
             <div class="col-sm-4" *ngFor="let a of user.activities">
               <div class="checkbox" >
-                <label><input name="activities" type="checkbox" value="{{a.name}}" [checked]="a.isChecked" (click)="a.isChecked = !a.isChecked">{{ a.name }}</label>
+                <label><input name="activities" type="checkbox" value="{{a.name}}" [checked]="a.isChecked" (change)="a.isChecked = !a.isChecked">{{ a.name }}</label>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@
             </div>
             <div class="col-sm-4" *ngFor="let s of user.sports">
               <div class="checkbox" >
-                <label><input name="sports" type="checkbox" value="{{s.name}}" [checked]="s.isChecked" (click)="s.isChecked = !s.isChecked">{{ s.name }}</label>
+                <label><input name="sports" type="checkbox" value="{{s.name}}" [checked]="s.isChecked" (change)="s.isChecked = !s.isChecked">{{ s.name }}</label>
               </div>
             </div>
           </div>

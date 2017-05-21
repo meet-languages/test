@@ -22,7 +22,7 @@ import { RouterOutlet } from '@angular/router';
 
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="/template/home" routerLinkActive="active">Home</a></li>
+          <li class="active"><a routerLink="/template/home" routerLinkActive="active">Home</a></li>
           <li><a routerLink="/template/search" routerLinkActive="active">Search</a></li>
           <li><a routerLink="/template/users" routerLinkActive="active">Members</a></li>
           <li><a routerLink="/template/groups" routerLinkActive="active">Groups</a></li>
