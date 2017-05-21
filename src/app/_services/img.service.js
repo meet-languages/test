@@ -23,6 +23,12 @@ var imgService = (function () {
         formData.append('userid', currentUser["_id"]);
         return this.http.post(this.config.apiUrl + '/images/upload', formData, this.jwt());
     };
+    imgService.prototype.getAvatarPath = function (userId) {
+        return 'img/profilePics/' + userId;
+    };
+    imgService.prototype.getDefaultAvatarPath = function () {
+        return 'img/avatar.png';
+    };
     // private helper methods
     imgService.prototype.jwt = function () {
         // create authorization header with jwt token

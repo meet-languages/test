@@ -19,6 +19,14 @@ export class imgService {
       return this.http.post(this.config.apiUrl + '/images/upload', formData, this.jwt());
     }
 
+    getAvatarPath(userId: string){
+      return 'img/profilePics/'+ userId;
+    }
+
+    getDefaultAvatarPath(){
+      return 'img/avatar.png';
+    }
+
 
     // private helper methods
     private jwt() {
