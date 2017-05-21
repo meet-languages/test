@@ -5,6 +5,8 @@ import { Location }                 from '@angular/common';
 
 import { User }         from '../../../User';
 import { UserService } from '../../_services/user.service';
+import { imgService } from '../../_services/img.service';
+
 @Component({
   selector: 'my-profile',
   templateUrl: './my-profile.component.html',
@@ -15,27 +17,34 @@ export class MyProfileComponent implements OnInit{
   currentUser: User;
   connectedUser: User;
   users: User[] = [];
+  avatarPath: string;
+
 
   constructor(
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private imgS: imgService
   ) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         console.log(this.currentUser);};
-        
-  
+
+
   ngOnInit() {
-        this.loadAllUsers();this.userService.getById(this.currentUser["_id"]).subscribe(connectedUser => { this.connectedUser = connectedUser; });
+        this.loadAllUsers();
+        this.userService.getById(this.currentUser["_id"]).subscribe(connectedUser => { this.connectedUser = connectedUser; });
         console.log(this.connectedUser);
         this.route.params
         .switchMap((params: Params) => this.userService.getById(params["id"]))
-        .subscribe(user => this.user = user);
+        .subscribe( user => {this.user = user;
+                    this.avatarPath = this.imgS.getAvatarPath(user["_id"]);
+                    console.log("avatarpath set to "+this.avatarPath);
+                  });
 
-        
+
     }
- 
+
 
   private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });

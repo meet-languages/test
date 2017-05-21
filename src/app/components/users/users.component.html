@@ -2,10 +2,10 @@
   <h3>Members</h3>
   <hr>
 </div>
-<div class="media" *ngFor="let user of users">
+<div class="media" *ngFor="let user of users; let i = index;">
   <div *ngIf="user['_id'] !== currentUser['_id']">
     <div class="media-left">
-       <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido"> 
+       <img src="{{avatarPaths[i]}}" (error)="avatarPaths[i]=this.imgS.getDefaultAvatarPath();"  alt="Avatar" class="media-object" id="avatar" title="Nombre Apellido">
     </div>
     <div class="media-body" style="padding-left: 15px">
       <h4 class="media-heading" style="cursor: pointer"><a (click)="onSelect(user)" (click)="gotoProfile()">{{user.name}} {{user.lastName}}</a></h4>

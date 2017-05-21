@@ -12,15 +12,18 @@ require("rxjs/add/operator/switchMap");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
+var img_service_1 = require("../../_services/img.service");
 var user_service_1 = require("../../_services/user.service");
 var group_service_1 = require("../../_services/group.service");
 var GroupPageComponent = (function () {
-    function GroupPageComponent(groupService, userService, route, router, location) {
+    function GroupPageComponent(groupService, userService, route, router, location, imgS) {
         this.groupService = groupService;
         this.userService = userService;
         this.route = route;
         this.router = router;
         this.location = location;
+        this.imgS = imgS;
+        this.avatarPaths = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ;
@@ -40,7 +43,16 @@ var GroupPageComponent = (function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.userService.getMyUsers(params["id"]); })
-            .subscribe(function (users) { _this.users = users; });
+            .subscribe(function (users) {
+            _this.users = users;
+            _this.setAvatarPaths();
+        });
+    };
+    GroupPageComponent.prototype.setAvatarPaths = function () {
+        var _this = this;
+        this.users.forEach(function (item, index) {
+            _this.avatarPaths[index] = _this.imgS.getAvatarPath(_this.users[index]['_id']);
+        });
     };
     GroupPageComponent.prototype.loadUser = function () {
         var _this = this;
@@ -145,7 +157,8 @@ GroupPageComponent = __decorate([
         user_service_1.UserService,
         router_1.ActivatedRoute,
         router_1.Router,
-        common_1.Location])
+        common_1.Location,
+        img_service_1.imgService])
 ], GroupPageComponent);
 exports.GroupPageComponent = GroupPageComponent;
 //# sourceMappingURL=group-page.component.js.map

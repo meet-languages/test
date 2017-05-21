@@ -12,12 +12,14 @@ require("rxjs/add/operator/switchMap");
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
+var img_service_1 = require("../../_services/img.service");
 var user_service_1 = require("../../_services/user.service");
 var ProfileComponent = (function () {
-    function ProfileComponent(userService, route, location) {
+    function ProfileComponent(userService, route, location, imgS) {
         this.userService = userService;
         this.route = route;
         this.location = location;
+        this.imgS = imgS;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ;
@@ -75,7 +77,10 @@ var ProfileComponent = (function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.userService.getById(params["id"]); })
-            .subscribe(function (user) { return _this.user = user; });
+            .subscribe(function (user) {
+            _this.user = user;
+            _this.avatarPath = _this.imgS.getAvatarPath(_this.user["_id"]);
+        });
     };
     return ProfileComponent;
 }());
@@ -86,7 +91,8 @@ ProfileComponent = __decorate([
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.ActivatedRoute,
-        common_1.Location])
+        common_1.Location,
+        img_service_1.imgService])
 ], ProfileComponent);
 exports.ProfileComponent = ProfileComponent;
 //# sourceMappingURL=profile.component.js.map

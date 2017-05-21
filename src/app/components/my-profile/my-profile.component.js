@@ -13,13 +13,16 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var user_service_1 = require("../../_services/user.service");
+var img_service_1 = require("../../_services/img.service");
 var MyProfileComponent = (function () {
-    function MyProfileComponent(userService, router, route, location) {
+    function MyProfileComponent(userService, router, route, location, imgS) {
         this.userService = userService;
         this.router = router;
         this.route = route;
         this.location = location;
+        this.imgS = imgS;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.avatarPath = imgS.getAvatarPath(this.currentUser["_id"]);
     }
     ;
     MyProfileComponent.prototype.ngOnInit = function () {
@@ -45,7 +48,8 @@ MyProfileComponent = __decorate([
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.Router,
         router_1.ActivatedRoute,
-        common_1.Location])
+        common_1.Location,
+        img_service_1.imgService])
 ], MyProfileComponent);
 exports.MyProfileComponent = MyProfileComponent;
 //# sourceMappingURL=my-profile.component.js.map

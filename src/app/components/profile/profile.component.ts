@@ -2,6 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { imgService } from '../../_services/img.service';
 
 import { User } from '../../../User';
 import { UserService } from '../../_services/user.service';
@@ -15,11 +16,13 @@ export class ProfileComponent implements OnInit {
   currentUser: User;
   friend: User;
   friends: User[];
+  avatarPath: string;
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private imgS: imgService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
   };
@@ -81,7 +84,9 @@ export class ProfileComponent implements OnInit {
   private loadUser() {
     this.route.params
       .switchMap((params: Params) => this.userService.getById(params["id"]))
-      .subscribe(user => this.user = user);
+      .subscribe( user => {this.user = user;
+        this.avatarPath = this.imgS.getAvatarPath(this.user["_id"]);
+      });
   }
 
   // addFriend(user: User): void {

@@ -47,10 +47,10 @@
             <div class="panel-heading">Members</div>
             <div class="panel-body text-center">
                 <div class="">
-                    <div class="text-center" style="display: inline-block" *ngFor="let user of users">
+                    <div class="text-center" style="display: inline-block"  *ngFor="let user of users;let i = index;">
                         <div class="text-center">
                             <a style="cursor: pointer; margin-left: 10px" (click)="onSelect(user)" (click)="gotoProfile()">
-                            <img src="img/avatar.png" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
+                            <img src="{{avatarPaths[i]}}" (error)="avatarPaths[i]=this.imgS.getDefaultAvatarPath();" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>
                         </div>
                         <div class="text-center text-muted medium">
                             {{user.name}}

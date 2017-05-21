@@ -10,13 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var user_service_1 = require("../../_services/user.service");
+var img_service_1 = require("../../_services/img.service");
 var router_1 = require("@angular/router");
 var UsersComponent = (function () {
-    function UsersComponent(userService, router) {
+    function UsersComponent(userService, router, imgS) {
         this.userService = userService;
         this.router = router;
+        this.imgS = imgS;
         this.users = [];
         this.friends = [];
+        this.avatarPaths = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     UsersComponent.prototype.ngOnInit = function () {
@@ -30,7 +33,10 @@ var UsersComponent = (function () {
     };
     UsersComponent.prototype.loadAllUsers = function () {
         var _this = this;
-        this.userService.getAll().subscribe(function (users) { _this.users = users; });
+        this.userService.getAll().subscribe(function (users) {
+            _this.users = users;
+            _this.setAvatarPaths();
+        });
     };
     UsersComponent.prototype.loadMyFriends = function () {
         var _this = this;
@@ -48,6 +54,12 @@ var UsersComponent = (function () {
             }
         }
         return false;
+    };
+    UsersComponent.prototype.setAvatarPaths = function () {
+        var _this = this;
+        this.users.forEach(function (item, index) {
+            _this.avatarPaths[index] = _this.imgS.getAvatarPath(_this.users[index]['_id']);
+        });
     };
     UsersComponent.prototype.joinFriend = function (user) {
         var _this = this;
@@ -97,7 +109,9 @@ UsersComponent = __decorate([
         templateUrl: '/app/components/users/users.component.html',
         styleUrls: ['/style/style.css']
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        router_1.Router,
+        img_service_1.imgService])
 ], UsersComponent);
 exports.UsersComponent = UsersComponent;
 //# sourceMappingURL=users.component.js.map

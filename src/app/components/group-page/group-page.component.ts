@@ -2,6 +2,8 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { imgService } from '../../_services/img.service';
+
 
 import { User } from '../../../User';
 import { UserService } from '../../_services/user.service';
@@ -18,13 +20,16 @@ export class GroupPageComponent implements OnInit {
   users: User[];
   user: User;
   creatorUser: User;
+  avatarPaths: string[] = [];
+
 
   constructor(
     private groupService: GroupService,
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private imgS: imgService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   };
@@ -46,7 +51,15 @@ export class GroupPageComponent implements OnInit {
   private loadMyUsers() {
     this.route.params
       .switchMap((params: Params) => this.userService.getMyUsers(params["id"]))
-      .subscribe(users => { this.users = users; });
+      .subscribe(users => { this.users = users;
+                            this.setAvatarPaths()
+                          });
+  }
+
+  private setAvatarPaths(){
+    this.users.forEach((item, index) => {
+      this.avatarPaths[index] = this.imgS.getAvatarPath(this.users[index]['_id']);
+    });
   }
 
   private loadUser() {

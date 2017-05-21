@@ -5,6 +5,8 @@ import { Location }                 from '@angular/common';
 
 import { User }         from '../../../User';
 import { UserService } from '../../_services/user.service';
+import { imgService } from '../../_services/img.service';
+
 @Component({
   selector: 'my-profile',
   templateUrl: './my-profile.component.html',
@@ -13,19 +15,22 @@ import { UserService } from '../../_services/user.service';
 export class MyProfileComponent implements OnInit{
   user: User;
   currentUser: User;
+  avatarPath: string;
 
   constructor(
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private imgS: imgService
   ) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.avatarPath = imgS.getAvatarPath(this.currentUser["_id"]);
       };
-        
-  
+
+
   ngOnInit() {
-        this.loadUser();    
+        this.loadUser();
     }
 
   private loadUser(){

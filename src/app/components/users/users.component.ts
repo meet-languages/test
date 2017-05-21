@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../_services/user.service';
+import { imgService } from '../../_services/img.service';
 import { User } from '../../../User';
 import { AuthHttp } from 'angular2-jwt'
 import { Router } from '@angular/router'
@@ -17,8 +18,11 @@ export class UsersComponent implements OnInit {
     selectUser: User;
     users: User[] = [];
     friends: User[] = [];
+    avatarPaths: string[] = [];
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private userService: UserService,
+                private router: Router,
+                private imgS: imgService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
@@ -33,7 +37,8 @@ export class UsersComponent implements OnInit {
     }
 
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
+        this.userService.getAll().subscribe(users => { this.users = users;
+                                                       this.setAvatarPaths()});
     }
 
     private loadMyFriends() {
@@ -52,6 +57,12 @@ export class UsersComponent implements OnInit {
             }
         }
         return false;
+    }
+
+    private setAvatarPaths(){
+      this.users.forEach((item, index) => {
+        this.avatarPaths[index] = this.imgS.getAvatarPath(this.users[index]['_id']);
+      });
     }
 
     joinFriend(user: User): void {
