@@ -5,6 +5,14 @@
         </div>
         <!-- Formulario de edicion del perfil -->
         <form  method="POST">
+
+          <div class="form-group col-sm-offset-1 col-sm-10">
+            <div class="avatar-profile">
+              <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="img-responsive" id="avatar" title="Nombre Apellido">
+            </div>
+            <imgupload></imgupload>
+          </div>
+
           <div class="form-group col-sm-offset-1 col-sm-10 well">
             <label for="name">Name:</label>
             <input type="text" name="name" class="form-control" [(ngModel)]="user.name" placeholder="Enter name" >

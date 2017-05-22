@@ -10,8 +10,6 @@ import { User } from '../../../User';
 import { Group } from '../../../Group';
 
 import { AlertService } from '../../_services/alert.service';
-import { GroupService } from '../../_services/group.service';
-import { UserService } from '../../_services/user.service';
 import { imgService } from '../../_services/img.service';
 
 @Component({
@@ -26,7 +24,6 @@ import { imgService } from '../../_services/img.service';
 export class imgUploadComponent {
     currentUser: User;
     model: any = { users: [], likes: [] };
-    groups: Group[];
 
     loading = false;
     returnUrl: string;
@@ -35,8 +32,6 @@ export class imgUploadComponent {
     constructor(
         private imgService: imgService,
         private route: ActivatedRoute,
-        private groupService: GroupService,
-        private userService: UserService,
         private router: Router,
         private alertService: AlertService) {
 

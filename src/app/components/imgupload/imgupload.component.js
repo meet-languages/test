@@ -13,15 +13,11 @@ var router_1 = require("@angular/router");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/map");
 var alert_service_1 = require("../../_services/alert.service");
-var group_service_1 = require("../../_services/group.service");
-var user_service_1 = require("../../_services/user.service");
 var img_service_1 = require("../../_services/img.service");
 var imgUploadComponent = (function () {
-    function imgUploadComponent(imgService, route, groupService, userService, router, alertService) {
+    function imgUploadComponent(imgService, route, router, alertService) {
         this.imgService = imgService;
         this.route = route;
-        this.groupService = groupService;
-        this.userService = userService;
         this.router = router;
         this.alertService = alertService;
         this.model = { users: [], likes: [] };
@@ -58,8 +54,6 @@ imgUploadComponent = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [img_service_1.imgService,
         router_1.ActivatedRoute,
-        group_service_1.GroupService,
-        user_service_1.UserService,
         router_1.Router,
         alert_service_1.AlertService])
 ], imgUploadComponent);

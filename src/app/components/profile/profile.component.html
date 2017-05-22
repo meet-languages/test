@@ -7,14 +7,15 @@
     <br>
     <div>
       <div class="media">
-        <div class="media-left">
-          <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath();" alt="avatar_meetlanguages" class="media-object" id="avatar" title="Nombre Apellido">
-        </div>
-        <div class="media-body" style="padding-left: 15px">
-          <h4 class="media-heading">{{ user.name }}</h4>
-          <p>{{ user.description }}</p>
-        </div>
-      </div>
+            <div class="avatar-profile">
+              <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="img-responsive" id="avatar" title="Nombre Apellido">
+            </div>
+            <div class="media-body" style="padding-left: 15px">
+              <h3 class="media-heading">{{ user.name }}</h3>
+              <br>
+              <p>{{ user.description }}</p>
+            </div>
+          </div>
       <hr>
     </div>
     <div class="text-left">

@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var user_service_1 = require("../../_services/user.service");
+var img_service_1 = require("../../_services/img.service");
 var router_1 = require("@angular/router");
 var FriendsOnlineComponent = (function () {
-    function FriendsOnlineComponent(userService, router) {
+    function FriendsOnlineComponent(userService, router, imgS) {
         this.userService = userService;
         this.router = router;
+        this.imgS = imgS;
+        this.avatarPaths = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ;
@@ -23,7 +26,16 @@ var FriendsOnlineComponent = (function () {
     };
     FriendsOnlineComponent.prototype.loadMyFriends = function () {
         var _this = this;
-        this.userService.getMyFriends(this.currentUser["_id"]).subscribe(function (friends) { _this.friends = friends; });
+        this.userService.getMyFriends(this.currentUser["_id"]).subscribe(function (friends) {
+            _this.friends = friends;
+            _this.setAvatarPaths();
+        });
+    };
+    FriendsOnlineComponent.prototype.setAvatarPaths = function () {
+        var _this = this;
+        this.friends.forEach(function (item, index) {
+            _this.avatarPaths[index] = _this.imgS.getAvatarPath(_this.friends[index]['_id']);
+        });
     };
     FriendsOnlineComponent.prototype.onSelect = function (user) {
         this.currentUser = user;
@@ -37,10 +49,12 @@ var FriendsOnlineComponent = (function () {
 FriendsOnlineComponent = __decorate([
     core_1.Component({
         selector: 'friends-online',
-        template: "\n  \n      <h3>Friends online</h3>\n      <hr>\n      <div class=\"text-center\" style=\"display: inline-block\" *ngFor=\"let user of friends\">\n       <div class=\"text-center\">\n        <a style=\"cursor: pointer; margin-left: 10px\" (click)=\"onSelect(user)\" (click)=\"gotoProfile()\">\n        <img src=\"img/avatar.png\" alt=\"avatar_meetlanguages\" class=\"membersGroup\" id=\"avatar\"></a>\n       </div>\n       <div class=\"text-center text-muted medium\">\n        {{user.name}}\n       </div>\n      </div>\n\n  ",
+        template: "\n  \n      <h3>Friends online</h3>\n      <hr>\n      <div class=\"text-center\" style=\"display: inline-block\" *ngFor=\"let user of friends; let i = index;\">\n       <div class=\"text-center\">\n        <a style=\"cursor: pointer; margin-left: 10px\" (click)=\"onSelect(user)\" (click)=\"gotoProfile()\">\n          <img src=\"{{avatarPaths[i]}}\" (error)=\"avatarPaths[i]=this.imgS.getDefaultAvatarPath();\" alt=\"avatar_meetlanguages\" class=\"imp-responsive4 membersGroup\" id=\"avatar\" title=\"\" data-toggle=\"popover\" data-content=\"Language I want to learn: English Language: Spanish\" data-trigger=\"hover\" data-original-title=\"Nombre Apellido\"></a>\n       </div>\n       <div class=\"text-center text-muted medium\">\n        {{user.name}}\n       </div>\n      </div>\n\n  ",
         styleUrls: ['/style/style.css']
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        router_1.Router,
+        img_service_1.imgService])
 ], FriendsOnlineComponent);
 exports.FriendsOnlineComponent = FriendsOnlineComponent;
 //# sourceMappingURL=friends-online.component.js.map

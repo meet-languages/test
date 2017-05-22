@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var user_service_1 = require("../../_services/user.service");
+var img_service_1 = require("../../_services/img.service");
 var router_1 = require("@angular/router");
 var MyFriendsComponent = (function () {
-    function MyFriendsComponent(userService, router) {
+    function MyFriendsComponent(userService, router, imgS) {
         this.userService = userService;
         this.router = router;
+        this.imgS = imgS;
+        this.avatarPaths = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ;
@@ -24,12 +27,21 @@ var MyFriendsComponent = (function () {
     };
     MyFriendsComponent.prototype.loadMyFriends = function () {
         var _this = this;
-        this.userService.getMyFriends(this.currentUser["_id"]).subscribe(function (friends) { _this.friends = friends; });
+        this.userService.getMyFriends(this.currentUser["_id"]).subscribe(function (friends) {
+            _this.friends = friends;
+            _this.setAvatarPaths();
+        });
     };
     MyFriendsComponent.prototype.loadCurrentUser = function () {
         var _this = this;
         this.userService.getById(this.currentUser["_id"])
             .subscribe(function (currentUser) { return _this.currentUser = currentUser; });
+    };
+    MyFriendsComponent.prototype.setAvatarPaths = function () {
+        var _this = this;
+        this.friends.forEach(function (item, index) {
+            _this.avatarPaths[index] = _this.imgS.getAvatarPath(_this.friends[index]['_id']);
+        });
     };
     MyFriendsComponent.prototype.leaveFriend = function (user) {
         var _this = this;
@@ -66,7 +78,9 @@ MyFriendsComponent = __decorate([
         templateUrl: '/app/components/my-friends/my-friends.component.html',
         styleUrls: ['/style/style.css']
     }),
-    __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        router_1.Router,
+        img_service_1.imgService])
 ], MyFriendsComponent);
 exports.MyFriendsComponent = MyFriendsComponent;
 //# sourceMappingURL=my-friends.component.js.map
