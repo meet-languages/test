@@ -158,6 +158,8 @@ export class RegistryComponent implements OnInit {
         ],
     groups: [],
     friends: [],
+    messagesSent: [],
+    messagesReceived: [],
     };
     loading = false;
     returnUrl: string;

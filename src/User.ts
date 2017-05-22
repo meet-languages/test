@@ -20,5 +20,7 @@ export class User {
   sports: any;
   groups: any[];
   friends: any[];
+  messagesSent: any[];
+  messagesReceived: any[];
 }
   

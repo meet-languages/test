@@ -36,6 +36,7 @@ import { AlertService }                   from './_services/alert.service';
 import { AuthenticationService }          from './_services/authentication.service';
 import { UserService }                    from './_services/user.service';
 import { GroupService }                   from './_services/group.service';
+import { MessageService }                 from './_services/message.service';
 import { MeetingService }                 from './_services/meeting.service';
 import { UserSearchService }              from './_services/user-search.service';
 import { AppConfig }                      from './app.config';
@@ -86,6 +87,7 @@ import { Length }                         from './components/group-page/length.p
     UserService,
     GroupService,
     MeetingService,
+    MessageService,
     UserSearchService,
     AppConfig,
     AuthGuard,

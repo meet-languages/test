@@ -41,6 +41,7 @@ var alert_service_1 = require("./_services/alert.service");
 var authentication_service_1 = require("./_services/authentication.service");
 var user_service_1 = require("./_services/user.service");
 var group_service_1 = require("./_services/group.service");
+var message_service_1 = require("./_services/message.service");
 var meeting_service_1 = require("./_services/meeting.service");
 var user_search_service_1 = require("./_services/user-search.service");
 var app_config_1 = require("./app.config");
@@ -94,6 +95,7 @@ AppModule = __decorate([
             user_service_1.UserService,
             group_service_1.GroupService,
             meeting_service_1.MeetingService,
+            message_service_1.MessageService,
             user_search_service_1.UserSearchService,
             app_config_1.AppConfig,
             auth_guard_1.AuthGuard,

@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { RouterOutlet , Router, ActivatedRoute  } from '@angular/router';
+
+import { AlertService } from '../../_services/alert.service';
+import { UserService } from '../../_services/user.service';
+import { MessageService } from '../../_services/message.service';
+import { Message } from '../../../Message';
+import { User } from '../../../User';
 
 @Component({
   selector: 'main',
@@ -54,11 +60,11 @@ import { RouterOutlet } from '@angular/router';
                 </div>
                 <div class="modal-body">
                   <form>
-                    <textarea class="form-control noresize" rows="5" id="comment"></textarea>
+                    <textarea class="form-control noresize" rows="5" id="comment" name="content" [(ngModel)]="model.content"></textarea>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendMessage()">Send</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
               </div>
@@ -86,7 +92,42 @@ import { RouterOutlet } from '@angular/router';
 <footer class="container-fluid text-center">
   <p>© 2017 M e e t L a n g u a g e s</p>
 </footer>`,
-  providers: [],
+  providers: [MessageService],
   styleUrls: ['/style/style.css']
 })
-export class TemplateComponent  { }
+
+@Injectable()
+export class TemplateComponent  { 
+    currentUser: User;
+    model: any = { prevMessage: null, };
+    
+    loading = false;
+    returnUrl: string;
+
+    constructor(
+        private route: ActivatedRoute,
+        private messageService: MessageService,
+        private userService: UserService,
+        private router: Router,
+        private alertService: AlertService) {
+
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+    sendMessage() {
+        this.loading = true;
+        this.model.owner = this.currentUser["_id"];
+        //falta añadir usuario destino
+        this.messageService.create(this.model)
+            .subscribe(
+            data => {
+                this.alertService.success('Message sended successfuly', true);
+            },
+            error => {
+                this.alertService.error(error._body);
+                this.loading = false;
+            });
+    }
+
+
+}

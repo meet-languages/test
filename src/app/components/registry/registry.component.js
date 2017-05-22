@@ -165,6 +165,8 @@ var RegistryComponent = (function () {
             ],
             groups: [],
             friends: [],
+            messagesSent: [],
+            messagesReceived: [],
         };
         this.loading = false;
     }
