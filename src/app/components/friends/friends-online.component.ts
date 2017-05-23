@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   
       <h3>Friends online</h3>
       <hr>
-      <div class="text-center" style="display: inline-block" *ngFor="let user of friends; let i = index;">
+      <div class="text-center" style="display: inline-block  margin: 10px;" *ngFor="let user of friends; let i = index;">
        <div class="text-center">
         <a style="cursor: pointer; margin-left: 10px" (click)="onSelect(user)" (click)="gotoProfile()">
           <img src="{{avatarPaths[i]}}" (error)="avatarPaths[i]=this.imgS.getDefaultAvatarPath();" alt="avatar_meetlanguages" class="imp-responsive4 membersGroup" id="avatar" title="" data-toggle="popover" data-content="Language I want to learn: English Language: Spanish" data-trigger="hover" data-original-title="Nombre Apellido"></a>

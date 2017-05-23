@@ -3,23 +3,28 @@
   <hr>
 </div>
 <div class="media" *ngFor="let user of friends; let i = index">
-  <div>
-    <div class="avatar-profile">
-      <img src="{{avatarPaths[i]}}" (error)="avatarPaths[i]=this.imgS.getDefaultAvatarPath();"  alt="Avatar" class="img-responsive" id="avatar" title="Nombre Apellido">
-    </div>
-    <div class="media-body" style="padding-left: 15px">
-      <h4 class="media-heading" style="cursor: pointer"><a (click)="onSelect(user)" (click)="gotoProfile()">{{user.name}} {{user.lastName}}</a></h4>
-      <p>Native language: {{user.nat_lang}}</p>
-      <p>Language that I want to learn: {{user.lang_learn}}</p>
-      <p>Description: {{user.description}}</p>
-    </div>
-    <div class="text-right">
-      <a (click)="leaveFriend(user)">
+
+  <div *ngIf="user['_id'] !== currentUser['_id']">
+
+  </div>
+  <div class="avatar-profile">
+    <img src="{{avatarPaths[i]}}" (error)="avatarPaths[i]=this.imgS.getDefaultAvatarPath();" alt="Avatar" class="img-responsive"
+      id="avatar" title="Nombre Apellido">
+  </div>
+  <div class="media-body" style="padding-left: 15px">
+    <h4 class="media-heading" style="cursor: pointer"><a (click)="onSelect(user)" (click)="gotoProfile()">{{user.name}} {{user.lastName}}</a></h4>
+    <p><b>Native language:</b> {{user.nat_lang}}</p>
+    <p><b>Language that I want to learn: </b>{{user.lang_learn}}</p>
+    <p><b>Description: </b>{{user.description | subString}}</p>
+  </div>
+  <div class="text-right">
+    <a (click)="leaveFriend(user)">
         <button type="button" class="btn btn-danger">
           <span class="glyphicon glyphicon-minus">
           </span> delete friend</button>
       </a>
-      <hr>
-    </div>
+    <hr>
   </div>
+</div>
+<div>
 </div>
