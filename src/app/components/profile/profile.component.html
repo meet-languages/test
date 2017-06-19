@@ -1,4 +1,25 @@
 <div *ngIf="user">
+
+  <!-- Message -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Write a message</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control noresize" rows="5" id="content" [(ngModel)]="msg"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createMessage(user)">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div>
     <div class="text-center">
       <h3>Profile</h3>
@@ -7,28 +28,52 @@
     <br>
     <div>
       <div class="media">
-            <div class="avatar-profile">
-              <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="img-responsive" id="avatar" title="Nombre Apellido">
-            </div>
-            <div class="media-body" style="padding-left: 15px">
-              <h3 class="media-heading">{{ user.name }}</h3>
-              <br>
-              <p>{{ user.description }}</p>
-            </div>
-          </div>
+        <div class="avatar-profile">
+          <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="img-responsive"
+            id="avatar" title="Nombre Apellido">
+        </div>
+        <div class="media-body" style="padding-left: 15px">
+          <h3 class="media-heading">{{ user.name }}</h3>
+          <b>Description: </b>
+          <p>{{ user.description }}</p>
+        </div>
+      </div>
       <hr>
     </div>
     <div class="text-left">
-      <a *ngIf="userInFriends(user['_id'])" (click)="leaveFriend(user)">
-        <button type="button" class="btn btn-danger">
-          <span class="glyphicon glyphicon-minus">
-          </span> delete friend</button>
-      </a>
-      <a *ngIf="!userInFriends(user['_id'])" (click)="joinFriend(user)">
-        <button type="button" class="btn btn-primary" >
-          <span class="glyphicon glyphicon-plus">
-          </span> add friend</button>
-      </a>
+      <button type="button" class="btn btn-warning" *ngIf="userInRequests(user['_id'])" (click)="deleteRequest(user['_id'])">
+          <span class="glyphicon glyphicon-minus"></span> cancel request
+      </button>
+      <button type="button" class="btn btn-danger" *ngIf="userInFriends(user['_id'])" data-toggle="modal" data-target="#myModalDelete">
+          <span class="glyphicon glyphicon-minus"> </span> delete friend
+      </button>
+
+      <!-- Modal borrado -->
+      <div id="myModalDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Delete friend</h4>
+            </div>
+            <div class="modal-body">
+              <p>Do you really want to delete your friend <b>{{ user.name }}</b> ?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="leaveFriend(user)">Yes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <button type="button" class="btn btn-primary" *ngIf="!userInFriends(user['_id']) && !userInRequests(user['_id'])" data-toggle="modal"
+        data-target="#myFriendRequest" (click)="onSelect(user)">
+          <span class="glyphicon glyphicon-plus"></span> add friend
+      </button>
       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
             <span class="glyphicon glyphicon glyphicon-envelope"></span>
               Send message
@@ -118,6 +163,25 @@
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Friend Request -->
+  <div class="modal fade" id="myFriendRequest" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Write a message</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control noresize" rows="5" id="content" [(ngModel)]="msg"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendRequest()">Send</button>
         </div>
       </div>
     </div>

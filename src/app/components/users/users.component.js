@@ -11,25 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var user_service_1 = require("../../_services/user.service");
 var img_service_1 = require("../../_services/img.service");
+var friend_request_service_1 = require("../../_services/friend-request.service");
+var alert_service_1 = require("../../_services/alert.service");
 var router_1 = require("@angular/router");
 var UsersComponent = (function () {
-    function UsersComponent(userService, router, imgS) {
+    function UsersComponent(userService, router, imgS, friendRequestService, alertService) {
         this.userService = userService;
         this.router = router;
         this.imgS = imgS;
+        this.friendRequestService = friendRequestService;
+        this.alertService = alertService;
+        this.modelRequest = {};
         this.users = [];
         this.friends = [];
+        this.friendRequest = [];
         this.avatarPaths = [];
+        this.loading = false;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     UsersComponent.prototype.ngOnInit = function () {
         this.loadAllUsers();
         this.loadCurrentUser();
         this.loadMyFriends();
-    };
-    UsersComponent.prototype.deleteUser = function (_id) {
-        var _this = this;
-        this.userService.delete(_id).subscribe(function () { _this.loadAllUsers(); });
+        this.getFriendRequests();
     };
     UsersComponent.prototype.loadAllUsers = function () {
         var _this = this;
@@ -61,18 +65,42 @@ var UsersComponent = (function () {
             _this.avatarPaths[index] = _this.imgS.getAvatarPath(_this.users[index]['_id']);
         });
     };
-    UsersComponent.prototype.joinFriend = function (user) {
+    UsersComponent.prototype.getFriendRequests = function () {
         var _this = this;
+        this.friendRequestService.getSentFriendRequest(this.currentUser["_id"]).subscribe(function (friendRequests) {
+            _this.friendRequest = friendRequests;
+        });
+    };
+    UsersComponent.prototype.userInRequests = function (id) {
+        for (var i = 0; i < this.friendRequest.length; i++) {
+            if (this.friendRequest[i].to == id) {
+                return true;
+            }
+        }
+        return false;
+    };
+    UsersComponent.prototype.getIdRequest = function (id) {
+        for (var i = 0; i < this.friendRequest.length; i++) {
+            if (this.friendRequest[i].to == id) {
+                return this.friendRequest[i]["_id"];
+            }
+        }
+    };
+    /*joinFriend(user: User): void {
         this.currentUser.friends.push(user["_id"]);
         user.friends.push(this.currentUser["_id"]);
-        this.userService.update(user).subscribe(function () {
-            _this.loadMyFriends();
-            _this.loadCurrentUser();
+        this.userService.update(user).subscribe(() => {
+            this.loadMyFriends();
+            this.loadCurrentUser();
         });
-        this.userService.update(this.currentUser).subscribe(function () {
-            _this.loadMyFriends();
-            _this.loadCurrentUser();
+        this.userService.update(this.currentUser).subscribe(() => {
+            this.loadMyFriends();
+            this.loadCurrentUser();
         });
+    }*/
+    UsersComponent.prototype.deleteRequest = function (_id) {
+        var _this = this;
+        this.friendRequestService.delete(this.getIdRequest(_id)).subscribe(function () { _this.getFriendRequests(); });
     };
     UsersComponent.prototype.leaveFriend = function (user) {
         var _this = this;
@@ -93,6 +121,22 @@ var UsersComponent = (function () {
             _this.loadCurrentUser();
         });
     };
+    UsersComponent.prototype.sendRequest = function () {
+        var _this = this;
+        this.loading = true;
+        this.modelRequest.from = this.currentUser["_id"];
+        this.modelRequest.to = this.selectUser["_id"];
+        this.modelRequest.msg = this.msg;
+        this.friendRequestService.create(this.modelRequest)
+            .subscribe(function (data) {
+            _this.alertService.success('Friend request sent succesful', true);
+            _this.getFriendRequests();
+        }, function (error) {
+            _this.alertService.error(error._body);
+            _this.loading = false;
+        });
+        this.msg = "";
+    };
     UsersComponent.prototype.onSelect = function (user) {
         this.selectUser = user;
     };
@@ -111,7 +155,9 @@ UsersComponent = __decorate([
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.Router,
-        img_service_1.imgService])
+        img_service_1.imgService,
+        friend_request_service_1.FriendRequestService,
+        alert_service_1.AlertService])
 ], UsersComponent);
 exports.UsersComponent = UsersComponent;
 //# sourceMappingURL=users.component.js.map

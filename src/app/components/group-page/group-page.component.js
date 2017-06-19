@@ -31,7 +31,6 @@ var GroupPageComponent = (function () {
         this.loadGroup();
         this.loadUser();
         this.loadMyUsers();
-        // this.loadCreatorUser();
     };
     GroupPageComponent.prototype.loadGroup = function () {
         var _this = this;
@@ -119,11 +118,14 @@ var GroupPageComponent = (function () {
         this.loadMyUsers();
     };
     GroupPageComponent.prototype.onSelect = function (user) {
-        this.currentUser = user;
+        this.user = user;
     };
     GroupPageComponent.prototype.gotoProfile = function () {
         var id = "_id";
-        this.router.navigate(['/template/profile', this.currentUser[id]]);
+        if (this.user[id] === this.currentUser[id])
+            this.router.navigate(['/template/my-profile', this.currentUser[id]]);
+        else
+            this.router.navigate(['/template/profile', this.user[id]]);
     };
     GroupPageComponent.prototype.like = function (user) {
         var _this = this;

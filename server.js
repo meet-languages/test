@@ -21,6 +21,8 @@ app.use('/users', require('./controllers/users.controller'));
 app.use('/groups', require('./controllers/groups.controller'));
 app.use('/meetings', require('./controllers/meetings.controller'));
 app.use('/images', require('./controllers/images.controller'));
+app.use('/messages', require('./controllers/messages.controller'));
+app.use('/friend-request', require('./controllers/friend-request.controller'));
 
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;

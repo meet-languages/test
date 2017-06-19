@@ -1,124 +1,62 @@
 <div class="text-center">
-            <h3 class="text-center">Private messages</h3>
-            <hr>
-            <div class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">
-                      <div class="media-left">
-                        <a href="profile.html">
-                        <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" style = "width:60px" id="avatar" title="Ivanna Vilnanka" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
+  <h3 class="text-center">Private messages</h3>
+  <hr>
+  <div class="panel-group" id="accordion">
+
+    <div class="panel panel-default" *ngFor="let m of myMessages; let i = index;">
+      <div class="panel-heading" >
+        <h3 class="panel-title">
+          <div class="media-left">
+            <a *ngIf="m.from !== currentUser['_id']" (click)="onSelect(m.from)" (click)="gotoProfile()">
+               <img src="{{avatarPaths[m.from]}}" (error)="avatarPaths[m.to]=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="membersGroup" id="avatar" >
+            </a>
+            <a *ngIf="m.from === currentUser['_id']" (click)="onSelect(m.to)" (click)="gotoProfile()">
+               <img src="{{avatarPaths[m.to]}}" (error)="avatarPaths[m.to]=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="membersGroup" id="avatar" >
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{ usersMsg[i] }}</h4>
+            <p><br>{{m | numNewMsg}} nuevos mensajes</p>
+          </div>
+          <div class="media-right">
+            <br>
+            <!-- http://www.concretepage.com/angular-2/angular-2-attribute-binding-example -->
+            <button type="button" id="btn-rm" class="btn btn-primary" data-toggle="collapse" [attr.data-target]="'#' + i" (click)="makeRead(m)">
+              Read more
+            </button>
+          </div>
+        </h3>
+      </div>
+      <div id={{i}} class="collapse">
+        <div class="well" style="margin-bottom: 0px;">
+          <div class="media-left avatar-profile">
+            <a href="profile.html">
+                        <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath()" class="membersGroup">
                         </a>
-                      </div>
-                      <div class="media-body">
-                        <h4 class="media-heading">Ivanna Vilnanka</h4>
-                        <p><br>2 nuevos mensajes</p>
-                      </div>
-                      <div class="media-right">
-                        <br>
-                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#messages">
-                            Read more
-                        </button>
-                      </div>
-                  </h3>
-                </div>
-                <div id="messages" class="collapse">
-                  <div class="well" style="margin-bottom: 0px;">
-                      <div class="media-left">
-                        <a href="profile.html">
-                        <img src="img/avatar.png" class="media-object" style="width:45px">
-                        </a>
-                      </div>
-                      <div class="media-body">
-                          <textarea class="form-control noresize" rows="2" id="comment"></textarea>
-                      </div>
-                      <div class="media-right">
-                        <br><button type="button" class="btn btn-warning">
+          </div>
+          <div class="media-body">
+            <textarea class="form-control noresize" rows="2" id="comment" [(ngModel)]="msg"></textarea>
+          </div>
+          <div class="media-right">
+            <br><button type="button" class="btn btn-warning" (click)="save(m)">
                             Send
                         </button>
-                      </div>
-                      <br><hr>
-                      <div class = "media">
-                        <div class = "media-left">
-                          <a href="profile.html">
-                        <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" style = "width:60px" id="avatar" title="Ivanna Vilnanka" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
-                        </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Ivanna Vilnanka<small><i> Sent on February 20, 2016</i></small></h4>
-                          <p>Hi, it's me again. Can you answer me as soon as posible, please?</p>
-                        </div>
-                      </div>
-                      <br><hr>
-                      <div class = "media">
-                        <div class = "media-left">
-                          <a href="profile.html">
-                        <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" style = "width:60px" id="avatar" title="Ivanna Vilnanka" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
-                        </a>
-                        </div>
-                        <div class="media-body">
-                          <h4 class="media-heading">Ivanna Vilnanka<small><i> Sent on February 18, 2016</i></small></h4>
-                          <p>Hi, Do you want to date this weekend?</p>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">
-                  <div class="media-left">
-                    <a href="profile.html">
-                    <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" style = "width:60px" id="avatar" title="Paulo Coelho" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">Paulo Coelho</h4>
-                    <p><br>1 mensaje nuevo</p>
-                  </div>
-                  <div class="media-right">
-                    <br>
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#messages1">
-                        Read more
-                    </button>
-                  </div>
-                </h3>
-              </div>
-              <div id="messages1" class="collapse">
-                <div class="well " style="margin-bottom: 0px;">
-                  <div class="media-left">
-                      <a href="profile.html">
-                        <img src="img/avatar.png" class="media-object" style="width:45px">
-                        </a>
-                  </div>
-                  <div class="media-body">
-                      <textarea class="form-control noresize" rows="2" id="comment"></textarea>
-                  </div>
-                  <div class="media-right">
-                    <br><button type="button" class="btn btn-warning">
-                        Send
-                    </button>
-                  </div>
-                  <br><hr>
-                  <div class = "media">
-                    <div class = "media-left">
-                      <a href="profile.html">
-                    <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" style = "width:60px" id="avatar" title="Paulo Coelho" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
-                    </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">Paulo Coelho<small><i> Sent on February 19, 2016</i></small></h4>
-                      <p>Hey how you doing buddy?</p>
-                    </div>
-                  </div>
-                </div>
-
-
-
-                </div>
-              </div>
-            </div>
-
+          </div>
           <hr>
-
+          <div class="media"  *ngFor="let n of m.messages | reverse " >
+            <div class="media-left avatar-profile">
+              <a href="profile.html">
+                        <img src="{{avatarPath}}" (error)="avatarPath=this.imgS.getDefaultAvatarPath()" alt="avatar_meetlanguages" class="membersGroup"  id="avatar" title="Ivanna Vilnanka" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
+                        </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{n.name}} <small><i>{{n.when}}</i></small></h4>
+              <p>{{n.content}}</p>
+            </div>
+            <hr>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>

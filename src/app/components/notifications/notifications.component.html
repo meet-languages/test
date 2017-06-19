@@ -1,45 +1,44 @@
 <div class="text-center">
-        <div>
-          <h3>Friends request</h3>
-          <hr>
-          <div class="well">
-            <div class="media">
-              <div class="media-left">
-                <img src="img/avatar.png" alt="avatar_meetlanguages" class="media-object" style = "width:60px" id="avatar" title="Nombre Apellidos" data-toggle="popover" data-content="sgsdfgsd" data-trigger="hover">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Nombre Apellidos</h4>
-                <p>Hi. Do you want to be my friend?</p>
-              </div>
-              <div class="media-right col-sm-12 text-right">
-                <button type="button" class="btn btn-primary" id="accept">
-                    Accept
-                </button>
 
-                <button type="button" class="btn btn-warning" id="decline">
-                    Decline
-                </button>
-              </div>
-            </div>
-          </div>
+  <h3>Friend requests</h3>
+  <hr>
+  <div class="well" *ngFor="let r of friendRequest; let i = index">
+    <div class="media">
+      <div class="avatar-profile">
+        <img  src="{{avatarPaths[r.from]}}" (error)="avatarPaths[r.from]=this.imgS.getDefaultAvatarPath()" class="img-responsive" id="avatar">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{usersRequest[i]}}</h4>
+        <p>{{r.msg}}</p>
+      </div>
+      <div class="media-right col-sm-12 text-right">
+        <button type="button" class="btn btn-primary" id="accept"  (click)="joinFriend(r.from)"> Accept </button>
+        <button type="button" class="btn btn-warning" id="decline" (click)="deleteRequest(r.from)"> Decline </button>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br>
+
+
+  <div>
+    <h3>Comments</h3>
+    <hr>
+    <a href="meeting.html">
+      <div class="well">
+        <b>Nombre Apellidos</b> likes <span class="glyphicon glyphicon-thumbs-up"></span> your comment! on <b>meetingName</b>.
+        Click here to go to the comment.
+        <div class="text-right">
+          <small><i>February 19, 2016</i></small>
         </div>
-        <div>
-          <h3>Comments</h3>
-          <hr>
-          <a href="meeting.html">
-          <div class="well">
-            <b>Nombre Apellidos</b> likes <span class="glyphicon glyphicon-thumbs-up"></span> your comment! on <b>meetingName</b>. Click here to go to the comment.
-            <div class="text-right">
-              <small><i>February 19, 2016</i></small>
-            </div>
-          </div>
-        </a>
-        <a href="group.html">
-          <div class ="well">
-            <b>Nombre Apellidos</b> answer your comment on <b>GroupName</b>. Click here to go to the comment.
-            <div class="text-right">
-              <small><i>February 20, 2016</i></small>
-            </div>
-          </div>
-          </a>
+      </div>
+    </a>
+    <a href="group.html">
+      <div class="well">
+        <b>Nombre Apellidos</b> answer your comment on <b>GroupName</b>. Click here to go to the comment.
+        <div class="text-right">
+          <small><i>February 20, 2016</i></small>
         </div>
+      </div>
+    </a>
+  </div>

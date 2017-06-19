@@ -41,10 +41,15 @@ import { MeetingService }                 from './_services/meeting.service';
 import { UserSearchService }              from './_services/user-search.service';
 import { AppConfig }                      from './app.config';
 import { imgService }                     from './_services/img.service';
+import { MessageService }                 from './_services/message.service';
+import { FriendRequestService }           from './_services/friend-request.service';
 
 // CUSTOM PIPES
-import { SubStringPipe }                  from './components/meetings/subString.pipe';
-import { Length }                         from './components/group-page/length.pipe';
+import { SubString }                      from './_pipes/sub-string.pipe';
+import { Length }                         from './_pipes/length.pipe';
+import { numNewMsg }                      from './_pipes/num-new-msg.pipe';
+import { ReversePipe }                    from './_pipes/reverse.pipe';
+
 
 
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
@@ -81,8 +86,10 @@ import { Length }                         from './components/group-page/length.p
     FriendsOnlineComponent,
     UserSearchComponent,
     AlertComponent,
-    SubStringPipe,
+    SubString,
     Length,
+    numNewMsg,
+    ReversePipe,
     imgUploadComponent
   ],
   providers: [
@@ -94,7 +101,9 @@ import { Length }                         from './components/group-page/length.p
     AuthGuard,
     AuthenticationService,
     AlertService,
-    imgService
+    imgService,
+    MessageService,
+    FriendRequestService
      ],
   bootstrap: [ AppComponent ]
 })

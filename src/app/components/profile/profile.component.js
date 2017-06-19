@@ -13,13 +13,23 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var img_service_1 = require("../../_services/img.service");
+var friend_request_service_1 = require("../../_services/friend-request.service");
 var user_service_1 = require("../../_services/user.service");
+var message_service_1 = require("../../_services/message.service");
+var alert_service_1 = require("../../_services/alert.service");
 var ProfileComponent = (function () {
-    function ProfileComponent(userService, route, location, imgS) {
+    function ProfileComponent(userService, messageService, route, location, imgS, friendRequestService, alertService) {
         this.userService = userService;
+        this.messageService = messageService;
         this.route = route;
         this.location = location;
         this.imgS = imgS;
+        this.friendRequestService = friendRequestService;
+        this.alertService = alertService;
+        this.model = { messages: [] };
+        this.friendRequest = [];
+        this.modelRequest = {};
+        this.loading = false;
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     ;
@@ -27,6 +37,7 @@ var ProfileComponent = (function () {
         this.loadUser();
         this.loadCurrentUser();
         this.loadMyFriends();
+        this.getFriendRequests();
     };
     ProfileComponent.prototype.loadMyFriends = function () {
         var _this = this;
@@ -45,16 +56,40 @@ var ProfileComponent = (function () {
         }
         return false;
     };
-    ProfileComponent.prototype.joinFriend = function (user) {
+    ProfileComponent.prototype.getFriendRequests = function () {
         var _this = this;
-        this.currentUser.friends.push(user["_id"]);
-        user.friends.push(this.currentUser["_id"]);
-        this.userService.update(user).subscribe(function () {
-            _this.loadMyFriends();
+        this.friendRequestService.getSentFriendRequest(this.currentUser["_id"]).subscribe(function (friendRequests) {
+            _this.friendRequest = friendRequests;
         });
-        this.userService.update(this.currentUser).subscribe(function () {
-            _this.loadMyFriends();
-        });
+    };
+    ProfileComponent.prototype.userInRequests = function (id) {
+        for (var i = 0; i < this.friendRequest.length; i++) {
+            if (this.friendRequest[i].to == id) {
+                return true;
+            }
+        }
+        return false;
+    };
+    ProfileComponent.prototype.getIdRequest = function (id) {
+        for (var i = 0; i < this.friendRequest.length; i++) {
+            if (this.friendRequest[i].to == id) {
+                return this.friendRequest[i]["_id"];
+            }
+        }
+    };
+    /*joinFriend(user: User): void {
+      this.currentUser.friends.push(user["_id"]);
+      user.friends.push(this.currentUser["_id"]);
+      this.userService.update(user).subscribe(() => {
+        this.loadMyFriends();
+      });
+      this.userService.update(this.currentUser).subscribe(() => {
+        this.loadMyFriends();
+      });
+    }*/
+    ProfileComponent.prototype.deleteRequest = function (_id) {
+        var _this = this;
+        this.friendRequestService.delete(this.getIdRequest(_id)).subscribe(function () { _this.getFriendRequests(); });
     };
     ProfileComponent.prototype.leaveFriend = function (user) {
         var _this = this;
@@ -73,6 +108,23 @@ var ProfileComponent = (function () {
             _this.loadMyFriends();
         });
     };
+    ProfileComponent.prototype.sendRequest = function () {
+        var _this = this;
+        this.loading = true;
+        this.modelRequest.from = this.currentUser["_id"];
+        this.modelRequest.to = this.selectUser["_id"];
+        this.modelRequest.msg = this.msg;
+        console.log(this.modelRequest);
+        this.friendRequestService.create(this.modelRequest)
+            .subscribe(function (data) {
+            _this.alertService.success('Friend request sent succesful', true);
+            _this.getFriendRequests();
+        }, function (error) {
+            _this.alertService.error(error._body);
+            _this.loading = false;
+        });
+        this.msg = "";
+    };
     ProfileComponent.prototype.loadUser = function () {
         var _this = this;
         this.route.params
@@ -82,6 +134,29 @@ var ProfileComponent = (function () {
             _this.avatarPath = _this.imgS.getAvatarPath(_this.user["_id"]);
         });
     };
+    ProfileComponent.prototype.createMessage = function (user) {
+        var _this = this;
+        this.loading = true;
+        this.model.from = this.currentUser["_id"];
+        this.model.to = user["_id"];
+        this.model.messages.push({
+            name: this.currentUser.name,
+            when: new Date(),
+            content: this.msg,
+            read: false
+        });
+        this.messageService.create(this.model)
+            .subscribe(function (data) {
+            _this.alertService.success('Message sent succesful', true);
+        }, function (error) {
+            _this.alertService.error(error._body);
+            _this.loading = false;
+        });
+        this.msg = "";
+    };
+    ProfileComponent.prototype.onSelect = function (user) {
+        this.selectUser = user;
+    };
     return ProfileComponent;
 }());
 ProfileComponent = __decorate([
@@ -90,9 +165,12 @@ ProfileComponent = __decorate([
         templateUrl: './profile.component.html',
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
+        message_service_1.MessageService,
         router_1.ActivatedRoute,
         common_1.Location,
-        img_service_1.imgService])
+        img_service_1.imgService,
+        friend_request_service_1.FriendRequestService,
+        alert_service_1.AlertService])
 ], ProfileComponent);
 exports.ProfileComponent = ProfileComponent;
 //# sourceMappingURL=profile.component.js.map

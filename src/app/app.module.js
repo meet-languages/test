@@ -46,9 +46,13 @@ var meeting_service_1 = require("./_services/meeting.service");
 var user_search_service_1 = require("./_services/user-search.service");
 var app_config_1 = require("./app.config");
 var img_service_1 = require("./_services/img.service");
+var message_service_1 = require("./_services/message.service");
+var friend_request_service_1 = require("./_services/friend-request.service");
 // CUSTOM PIPES
-var subString_pipe_1 = require("./components/meetings/subString.pipe");
-var length_pipe_1 = require("./components/group-page/length.pipe");
+var sub_string_pipe_1 = require("./_pipes/sub-string.pipe");
+var length_pipe_1 = require("./_pipes/length.pipe");
+var num_new_msg_pipe_1 = require("./_pipes/num-new-msg.pipe");
+var reverse_pipe_1 = require("./_pipes/reverse.pipe");
 // @NgModule metadata's imports array, which contains the list of external modules that the app uses
 var AppModule = (function () {
     function AppModule() {
@@ -89,8 +93,10 @@ AppModule = __decorate([
             friends_online_component_1.FriendsOnlineComponent,
             user_search_component_1.UserSearchComponent,
             alert_component_1.AlertComponent,
-            subString_pipe_1.SubStringPipe,
+            sub_string_pipe_1.SubString,
             length_pipe_1.Length,
+            num_new_msg_pipe_1.numNewMsg,
+            reverse_pipe_1.ReversePipe,
             imgupload_component_1.imgUploadComponent
         ],
         providers: [
@@ -102,7 +108,9 @@ AppModule = __decorate([
             auth_guard_1.AuthGuard,
             authentication_service_1.AuthenticationService,
             alert_service_1.AlertService,
-            img_service_1.imgService
+            img_service_1.imgService,
+            message_service_1.MessageService,
+            friend_request_service_1.FriendRequestService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

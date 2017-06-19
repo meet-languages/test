@@ -43,26 +43,6 @@ import { RouterOutlet } from '@angular/router';
     </div>
 
     </div>
-    <!-- Message -->
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-sm">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Write a message</h4>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <textarea class="form-control noresize" rows="5" id="comment"></textarea>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
       <div class="col-sm-2">
         <panel-user></panel-user>
       <div id="searchPanel" class="well">
@@ -88,4 +68,6 @@ import { RouterOutlet } from '@angular/router';
   providers: [],
   styleUrls: ['/style/style.css']
 })
-export class TemplateComponent  { }
+export class TemplateComponent { 
+
+}

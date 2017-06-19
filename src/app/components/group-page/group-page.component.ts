@@ -39,7 +39,6 @@ export class GroupPageComponent implements OnInit {
     this.loadGroup();
     this.loadUser();
     this.loadMyUsers();
-    // this.loadCreatorUser();
   }
 
   private loadGroup(): void {
@@ -51,12 +50,13 @@ export class GroupPageComponent implements OnInit {
   private loadMyUsers() {
     this.route.params
       .switchMap((params: Params) => this.userService.getMyUsers(params["id"]))
-      .subscribe(users => { this.users = users;
-                            this.setAvatarPaths()
-                          });
+      .subscribe(users => {
+        this.users = users;
+        this.setAvatarPaths()
+      });
   }
 
-  private setAvatarPaths(){
+  private setAvatarPaths() {
     this.users.forEach((item, index) => {
       this.avatarPaths[index] = this.imgS.getAvatarPath(this.users[index]['_id']);
     });
@@ -135,12 +135,14 @@ export class GroupPageComponent implements OnInit {
 
 
   onSelect(user: User): void {
-    this.currentUser = user;
+    this.user = user
   }
 
   gotoProfile(): void {
     const id = "_id";
-    this.router.navigate(['/template/profile', this.currentUser[id]]);
+    if (this.user[id] === this.currentUser[id])
+      this.router.navigate(['/template/my-profile', this.currentUser[id]]);
+    else this.router.navigate(['/template/profile', this.user[id]]);
   }
 
   like(user: User): void {
@@ -163,11 +165,4 @@ export class GroupPageComponent implements OnInit {
       this.loadMyUsers();
     });
   }
-
-  /*
-      changeButton(this: any) {
-        if (this.value==="Close Curtain") {
-          this.value = "Open Curtain";}
-        else {this.value = "Close Curtain"}
-    }*/
 }

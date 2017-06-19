@@ -10,7 +10,7 @@ export class User {
   sex: any;
   occupation: string;
   description: string;
-  messages: number;
+  messagesCounter: number;
   notifications: number;
   literature: any;
   music: any;
@@ -20,5 +20,6 @@ export class User {
   sports: any;
   groups: any[];
   friends: any[];
+  messages: any[];
 }
   

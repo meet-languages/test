@@ -16,9 +16,6 @@ module.exports = service;
 
 function upload(req) {
     var deferred = Q.defer();
-    console.log(req.files);
-    console.log(req.params);
-    console.log(req.body);
     /* profileImage is the name of the field in the HTML form */
     fs.readFile(req.body.profilePicture.path, function(err, data) {
       var newPath = __dirname + "/uploads/"+req.files.profileImage.name;

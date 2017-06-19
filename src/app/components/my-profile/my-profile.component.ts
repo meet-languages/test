@@ -1,9 +1,9 @@
 import 'rxjs/add/operator/switchMap';
-import { Component,  OnInit }       from '@angular/core';
-import { ActivatedRoute, Params, Router }   from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { User }         from '../../../User';
+import { User } from '../../../User';
 import { UserService } from '../../_services/user.service';
 import { imgService } from '../../_services/img.service';
 
@@ -12,7 +12,7 @@ import { imgService } from '../../_services/img.service';
   templateUrl: './my-profile.component.html',
 })
 
-export class MyProfileComponent implements OnInit{
+export class MyProfileComponent implements OnInit {
   user: User;
   currentUser: User;
   avatarPath: string;
@@ -24,17 +24,17 @@ export class MyProfileComponent implements OnInit{
     private location: Location,
     private imgS: imgService
   ) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.avatarPath = imgS.getAvatarPath(this.currentUser["_id"]);
-      };
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.avatarPath = imgS.getAvatarPath(this.currentUser["_id"]);
+  };
 
 
   ngOnInit() {
-        this.loadUser();
-    }
+    this.loadUser();
+  }
 
-  private loadUser(){
-      this.route.params
+  private loadUser() {
+    this.route.params
       .switchMap((params: Params) => this.userService.getById(this.currentUser["_id"]))
       .subscribe(user => this.user = user);
   }
@@ -42,5 +42,10 @@ export class MyProfileComponent implements OnInit{
   gotoEditProfile(): void {
     const id = "_id";
     this.router.navigate(['/template/edit-profile', this.user[id]]);
+  }
+
+  deleteUser() {
+    this.userService.delete(this.currentUser["_id"]).subscribe(() => { });
+    this.router.navigate(['/registry']);
   }
 }

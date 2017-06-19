@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../_services/user.service';
 import { imgService } from '../../_services/img.service';
+import { FriendRequestService } from '../../_services/friend-request.service';
+import { AlertService } from '../../_services/alert.service';
 import { User } from '../../../User';
-import { AuthHttp } from 'angular2-jwt'
-import { Router } from '@angular/router'
+import { FriendRequest } from '../../../friend-request';
+import { AuthHttp } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -16,13 +19,19 @@ import { Router } from '@angular/router'
 export class UsersComponent implements OnInit {
     currentUser: User;
     selectUser: User;
+    msg: string;
+    modelRequest: any = {};
     users: User[] = [];
     friends: User[] = [];
+    friendRequest: FriendRequest[] = [];
     avatarPaths: string[] = [];
+    loading = false;
 
     constructor(private userService: UserService,
-                private router: Router,
-                private imgS: imgService) {
+        private router: Router,
+        private imgS: imgService,
+        private friendRequestService: FriendRequestService,
+        private alertService: AlertService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
@@ -30,15 +39,14 @@ export class UsersComponent implements OnInit {
         this.loadAllUsers();
         this.loadCurrentUser();
         this.loadMyFriends();
-    }
-
-    deleteUser(_id: string) {
-        this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
+        this.getFriendRequests();
     }
 
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users;
-                                                       this.setAvatarPaths()});
+        this.userService.getAll().subscribe(users => {
+            this.users = users;
+            this.setAvatarPaths()
+        });
     }
 
     private loadMyFriends() {
@@ -59,13 +67,36 @@ export class UsersComponent implements OnInit {
         return false;
     }
 
-    private setAvatarPaths(){
-      this.users.forEach((item, index) => {
-        this.avatarPaths[index] = this.imgS.getAvatarPath(this.users[index]['_id']);
-      });
+    private setAvatarPaths() {
+        this.users.forEach((item, index) => {
+            this.avatarPaths[index] = this.imgS.getAvatarPath(this.users[index]['_id']);
+        });
     }
 
-    joinFriend(user: User): void {
+    private getFriendRequests(): void {
+        this.friendRequestService.getSentFriendRequest(this.currentUser["_id"]).subscribe(friendRequests => {
+            this.friendRequest = friendRequests;
+        });
+    }
+
+    private userInRequests(id: any): boolean {
+        for (var i = 0; i < this.friendRequest.length; i++) {
+            if (this.friendRequest[i].to == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private getIdRequest(id: number): any {
+        for (var i = 0; i < this.friendRequest.length; i++) {
+            if (this.friendRequest[i].to == id) {
+                return this.friendRequest[i]["_id"];
+            }
+        }
+    }
+
+    /*joinFriend(user: User): void {
         this.currentUser.friends.push(user["_id"]);
         user.friends.push(this.currentUser["_id"]);
         this.userService.update(user).subscribe(() => {
@@ -76,6 +107,10 @@ export class UsersComponent implements OnInit {
             this.loadMyFriends();
             this.loadCurrentUser();
         });
+    }*/
+
+    deleteRequest(_id: any) {
+        this.friendRequestService.delete(this.getIdRequest(_id)).subscribe(() => { this.getFriendRequests() });
     }
 
     leaveFriend(user: User): void {
@@ -96,6 +131,25 @@ export class UsersComponent implements OnInit {
             this.loadCurrentUser();
         });
     }
+
+    sendRequest(): void {
+        this.loading = true;
+        this.modelRequest.from = this.currentUser["_id"];
+        this.modelRequest.to = this.selectUser["_id"];
+        this.modelRequest.msg = this.msg;
+        this.friendRequestService.create(this.modelRequest)
+            .subscribe(
+            data => {
+                this.alertService.success('Friend request sent succesful', true);
+                this.getFriendRequests();
+            },
+            error => {
+                this.alertService.error(error._body);
+                this.loading = false;
+            });
+        this.msg = "";
+    }
+
 
     onSelect(user: User): void {
         this.selectUser = user;

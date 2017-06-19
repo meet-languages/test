@@ -28,7 +28,7 @@ export const routes: Routes = [
   { path: 'registry', component: RegistryComponent },
   {
     path: 'template', component: TemplateComponent, canActivate: [AuthGuard], children: [
-      { path: '', redirectTo: 'users', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'users', component: UsersComponent },
       { path: 'groups', component: GroupsComponent },
       { path: 'group-page/:id', component: GroupPageComponent },

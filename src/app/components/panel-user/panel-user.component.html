@@ -7,7 +7,7 @@
       <a style="cursor: pointer" (click)="gotoProfile()" class="list-group-item">
         <span class="glyphicon glyphicon-user"></span> My profile</a>
       <a routerLink="/template/messages" routerLinkActive="active" class="list-group-item">
-        <span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">{{ currentUser.messages }}</span></a>
+        <span class="glyphicon glyphicon-envelope"></span> Messages <span class="badge">{{ currentUser.messages.length }}</span></a>
       <a routerLink="/template/notifications" routerLinkActive="active" class="list-group-item">
         <span class="glyphicon glyphicon-globe"></span> Notifications<span class="badge">{{ currentUser.notifications }}</span></a>
       <a routerLink="/template/my-friends" routerLinkActive="active" class="list-group-item">

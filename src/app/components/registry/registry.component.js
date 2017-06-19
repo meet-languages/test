@@ -27,7 +27,7 @@ var RegistryComponent = (function () {
             birthday: null,
             description: null,
             notifications: 0,
-            messages: 0,
+            messagesCounter: 0,
             literature: [
                 { name: "Self-help", isChecked: false },
                 { name: "Tales", isChecked: false },
@@ -165,6 +165,7 @@ var RegistryComponent = (function () {
             ],
             groups: [],
             friends: [],
+            messages: [],
         };
         this.loading = false;
     }
@@ -180,19 +181,18 @@ var RegistryComponent = (function () {
         this.userService.create(this.model)
             .subscribe(function (data) {
             _this.alertService.success('Registration successful', true);
+            _this.authenticationService.login(_this.model.email, _this.model.password)
+                .subscribe(function (data) {
+                _this.router.navigate([_this.returnUrl]);
+            }, function (error) {
+                _this.alertService.error(error._body);
+                _this.loading = false;
+            });
         }, function (error) {
             _this.alertService.error(error._body);
             _this.loading = false;
         });
-        this.loading = true;
-        setTimeout(function () { }, 2000);
-        this.authenticationService.login(this.model.email, this.model.password)
-            .subscribe(function (data) {
-            _this.router.navigate([_this.returnUrl]);
-        }, function (error) {
-            _this.alertService.error(error._body);
-            _this.loading = false;
-        });
+        setTimeout(function () { }, 5000);
     };
     return RegistryComponent;
 }());

@@ -38,6 +38,10 @@ var MyProfileComponent = (function () {
         var id = "_id";
         this.router.navigate(['/template/edit-profile', this.user[id]]);
     };
+    MyProfileComponent.prototype.deleteUser = function () {
+        this.userService.delete(this.currentUser["_id"]).subscribe(function () { });
+        this.router.navigate(['/registry']);
+    };
     return MyProfileComponent;
 }());
 MyProfileComponent = __decorate([

@@ -21,7 +21,7 @@ service.delete = _delete;
 
 module.exports = service;
 
-function authenticate(email, password) {console.log(email);
+function authenticate(email, password) {
     var deferred = Q.defer();
 
     db.users.findOne({ email: email }, function (err, user) {
@@ -33,10 +33,11 @@ function authenticate(email, password) {console.log(email);
                 _id: user._id,
                 email: user.email,
                 name: user.name,
-                messages: user.messages,
+                messagesCount: user.messagesCount,
                 notifications: user.notifications,
                 groups: user.groups,
                 friends: user.friends,
+                messages: user.messages,
                 //Signing a token with 1 hour of expiration:
                 token: jwt.sign({ sub: user._id, exp: Math.floor(Date.now() / 1000) + (60 * 60), }, 'daslfjhuq2kherdsajkn27483huedf')
             });
@@ -187,7 +188,7 @@ function create(userParam) {
 
         db.users.insert(
             user,
-            function (err, doc) { console.log(doc);
+            function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
 
                 deferred.resolve();
@@ -227,6 +228,7 @@ function update(_id, userParam) {
                     sports: userParam.sports,
                     groups: userParam.groups,
                     friends: userParam.friends,
+                    messages: userParam.messages,
 
                 },
                 function (err, user) {
@@ -255,6 +257,7 @@ function update(_id, userParam) {
             lang_learn: userParam.lang_learn,
             password: userParam.password,
             description: userParam.description,
+            messagesCount: userParam.messagesCount,
             skype: userParam.skype,
             sex: userParam.sex,
             occupation: userParam.occupation,
@@ -267,6 +270,7 @@ function update(_id, userParam) {
             sports: userParam.sports,
             groups: userParam.groups,
             friends: userParam.friends,
+            messages: userParam.messages,
         };
 
         // update password if it was entered

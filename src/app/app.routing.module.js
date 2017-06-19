@@ -33,7 +33,7 @@ exports.routes = [
     { path: 'registry', component: registry_component_1.RegistryComponent },
     {
         path: 'template', component: main_component_1.TemplateComponent, canActivate: [auth_guard_1.AuthGuard], children: [
-            { path: '', redirectTo: 'users', pathMatch: 'full' },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'users', component: users_component_1.UsersComponent },
             { path: 'groups', component: groups_component_1.GroupsComponent },
             { path: 'group-page/:id', component: group_page_component_1.GroupPageComponent },
