@@ -71,6 +71,7 @@ export class UsersComponent implements OnInit {
         this.users.forEach((item, index) => {
             this.avatarPaths[index] = this.imgS.getAvatarPath(this.users[index]['_id']);
         });
+        console.log(this.avatarPaths);
     }
 
     private getFriendRequests(): void {
@@ -95,19 +96,6 @@ export class UsersComponent implements OnInit {
             }
         }
     }
-
-    /*joinFriend(user: User): void {
-        this.currentUser.friends.push(user["_id"]);
-        user.friends.push(this.currentUser["_id"]);
-        this.userService.update(user).subscribe(() => {
-            this.loadMyFriends();
-            this.loadCurrentUser();
-        });
-        this.userService.update(this.currentUser).subscribe(() => {
-            this.loadMyFriends();
-            this.loadCurrentUser();
-        });
-    }*/
 
     deleteRequest(_id: any) {
         this.friendRequestService.delete(this.getIdRequest(_id)).subscribe(() => { this.getFriendRequests() });

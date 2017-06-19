@@ -64,6 +64,7 @@ var UsersComponent = (function () {
         this.users.forEach(function (item, index) {
             _this.avatarPaths[index] = _this.imgS.getAvatarPath(_this.users[index]['_id']);
         });
+        console.log(this.avatarPaths);
     };
     UsersComponent.prototype.getFriendRequests = function () {
         var _this = this;
@@ -86,18 +87,6 @@ var UsersComponent = (function () {
             }
         }
     };
-    /*joinFriend(user: User): void {
-        this.currentUser.friends.push(user["_id"]);
-        user.friends.push(this.currentUser["_id"]);
-        this.userService.update(user).subscribe(() => {
-            this.loadMyFriends();
-            this.loadCurrentUser();
-        });
-        this.userService.update(this.currentUser).subscribe(() => {
-            this.loadMyFriends();
-            this.loadCurrentUser();
-        });
-    }*/
     UsersComponent.prototype.deleteRequest = function (_id) {
         var _this = this;
         this.friendRequestService.delete(this.getIdRequest(_id)).subscribe(function () { _this.getFriendRequests(); });
